@@ -2,6 +2,7 @@ import 'package:dufuna/config/constants.dart';
 import 'package:dufuna/config/theme.dart';
 import 'package:dufuna/injector.dart';
 import 'package:dufuna/presentation/provider/property_provider.dart';
+import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +27,8 @@ class App extends StatelessWidget {
         title: AppStrings.kTitle,
         theme: AppTheme.defaultTheme,
         // home: const HomePage(),
-        home: const SplashScreen(),
+        // home: const SplashScreen(),
+        home: const GetStarted(),
         debugShowCheckedModeBanner: false,
       ),
     );
