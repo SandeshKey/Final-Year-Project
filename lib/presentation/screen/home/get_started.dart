@@ -13,9 +13,8 @@ class GetStarted extends StatelessWidget {
         backgroundColor: ColorUtils.themeBlack,
         body: Column(
           children: [
-            Container(
-              height: double.infinity,
-              width: double.infinity,
+            Expanded(
+              flex: 6,
               child: Stack(
                 children: [
                   Positioned(
@@ -26,7 +25,7 @@ class GetStarted extends StatelessWidget {
                       width: 60,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs1.png"),
+                          image: AssetImage("assets/images/gs1.png"),
                         ),
                       ),
                     ),
@@ -39,7 +38,7 @@ class GetStarted extends StatelessWidget {
                       width: 70,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs2.png"),
+                          image: AssetImage("assets/images/gs2.png"),
                         ),
                       ),
                     ),
@@ -52,7 +51,7 @@ class GetStarted extends StatelessWidget {
                       width: 62,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs3.png"),
+                          image: AssetImage("assets/images/gs3.png"),
                         ),
                       ),
                     ),
@@ -65,7 +64,7 @@ class GetStarted extends StatelessWidget {
                       width: 92,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs4.png"),
+                          image: AssetImage("assets/images/gs4.png"),
                         ),
                       ),
                     ),
@@ -78,7 +77,7 @@ class GetStarted extends StatelessWidget {
                       width: 90,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs5.png"),
+                          image: AssetImage("assets/images/gs5.png"),
                         ),
                       ),
                     ),
@@ -91,7 +90,7 @@ class GetStarted extends StatelessWidget {
                       width: 58,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs6.png"),
+                          image: AssetImage("assets/images/gs6.png"),
                         ),
                       ),
                     ),
@@ -104,7 +103,7 @@ class GetStarted extends StatelessWidget {
                       width: 42,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs7.png"),
+                          image: AssetImage("assets/images/gs7.png"),
                         ),
                       ),
                     ),
@@ -117,15 +116,37 @@ class GetStarted extends StatelessWidget {
                       width: 92,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("./assets/images/gs8.png"),
+                          image: AssetImage("assets/images/gs8.png"),
                         ),
                       ),
                     ),
                   ),
+
+                  // Text("Welcome to ")
                 ],
               ),
             ),
-            WideButton("Get Started"),
+            Expanded(
+                flex: 4,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    //TODO work on this section haii tw
+                    Text("Welcome to "),
+                    Text(
+                      "Olive Home",
+                      style: TextStyle(
+                          color: ColorUtils.pureWhite,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold),
+                    ),
+
+                    WideButton("Get Started"),
+                    SizedBox(
+                      height: 80,
+                    )
+                  ],
+                ))
           ],
         ),
       ),
