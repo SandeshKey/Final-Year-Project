@@ -6,12 +6,18 @@ import 'package:dufuna/presentation/provider/property_provider.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+ import 'firebase_options.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initApp();
+   await Firebase.initializeApp(
+   options: DefaultFirebaseOptions.currentPlatform,
+ );
 
   runApp(const App());
 }

@@ -1,5 +1,8 @@
+import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/text_input.dart';
+import 'package:dufuna/core/widget/wide_button.dart';
+import 'package:dufuna/presentation/screen/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,44 +29,65 @@ class RegisterScreen extends StatelessWidget {
                 "Register",
                 style: TextUtils.boldHeading,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               InputTextField(
                   onSaved: (hi) {},
                   labelText: "Name",
                   hintText: "Enter your name"),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               InputTextField(
                   onSaved: (hi) {},
                   labelText: "Email",
                   hintText: "Enter your name"),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               InputTextField(
                   onSaved: (hi) {},
                   labelText: "Phone Number",
                   hintText: "Enter your name"),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               InputTextField(
                   onSaved: (hi) {},
                   labelText: "Password",
                   hintText: "Enter your password"),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               InputTextField(
                   onSaved: (hi) {},
                   labelText: "Confirm Password",
                   hintText: "Confirm your password"),
-              SizedBox(
-                height: 260,
+              const SizedBox(
+                height: 40,
+              ),
+              const WideButton("Sign Up"),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account?",
+                    style: TextUtils.buttonText,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      context.push(const LoginScreen());
+                    },
+                    child: const Text("Sign In",
+                        style: TextStyle(color: ColorUtils.buttonRed)),
+                  ),
+                ],
               )
+              // SizedBox(
+              //   height: 260,
+              // )
             ],
           ),
         ),
@@ -71,3 +95,7 @@ class RegisterScreen extends StatelessWidget {
     );
   }
 }
+
+// git checkout main
+// git fetch
+// git pull origin main
