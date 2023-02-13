@@ -19,6 +19,10 @@ class PositionedBubble extends StatelessWidget {
         decoration:  BoxDecoration(
           image: DecorationImage(
             image: AssetImage(image),
+            //TODO   chnage the code for line 24 like below before that export svg images and assign them from 
+            // get started screen
+
+            // image: SvgPicture.asset(image),
           ),
         ),
       ),

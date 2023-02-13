@@ -1,6 +1,8 @@
 import 'package:dufuna/core/util/colors.dart';
+import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/positioned_bubble.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
+import 'package:dufuna/presentation/screen/auth/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -65,22 +67,27 @@ class GetStarted extends StatelessWidget {
                 flex: 4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Welcome to",
                       style: TextStyle(
                           color: ColorUtils.pureWhite,
                           fontWeight: FontWeight.bold),
                     ),
-                    Text(
+                    const Text(
                       "Olive Home",
                       style: TextStyle(
                           color: ColorUtils.pureWhite,
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),
-                    WideButton("Get Started"),
-                    SizedBox(
+                    WideButton(
+                      "Get Started",
+                      onClick: () {
+                        context.push(const RegisterScreen());
+                      },
+                    ),
+                    const SizedBox(
                       height: 80,
                     )
                   ],
