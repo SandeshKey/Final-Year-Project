@@ -1,4 +1,5 @@
 import 'package:dufuna/core/util/colors.dart';
+import 'package:dufuna/core/widget/positioned_bubble.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,113 +17,47 @@ class GetStarted extends StatelessWidget {
             Expanded(
               flex: 6,
               child: Stack(
-                children: [
-                  Positioned(
-                    top: 160,
-                    left: -10,
-                    child: Container(
-                      height: 60,
-                      width: 60,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs1.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 121,
-                    left: 104,
-                    child: Container(
-                      height: 70,
-                      width: 70,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs2.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 343,
-                    left: -10,
-                    child: Container(
-                      height: 62,
-                      width: 62,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs3.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 252,
-                    left: 82,
-                    child: Container(
-                      height: 92,
-                      width: 92,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs4.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 146,
-                    left: 268,
-                    child: Container(
-                      height: 90,
-                      width: 90,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs5.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 290,
-                    left: 241,
-                    child: Container(
-                      height: 58,
-                      width: 58,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs6.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 394,
-                    left: 164,
-                    child: Container(
-                      height: 42,
-                      width: 42,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs7.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 343,
-                    left: 361,
-                    child: Container(
-                      height: 92,
-                      width: 92,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/gs8.png"),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // Text("Welcome to ")
+                children: const [
+                  PositionedBubble(
+                      top: 160,
+                      left: -10,
+                      image: "assets/images/gs1.png",
+                      length: 60),
+                  PositionedBubble(
+                      top: 121,
+                      left: 104,
+                      image: "assets/images/gs2.png",
+                      length: 70),
+                  PositionedBubble(
+                      top: 343,
+                      left: -10,
+                      image: "assets/images/gs3.png",
+                      length: 62),
+                  PositionedBubble(
+                      top: 252,
+                      left: 82,
+                      image: "assets/images/gs4.png",
+                      length: 92),
+                  PositionedBubble(
+                      top: 146,
+                      left: 268,
+                      image: "assets/images/gs5.png",
+                      length: 90),
+                  PositionedBubble(
+                      top: 290,
+                      left: 241,
+                      image: "assets/images/gs6.png",
+                      length: 58),
+                  PositionedBubble(
+                      top: 394,
+                      left: 164,
+                      image: "assets/images/gs7.png",
+                      length: 42),
+                  PositionedBubble(
+                      top: 343,
+                      left: 361,
+                      image: "assets/images/gs8.png",
+                      length: 92),
                 ],
               ),
             ),
@@ -130,9 +65,13 @@ class GetStarted extends StatelessWidget {
                 flex: 4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    //TODO work on this section haii tw
-                    Text("Welcome to "),
+                  children: const [
+                    Text(
+                      "Welcome to",
+                      style: TextStyle(
+                          color: ColorUtils.pureWhite,
+                          fontWeight: FontWeight.bold),
+                    ),
                     Text(
                       "Olive Home",
                       style: TextStyle(
@@ -140,7 +79,6 @@ class GetStarted extends StatelessWidget {
                           fontSize: 30,
                           fontWeight: FontWeight.bold),
                     ),
-
                     WideButton("Get Started"),
                     SizedBox(
                       height: 80,
