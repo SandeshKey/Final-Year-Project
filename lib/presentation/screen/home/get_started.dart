@@ -23,43 +23,43 @@ class GetStarted extends StatelessWidget {
                   PositionedBubble(
                       top: 160,
                       left: -10,
-                      image: "assets/images/gs1.png",
+                      image: "assets/images/ggs1.svg",
                       length: 60),
-                  PositionedBubble(
-                      top: 121,
-                      left: 104,
-                      image: "assets/images/gs2.png",
-                      length: 70),
-                  PositionedBubble(
-                      top: 343,
-                      left: -10,
-                      image: "assets/images/gs3.png",
-                      length: 62),
-                  PositionedBubble(
-                      top: 252,
-                      left: 82,
-                      image: "assets/images/gs4.png",
-                      length: 92),
-                  PositionedBubble(
-                      top: 146,
-                      left: 268,
-                      image: "assets/images/gs5.png",
-                      length: 90),
-                  PositionedBubble(
-                      top: 290,
-                      left: 241,
-                      image: "assets/images/gs6.png",
-                      length: 58),
-                  PositionedBubble(
-                      top: 394,
-                      left: 164,
-                      image: "assets/images/gs7.png",
-                      length: 42),
-                  PositionedBubble(
-                      top: 343,
-                      left: 361,
-                      image: "assets/images/gs8.png",
-                      length: 92),
+                  // PositionedBubble(
+                  //     top: 121,
+                  //     left: 104,
+                  //     image: "assets/images/gs2.png",
+                  //     length: 70),
+                  // PositionedBubble(
+                  //     top: 343,
+                  //     left: -10,
+                  //     image: "assets/images/gs3.png",
+                  //     length: 62),
+                  // PositionedBubble(
+                  //     top: 252,
+                  //     left: 82,
+                  //     image: "assets/images/gs4.png",
+                  //     length: 92),
+                  // PositionedBubble(
+                  //     top: 146,
+                  //     left: 268,
+                  //     image: "assets/images/gs5.png",
+                  //     length: 90),
+                  // PositionedBubble(
+                  //     top: 290,
+                  //     left: 241,
+                  //     image: "assets/images/gs6.png",
+                  //     length: 58),
+                  // PositionedBubble(
+                  //     top: 394,
+                  //     left: 164,
+                  //     image: "assets/images/gs7.png",
+                  //     length: 42),
+                  // PositionedBubble(
+                  //     top: 343,
+                  //     left: 361,
+                  //     image: "assets/images/gs8.png",
+                  //     length: 92),
                 ],
               ),
             ),

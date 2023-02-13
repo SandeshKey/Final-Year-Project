@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class PositionedBubble extends StatelessWidget {
   const PositionedBubble({super.key, required this.top, required this.left, required this.image, required this.length});
@@ -16,16 +17,17 @@ class PositionedBubble extends StatelessWidget {
       child: Container(
         height: length,
         width: length,
+        child: SvgPicture.asset(image),
         decoration:  BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(image),
+          // image: DecorationImage(
+            // image: AssetImage(image),
             //TODO   chnage the code for line 24 like below before that export svg images and assign them from 
             // get started screen
 
             // image: SvgPicture.asset(image),
           ),
         ),
-      ),
+      // ),
     );
   }
 }
