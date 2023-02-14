@@ -1,6 +1,7 @@
 import 'package:dufuna/config/constants.dart';
 import 'package:dufuna/config/theme.dart';
 import 'package:dufuna/core/widget/property_box.dart';
+import 'package:dufuna/core/widget/property_container.dart';
 import 'package:dufuna/injector.dart';
 import 'package:dufuna/presentation/provider/property_provider.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
@@ -8,7 +9,7 @@ import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:firebase_core/firebase_core.dart';
- import 'firebase_options.dart';
+import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,9 +17,9 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initApp();
-   await Firebase.initializeApp(
-   options: DefaultFirebaseOptions.currentPlatform,
- );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const App());
 }
@@ -38,7 +39,8 @@ class App extends StatelessWidget {
         // home: const SplashScreen(),
         // home: const GetStarted(),
         // home: const PropertyBox(),
-        home: PropertyDetails(),
+        // home: PropertyDetails(),
+        home: PropertyContainer(),
         debugShowCheckedModeBanner: false,
       ),
     );
