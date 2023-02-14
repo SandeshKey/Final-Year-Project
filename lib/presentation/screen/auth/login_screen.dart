@@ -79,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                 WideButton(
                   "Sign In",
                   onClick: () {
-                    context.push(HomePage());
+                    context.push(const HomePage());
                   },
                 ),
                 const SizedBox(
