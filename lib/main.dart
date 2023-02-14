@@ -6,6 +6,7 @@ import 'package:dufuna/presentation/provider/property_provider.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
+import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:firebase_core/firebase_core.dart';
  import 'firebase_options.dart';
 
@@ -36,7 +37,8 @@ class App extends StatelessWidget {
         // home: const HomePage(),
         // home: const SplashScreen(),
         // home: const GetStarted(),
-        home: const PropertyBox(),
+        // home: const PropertyBox(),
+        home: PropertyDetails(),
         debugShowCheckedModeBanner: false,
       ),
     );
