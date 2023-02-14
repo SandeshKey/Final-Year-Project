@@ -8,11 +8,14 @@ import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'presentation/screen/auth/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,12 +40,25 @@ class App extends StatelessWidget {
         theme: AppTheme.defaultTheme,
         // home: const HomePage(),
         // home: const SplashScreen(),
-        home: const GetStarted(),
+        home: AuthWrapper(),
         // home: const PropertyBox(),
         // home: PropertyDetails(),
         // home: PropertyContainer(),
         debugShowCheckedModeBanner: false,
       ),
     );
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final firebaseUser = context.watch<User?>();
+    if (firebaseUser != null) {
+      return const HomePage();
+    }
+    return const LoginScreen();
   }
 }

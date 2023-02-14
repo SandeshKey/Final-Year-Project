@@ -6,6 +6,7 @@ import 'package:dufuna/presentation/provider/property_provider.dart';
 import 'package:dufuna/presentation/screen/home/filter.dart';
 import 'package:dufuna/presentation/screen/home/property_item.dart';
 import 'package:dufuna/presentation/screen/property/add_or_edit_property.dart';
+import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:dufuna/presentation/screen/property/property_info.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -47,7 +48,8 @@ class _HomePageState extends State<HomePage> {
             child: CircularProgressIndicator(
           color: AppColors.kPrimary,
         )),
-        error: (err) => NoDataOrError(err!, variant: Variant.error),
+        // error: (err) => NoDataOrError(err!, variant: Variant.error),
+        error: (err)=> PropertyDetails(),
         done: (props) => SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Column(
