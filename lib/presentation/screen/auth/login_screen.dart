@@ -1,16 +1,43 @@
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
+import 'package:dufuna/presentation/screen/auth/register_screen.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../core/service/auth_services.dart';
 import '../../../core/util/colors.dart';
 import '../../../core/widget/text_input.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+   TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  String? errorMessage;
+
+  Future<void> login() async {
+    try {
+      await AuthServices()
+          .signIn(emailController.text, passwordController.text);
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        errorMessage = e.message;
+      });
+    }
+  }
+
+  bool isChecked = false;
+  bool isLoggedIn = false;
+  Map userObj = {};
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,6 +69,7 @@ class LoginScreen extends StatelessWidget {
                 ),
 
                 InputTextField(
+                  controller: emailController,
                     onSaved: (hi) {},
                     labelText: "Email",
                     hintText: "Enter your name"),
@@ -51,6 +79,7 @@ class LoginScreen extends StatelessWidget {
                 ),
 
                 InputTextField(
+                  controller: passwordController,
                     onSaved: (hi) {},
                     labelText: "Password",
                     hintText: "Enter your password"),
@@ -78,9 +107,39 @@ class LoginScreen extends StatelessWidget {
 
                 WideButton(
                   "Sign In",
-                  onClick: () {
-                    context.push(const HomePage());
+                  onClick: () async{
+                     await login();
+
+
+                    if (errorMessage != null) {
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(errorMessage!)));
+                    } else {
+                      
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("login Successfully")));
+                      context.push(const HomePage());
+
+                    }
+                   
                   },
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Dont have an account yet?",
+                      style: TextUtils.buttonText,
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        context.push(const RegisterScreen());
+                      },
+                      child: const Text("Register",
+                          style: TextStyle(color: ColorUtils.buttonRed)),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   width: double.maxFinite,

@@ -37,10 +37,10 @@ class App extends StatelessWidget {
         theme: AppTheme.defaultTheme,
         // home: const HomePage(),
         // home: const SplashScreen(),
-        // home: const GetStarted(),
+        home: const GetStarted(),
         // home: const PropertyBox(),
         // home: PropertyDetails(),
-        home: PropertyContainer(),
+        // home: PropertyContainer(),
         debugShowCheckedModeBanner: false,
       ),
     );
