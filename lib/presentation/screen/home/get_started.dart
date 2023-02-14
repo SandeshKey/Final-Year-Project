@@ -23,7 +23,7 @@ class GetStarted extends StatelessWidget {
                   PositionedBubble(
                       top: 160,
                       left: -10,
-                      image: "assets/images/ggs1.svg",
+                      image: "assets/images/ggs2.svg",
                       length: 60),
                   // PositionedBubble(
                   //     top: 121,
