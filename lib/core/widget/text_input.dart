@@ -45,7 +45,7 @@ class InputTextField extends StatelessWidget {
       initialValue: initialValue,
       keyboardType: keyboardType,
       style: context.textTheme.bodyMedium!
-          .copyWith(color: Colors.black, fontSize: FontSizes.s16),
+          .copyWith(color: Colors.white, fontSize: FontSizes.s16),
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,

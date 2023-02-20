@@ -23,6 +23,14 @@ dependencies:
   google_sign_in: ^5.4.3
   cloud_firestore: ^4.3.1
   firebase_auth: ^4.2.5
+  firebase_storage: ^11.0.13
+  flutter_form_builder: 7.0.0
+  # form_builder_file_picker: ^2.1.0
+  form_builder_validators: ^8.1.1
+  toast: ^0.2.9
+
+
+  permission_handler_android:
 
 
 

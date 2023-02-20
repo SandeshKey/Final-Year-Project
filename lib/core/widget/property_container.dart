@@ -23,7 +23,7 @@ class PropertyContainer extends StatelessWidget {
                 Stack(
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(16),
                         topRight: Radius.circular(16),
                         bottomLeft: Radius.circular(16),
@@ -79,9 +79,9 @@ class PropertyContainer extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Padding(
+                                const Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                                      EdgeInsets.fromLTRB(0, 0, 0, 8),
                                   child: Text(
                                     "Heritage Apartment",
                                     maxLines: 1,
@@ -92,9 +92,9 @@ class PropertyContainer extends StatelessWidget {
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                Padding(
+                                const Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 0, 4),
+                                      EdgeInsets.fromLTRB(0, 0, 0, 4),
                                   child: Text(
                                     "Pokhara, Lakeside",
                                     maxLines: 1,
@@ -108,7 +108,7 @@ class PropertyContainer extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Rs. 13,000",
                                       style: TextStyle(
                                         color: ColorUtils.pureWhite,
