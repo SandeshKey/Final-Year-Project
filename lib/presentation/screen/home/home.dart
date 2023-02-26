@@ -7,6 +7,7 @@ import 'package:dufuna/presentation/screen/home/filter.dart';
 import 'package:dufuna/presentation/screen/home/property_item.dart';
 import 'package:dufuna/presentation/screen/property/add_or_edit_property.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
+import 'package:dufuna/presentation/screen/property/property_form.dart';
 import 'package:dufuna/presentation/screen/property/property_info.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -36,6 +37,14 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             onPressed: () => context.push(const FilterPage()),
+            icon: Icon(
+              PhosphorIcons.funnel,
+              color: AppColors.kDark,
+            ),
+          ),
+
+           IconButton(
+            onPressed: () => context.push( DetailForm()),
             icon: Icon(
               PhosphorIcons.funnel,
               color: AppColors.kDark,

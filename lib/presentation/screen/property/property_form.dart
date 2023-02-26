@@ -1,4 +1,6 @@
+import 'dart:convert';
 import 'dart:io';
+import 'package:dufuna/core/service/db%20_services.dart';
 import 'package:dufuna/presentation/screen/property/widgets/radio_buttons.dart';
 import 'package:dufuna/presentation/screen/property/widgets/text_field.dart';
 import 'package:flutter/material.dart';
@@ -279,9 +281,7 @@ class _DetailFormState extends State<DetailForm> {
   void initState() {
     super.initState();
 
-    setState(() {
-   
-    });
+    setState(() {});
   }
 
   Future<String> tempToFileConverter(String path) async {
@@ -631,123 +631,149 @@ class _DetailFormState extends State<DetailForm> {
                     _property.propertyFor =
                         _formkey.currentState?.value['propertyFor'];
                     var json = _formkey.currentState?.value;
-                    print(json!.toString());
+                    print(json!);
 
-                    _property.propertyIs = json['propertyIs'];
-                    _property.propertyFor = json['choice_chip'];
+                    PropertyModel property = PropertyModel(
+                      propertyId: "Hi",
+                      propertyIs:" json['propertyIs']",
+                      propertyFor:" json['propertyFor']",
+                      propertyArea:" json['propertyArea']",
+                      areaUnit: "json['areaUnit']",
+                      type: "json['type']",
+                      price: 12,
+                      priceUnit: "json['priceUnit']",
+                      priceUnit1: "json['priceUnit1']",
+                      roadType:" json['roadType']",
+                      roadSize: 23,
+                      propertyFace: "json['propertyFace']",
+                      propertyElectricity: "json['propertyElectricity']",
+                      propertyWatersupply: "json['propertyWatersupply']",
+                      ownershipType: "json['ownershipType']",
+                      ownerOrAgentName: "json['ownerOrAgentName']",
+                      agentAddress: "json['agentAddress']",
+                      phoneNumber: "json['phoneNumber']",
+                      name:" json['name']",
+                      entryDate: "json['submitDate']",
+                      // attachments: json['attachments'],
+                    );
 
-                    if (_property.propertyFor == "Rent" &&
-                        _property.propertyIs == "Land") {
-                      _property.propertyId = "SRL${json['propertyId']}";
-                    } else if (_property.propertyFor == "Sale" &&
-                        _property.propertyIs == "Land") {
-                      _property.propertyId = "SSL${json['propertyId']}";
-                    } else if (_property.propertyFor == "Rent" &&
-                        _property.propertyIs == "House & others") {
-                      _property.propertyId = "SRH${json['propertyId']}";
-                    } else if (_property.propertyFor == "Sale" &&
-                        _property.propertyIs == "House & others") {
-                      _property.propertyId = "SSH${json['propertyId']}";
-                    } else if (_property.propertyFor == "Exchange" &&
-                        _property.propertyIs == "House & others") {
-                      _property.propertyId = "SEH${json['propertyId']}";
-                    } else if (_property.propertyFor == "Exchange" &&
-                        _property.propertyIs == "Land") {
-                      _property.propertyId = "SEL${json['propertyId']}";
-                    } else {
-                      _property.propertyId = "SE${json['propertyId']}";
-                    }
+                    DatabaseServices().addProperty(property);
 
-                    _property.ownershipType = json['ownershipType'];
-                    _property.ownerOrAgentName = json['ownerOrAgentName'];
-                    _property.agentAddress = json['ownerOrAgentAddress'];
-                    _property.propertyElectricity =
-                        json['propertyElectricity'].toString();
-                    _property.propertyWatersupply =
-                        json['propertyWatersupply'].toString();
-                    _property.propertyType = json['propertyType'];
-                    _property.propertyArea = json['propertyArea'].toString();
-                    _property.nearestLandmark = json['nearestLandmark'];
-                    _property.propertyPurpose = json['propertyPurpose'];
-                    _property.priceUnit1 = json['priceUnit'];
-                    _property.areaUnit = json['areaUnit'];
-                    _property.propertyFace = json['propertyFace'];
-                    _property.roadType = json['roadType'];
-                    _property.roadSize = json['slider'];
-                    _property.price = int.parse(json['price']);
-                    _property.wardNumber = int.parse(json['wardNumber']);
-                    _property.priceUnit = json['perUnit'];
-                    _property.storey = json['Storey'];
-                    _property.bikeParking = json['bikeParking'].toString();
-                    _property.carParking = json['carParking'].toString();
-                    _property.furnished = json['furnished'].toString();
-                    _property.wifi = json['wifi'].toString();
-                    _property.ownerName = json['ownerName'];
-                    _property.phoneNumber = json['phoneNumber'];
-                    _property.name = json['name'];
-                    _property.entryDate = json['submitDate'].toString();
-                    _property.buildDate = json['buildYear'].toString();
-                    _property.carCount = int.parse(
-                        json['carCount'] == null ? "0" : json['carCount']);
-                    _property.bikeCount = int.parse(
-                        json['bikeCount'] == null ? "0" : json['bikeCount']);
-                    _property.attachedBedroom = int.parse(
-                        json['attachedBedroom'] == null
-                            ? "0"
-                            : json['attachedBedroom']);
-                    _property.commonBedroom = int.parse(
-                        json['commonBedroom'] == null
-                            ? "0"
-                            : json['commonBedroom']);
-                    _property.bedRoom = int.parse(
-                        json['bedroom'] == null ? "0" : json['bedroom']);
-                    _property.bathRoom = int.parse(
-                        json['bathroom'] == null ? "0" : json['bathroom']);
-                    _property.attachedBathroom = int.parse(
-                        json['attachedBathroom'] == null
-                            ? "0"
-                            : json['attachedBathroom']);
-                    _property.livingRoom = int.parse(
-                        json['livingRoom'] == null ? "0" : json['bathroom']);
-                    _property.kitchen = int.parse(
-                        json['kitchen'] == null ? "0" : json['kitchen']);
+                    // _property.propertyIs = json['propertyIs'];
+                    // _property.propertyFor = json['choice_chip'];
 
-                    _property.propertyFeature = json['propertyFeature'];
-                    _property.addressLine1 = json['addressLine1'];
-                    _property.addressLine2 = json['addressLine2'];
+                    // if (_property.propertyFor == "Rent" &&
+                    //     _property.propertyIs == "Land") {
+                    //   _property.propertyId = "SRL${json['propertyId']}";
+                    // } else if (_property.propertyFor == "Sale" &&
+                    //     _property.propertyIs == "Land") {
+                    //   _property.propertyId = "SSL${json['propertyId']}";
+                    // } else if (_property.propertyFor == "Rent" &&
+                    //     _property.propertyIs == "House & others") {
+                    //   _property.propertyId = "SRH${json['propertyId']}";
+                    // } else if (_property.propertyFor == "Sale" &&
+                    //     _property.propertyIs == "House & others") {
+                    //   _property.propertyId = "SSH${json['propertyId']}";
+                    // } else if (_property.propertyFor == "Exchange" &&
+                    //     _property.propertyIs == "House & others") {
+                    //   _property.propertyId = "SEH${json['propertyId']}";
+                    // } else if (_property.propertyFor == "Exchange" &&
+                    //     _property.propertyIs == "Land") {
+                    //   _property.propertyId = "SEL${json['propertyId']}";
+                    // } else {
+                    //   _property.propertyId = "SE${json['propertyId']}";
+                    // }
 
-                    _property.city = json['city'];
-                    _property.type = json['type'];
-                    _property.landDetail = json['landDetail'];
+                    // _property.ownershipType = json['ownershipType'];
+                    // _property.ownerOrAgentName = json['ownerOrAgentName'];
+                    // _property.agentAddress = json['ownerOrAgentAddress'];
+                    // _property.propertyElectricity =
+                    //     json['propertyElectricity'].toString();
+                    // _property.propertyWatersupply =
+                    //     json['propertyWatersupply'].toString();
+                    // _property.propertyType = json['propertyType'];
+                    // _property.propertyArea = json['propertyArea'].toString();
+                    // _property.nearestLandmark = json['nearestLandmark'];
+                    // _property.propertyPurpose = json['propertyPurpose'];
+                    // _property.priceUnit1 = json['priceUnit'];
+                    // _property.areaUnit = json['areaUnit'];
+                    // _property.propertyFace = json['propertyFace'];
+                    // _property.roadType = json['roadType'];
+                    // _property.roadSize = json['slider'];
+                    // _property.price = int.parse(json['price']);
+                    // _property.wardNumber = int.parse(json['wardNumber']);
+                    // _property.priceUnit = json['perUnit'];
+                    // _property.storey = json['Storey'];
+                    // _property.bikeParking = json['bikeParking'].toString();
+                    // _property.carParking = json['carParking'].toString();
+                    // _property.furnished = json['furnished'].toString();
+                    // _property.wifi = json['wifi'].toString();
+                    // _property.ownerName = json['ownerName'];
+                    // _property.phoneNumber = json['phoneNumber'];
+                    // _property.name = json['name'];
+                    // _property.entryDate = json['submitDate'].toString();
+                    // _property.buildDate = json['buildYear'].toString();
+                    // _property.carCount = int.parse(
+                    //     json['carCount'] == null ? "0" : json['carCount']);
+                    // _property.bikeCount = int.parse(
+                    //     json['bikeCount'] == null ? "0" : json['bikeCount']);
+                    // _property.attachedBedroom = int.parse(
+                    //     json['attachedBedroom'] == null
+                    //         ? "0"
+                    //         : json['attachedBedroom']);
+                    // _property.commonBedroom = int.parse(
+                    //     json['commonBedroom'] == null
+                    //         ? "0"
+                    //         : json['commonBedroom']);
+                    // _property.bedRoom = int.parse(
+                    //     json['bedroom'] == null ? "0" : json['bedroom']);
+                    // _property.bathRoom = int.parse(
+                    //     json['bathroom'] == null ? "0" : json['bathroom']);
+                    // _property.attachedBathroom = int.parse(
+                    //     json['attachedBathroom'] == null
+                    //         ? "0"
+                    //         : json['attachedBathroom']);
+                    // _property.livingRoom = int.parse(
+                    //     json['livingRoom'] == null ? "0" : json['bathroom']);
+                    // _property.kitchen = int.parse(
+                    //     json['kitchen'] == null ? "0" : json['kitchen']);
 
-                    _property.imgPath1 = json['images'] == null
-                        ? null
-                        : await tempToFileConverter("${json['images'][0].path}")
-                            .then((value) => value
-                                .replaceAll('File:', '')
-                                .replaceAll("'", '')
-                                .replaceAll(' ', ''));
-                    _property.imgPath2 = json['images'] == null
-                        ? null
-                        : await tempToFileConverter("${json['images'][1].path}")
-                            .then((value) => value
-                                .replaceAll('File:', '')
-                                .replaceAll("'", '')
-                                .replaceAll(' ', ''));
-                    _property.imgPath3 = json['images'] == null
-                        ? null
-                        : await tempToFileConverter("${json['images'][2].path}")
-                            .then((value) => value
-                                .replaceAll('File:', '')
-                                .replaceAll("'", '')
-                                .replaceAll(' ', ''));
-                    _property.imgPath4 = json['images'] == null
-                        ? null
-                        : await tempToFileConverter("${json['images'][3].path}")
-                            .then((value) => value
-                                .replaceAll('File:', '')
-                                .replaceAll("'", '')
-                                .replaceAll(' ', ''));
+                    // _property.propertyFeature = json['propertyFeature'];
+                    // _property.addressLine1 = json['addressLine1'];
+                    // _property.addressLine2 = json['addressLine2'];
+
+                    // _property.city = json['city'];
+                    // _property.type = json['type'];
+                    // _property.landDetail = json['landDetail'];
+
+                    // _property.imgPath1 = json['images'] == null
+                    //     ? null
+                    //     : await tempToFileConverter("${json['images'][0].path}")
+                    //         .then((value) => value
+                    //             .replaceAll('File:', '')
+                    //             .replaceAll("'", '')
+                    //             .replaceAll(' ', ''));
+                    // _property.imgPath2 = json['images'] == null
+                    //     ? null
+                    //     : await tempToFileConverter("${json['images'][1].path}")
+                    //         .then((value) => value
+                    //             .replaceAll('File:', '')
+                    //             .replaceAll("'", '')
+                    //             .replaceAll(' ', ''));
+                    // _property.imgPath3 = json['images'] == null
+                    //     ? null
+                    //     : await tempToFileConverter("${json['images'][2].path}")
+                    //         .then((value) => value
+                    //             .replaceAll('File:', '')
+                    //             .replaceAll("'", '')
+                    //             .replaceAll(' ', ''));
+                    // _property.imgPath4 = json['images'] == null
+                    //     ? null
+                    //     : await tempToFileConverter("${json['images'][3].path}")
+                    //         .then((value) => value
+                    //             .replaceAll('File:', '')
+                    //             .replaceAll("'", '')
+                    //             .replaceAll(' ', ''));
 
                     if (widget.myproperty?.id! == null) {
                       // await _dbHelpers.insertProperty(_property);
