@@ -14,7 +14,7 @@ class DatabaseServices {
 
   Future<void> addProperty(PropertyModel property) async {
     print("Attermpting to add property");
-    await properties.doc(property.id!.toString()).set(property.toMap());
+    await properties.doc().set(property.toMap());
     print(" Added property");
   }
 
