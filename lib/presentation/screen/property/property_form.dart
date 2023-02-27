@@ -633,29 +633,53 @@ class _DetailFormState extends State<DetailForm> {
                     var json = _formkey.currentState?.value;
                     print(json!);
 
+                    print("property id is ${json['propertyId']}");
+
                     PropertyModel property = PropertyModel(
-                      propertyId: "Hi",
-                      propertyIs:" json['propertyIs']",
-                      propertyFor:" json['propertyFor']",
-                      propertyArea:" json['propertyArea']",
-                      areaUnit: "json['areaUnit']",
-                      type: "json['type']",
-                      price: 12,
-                      priceUnit: "json['priceUnit']",
-                      priceUnit1: "json['priceUnit1']",
-                      roadType:" json['roadType']",
-                      roadSize: 23,
-                      propertyFace: "json['propertyFace']",
-                      propertyElectricity: "json['propertyElectricity']",
-                      propertyWatersupply: "json['propertyWatersupply']",
-                      ownershipType: "json['ownershipType']",
-                      ownerOrAgentName: "json['ownerOrAgentName']",
-                      agentAddress: "json['agentAddress']",
-                      phoneNumber: "json['phoneNumber']",
-                      name:" json['name']",
-                      entryDate: "json['submitDate']",
+                      address: json['addressLine1'],
+                      
+                      propertyId: json['propertyId'],
+                      propertyIs: json['propertyIs'],
+                      propertyFor: json['propertyFor'],
+                      propertyArea: json['propertyArea'],
+                      areaUnit: json['areaUnit'],
+                      type: json['type'],
+                      price: int.parse(json['price']),
+                      priceUnit: json['priceUnit'],
+                      priceUnit1: json['priceUnit1'],
+                      roadType: json['roadType'],
+                      roadSize: json['slider'],
+                      propertyFace: json['propertyFace'],
+                      propertyElectricity:
+                          json['propertyElectricity'].toString(),
+                      propertyWatersupply:
+                          json['propertyWatersupply'].toString(),
+                      ownershipType: json['ownershipType'],
+                      ownerOrAgentName: json['ownerOrAgentName'],
+                      agentAddress: json['agentAddress'],
+                      phoneNumber: json['phoneNumber'].toString(),
+                      name: json['name'],
+                      entryDate: json['submitDate'].toString(),
+                      carParking: json['carParking'],
+                      carCount: int.parse(
+                          json['carCount'] == null ? "0" : json['carCount']),
+                      bikeParking: json['bikeParking'],
+                      bikeCount: int.parse(
+                          json['bikeCount'] == null ? "0" : json['bikeCount']), 
+
+                          propertyTitle: json['propertyFeature'],
+                           
+
+
+                          
+
+
+                      
+
                       // attachments: json['attachments'],
                     );
+
+                    print("property id is ${property.propertyId}");
 
                     DatabaseServices().addProperty(property);
 

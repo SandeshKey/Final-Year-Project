@@ -59,6 +59,7 @@ class PropertyModel {
   static const colWardNumber = 'wardNumber';
   static const colPriceUnit1 = 'priceUnit1';
   static const colAgentAddress = 'agentAddress';
+  static const colStatus = 'status';
 
   String? id;
   String? propertyFor;
@@ -118,6 +119,7 @@ class PropertyModel {
   String? propertyElectricity;
   String? propertyWatersupply;
   String? agentAddress;
+  String? status;
 
   PropertyModel(
       {this.id,
@@ -139,7 +141,6 @@ class PropertyModel {
       this.landDetail,
       this.propertyElectricity,
       this.propertyWatersupply,
-  
       this.propertyId,
       this.propertyType,
       this.propertyPurpose,
@@ -175,7 +176,7 @@ class PropertyModel {
       this.imgPath2,
       this.imgPath3,
       this.imgPath4,
-      this.wardNumber});
+      this.wardNumber, this.status});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
@@ -233,6 +234,7 @@ class PropertyModel {
       colImage2: imgPath2,
       colImage3: imgPath3,
       colImage4: imgPath4,
+      colStatus: status
     };
 
     if (id != null) {
@@ -295,6 +297,7 @@ class PropertyModel {
     imgPath2 = map[colImage2];
     imgPath3 = map[colImage3];
     imgPath4 = map[colImage4];
+    status = map[colStatus];
 
     // print(waterSupply);
   }
