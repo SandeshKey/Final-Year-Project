@@ -1,3 +1,4 @@
+import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/property_box.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
@@ -13,7 +14,6 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../config/constants.dart';
-import '../../../core/util/colors.dart';
 import '../property/property_form.dart';
 import 'filter.dart';
 
@@ -65,15 +65,16 @@ class _OliveHomeState extends State<OliveHome> {
                     _onItemTapped(0);
                   },
                 ),
-                IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () {
-                    context.push(SearchPage());
-                  },
-                ),
-                SizedBox(
-                  width: 30,
-                ),
+              // ),
+              // const Text(
+              //   'Olive Homes',
+              //   style: TextStyle(
+              //     fontSize: 24,
+              //     fontWeight: FontWeight.w700,
+              //   ),
+              //   SizedBox(
+              //     width: 30,
+              //   ),
                 IconButton(
                   icon: Icon(Icons.favorite_outline_outlined),
                   onPressed: () {
@@ -92,6 +93,22 @@ class _OliveHomeState extends State<OliveHome> {
               ],
             ),
           ),
+          // actions: [
+          //   IconButton(
+          //     onPressed: () => context.push(const FilterPage()),
+          //     icon: Icon(
+          //       PhosphorIcons.funnel,
+          //       color: AppColors.kDark,
+          //     ),
+          //   ),
+          //   IconButton(
+          //     onPressed: () => context.push(DetailForm()),
+          //     icon: Icon(
+          //       PhosphorIcons.funnel,
+          //       color: AppColors.kDark,
+          //     ),
+          //   )
+          // ],
         ),
       ),
       // appBar: AppBar(

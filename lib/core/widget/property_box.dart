@@ -8,15 +8,17 @@ class PropertyBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.fromLTRB(0, 8, 4, 12),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Container(
           decoration: BoxDecoration(
+            color: ColorUtils.pureWhite,
             borderRadius: BorderRadius.circular(12),
             border: (Border.all(
-              width: 0,
+              width: .5,
               style: BorderStyle.solid,
-              color: Color.fromARGB(255, 116, 117, 119),
+              // color: Color.fromARGB(255, 116, 117, 119),
+              color: ColorUtils.buttonRed,
             )),
           ),
           child:
@@ -24,12 +26,19 @@ class PropertyBox extends StatelessWidget {
             Stack(
               children: [
                 ClipRect(
-                  child: Image.asset(
-                    "./assets/images/housetry.png",
-                    height: 180,
-                    width: MediaQuery.of(context).size.width - 100,
-                    fit: BoxFit.cover,
-                    colorBlendMode: BlendMode.difference,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.zero,
+                      bottomRight: Radius.zero,
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8),
+                    ),
+                    child: Image.asset(
+                      "./assets/images/housetry.png",
+                      height: 180,
+                      width: MediaQuery.of(context).size.width - 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Padding(
@@ -109,36 +118,39 @@ class PropertyBox extends StatelessWidget {
                           decoration: TextDecoration.none,
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            width: 1,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(64, 0, 0, 0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(4),
                           ),
-                          borderRadius: BorderRadius.circular(4),
+                          height: 40,
+                          width: 130,
+                          child: Row(children: const [
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
+                              child: Icon(
+                                Icons.call,
+                                size: 19,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(6, 0, 0, 0),
+                              child: Text(
+                                "Contact",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: ColorUtils.themeBlack,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 16,
+                                    decoration: TextDecoration.none),
+                              ),
+                            )
+                          ]),
                         ),
-                        height: 40,
-                        width: 130,
-                        child: Row(children: const [
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(16, 0, 0, 0),
-                            child: Icon(
-                              Icons.call,
-                              size: 19,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(6, 0, 0, 0),
-                            child: Text(
-                              "Contact",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: ColorUtils.themeBlack,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16,
-                                  decoration: TextDecoration.none),
-                            ),
-                          )
-                        ]),
                       ),
                     ],
                   ),
