@@ -65,16 +65,22 @@ class _OliveHomeState extends State<OliveHome> {
                     _onItemTapped(0);
                   },
                 ),
-              // ),
-              // const Text(
-              //   'Olive Homes',
-              //   style: TextStyle(
-              //     fontSize: 24,
-              //     fontWeight: FontWeight.w700,
-              //   ),
-              //   SizedBox(
-              //     width: 30,
-              //   ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    context.push(SearchPage());
+                  },
+                ),
+                // ),
+                // const Text(
+                //   'Olive Homes',
+                //   style: TextStyle(
+                //     fontSize: 24,
+                //     fontWeight: FontWeight.w700,
+                //   ),
+                SizedBox(
+                  width: 30,
+                ),
                 IconButton(
                   icon: Icon(Icons.favorite_outline_outlined),
                   onPressed: () {
