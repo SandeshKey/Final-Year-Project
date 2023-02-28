@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
-
 class FormDropDown extends StatelessWidget {
   final List? dropdownItems;
   final String? label;
@@ -22,6 +21,14 @@ class FormDropDown extends StatelessWidget {
       child: FormBuilderDropdown(
           // validator: FormBuilderValidators.required(),
           decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  borderSide: BorderSide(
+                    color: Colors.black,
+                    width: 1.0,
+                  )),
               // contentPadding: EdgeInsets.all(10),
               labelText: label,
               labelStyle: const TextStyle(
@@ -31,7 +38,7 @@ class FormDropDown extends StatelessWidget {
           validator: FormBuilderValidators.required(
             errorText: "Please select a value",
           ),
-          initialValue: initialValue?? null,
+          initialValue: initialValue ?? null,
           name: label!.capitalize().replaceAll(' ', ''),
           items: List.generate(
               dropdownItems!.length,

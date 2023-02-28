@@ -20,6 +20,14 @@ class FormRadioButton extends StatelessWidget {
 
         // validator: FormBuilderValidators.required(),
         decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(
+                  color: Colors.black,
+                  width: 1.0,
+                )),
             // contentPadding: EdgeInsets.all(10),
             labelText: radioLabel!,
             labelStyle: const TextStyle(

@@ -356,6 +356,12 @@ class _DetailFormState extends State<DetailForm> {
                 spacing: 44.0,
                 name: 'propertyIs',
                 decoration: const InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
                     labelText: 'Property Is: ',
                     labelStyle: TextStyle(fontSize: 18.0)),
                 options: const [
@@ -394,6 +400,12 @@ class _DetailFormState extends State<DetailForm> {
                 spacing: 44.0,
                 name: 'choice_chip',
                 decoration: const InputDecoration(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderSide: BorderSide(color: Colors.black),
+                    ),
                     labelText: 'Property For: ',
                     labelStyle: TextStyle(fontSize: 18)),
                 options: const [
@@ -604,6 +616,12 @@ class _DetailFormState extends State<DetailForm> {
                 // onChanged: _onChanged,
                 inputType: InputType.date,
                 decoration: const InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
                   labelText: 'Submit Date',
                 ),
                 initialTime: TimeOfDay(hour: 8, minute: 0),
@@ -637,7 +655,7 @@ class _DetailFormState extends State<DetailForm> {
 
                     PropertyModel property = PropertyModel(
                       address: json['addressLine1'],
-                      
+
                       propertyId: json['propertyId'],
                       propertyIs: json['propertyIs'],
                       propertyFor: json['propertyFor'],
@@ -665,16 +683,9 @@ class _DetailFormState extends State<DetailForm> {
                           json['carCount'] == null ? "0" : json['carCount']),
                       bikeParking: json['bikeParking'],
                       bikeCount: int.parse(
-                          json['bikeCount'] == null ? "0" : json['bikeCount']), 
+                          json['bikeCount'] == null ? "0" : json['bikeCount']),
 
-                          propertyTitle: json['propertyFeature'],
-                           
-
-
-                          
-
-
-                      
+                      propertyTitle: json['propertyFeature'],
 
                       // attachments: json['attachments'],
                     );

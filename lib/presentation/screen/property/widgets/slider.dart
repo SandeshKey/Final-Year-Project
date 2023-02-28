@@ -34,7 +34,7 @@ class FormSlider extends StatelessWidget {
           // debugPrint(
           //     'slider value: ${_formkey.currentState?.value['slider']}');
         },
-       
+
         min: 0.0,
         max: max!,
         initialValue:
@@ -43,6 +43,14 @@ class FormSlider extends StatelessWidget {
         activeColor: Colors.indigo,
         inactiveColor: Colors.pink[100],
         decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(
+                  color: Colors.black,
+                  width: 1.0,
+                )),
             labelText: sliderLabel!,
             labelStyle: const TextStyle(
               fontSize: 18.0,
