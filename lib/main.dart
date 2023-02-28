@@ -13,6 +13,7 @@ import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:dufuna/provider/olive_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
@@ -21,6 +22,10 @@ import 'package:provider/provider.dart';
 import 'presentation/screen/auth/login_screen.dart';
 
 void main() async {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // Set status bar color transparent
+    statusBarBrightness: Brightness.light, // Set status bar brightness
+  ));
   WidgetsFlutterBinding.ensureInitialized();
   await initApp();
   await Firebase.initializeApp(
@@ -42,7 +47,7 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: AppStrings.kTitle,
         // theme: AppTheme.defaultTheme,
-      home:  OliveHome(),
+        home: OliveHome(),
         // home: const SplashScreen(),
         // home: AuthWrapper(),
         // home: PaymentScreen(),

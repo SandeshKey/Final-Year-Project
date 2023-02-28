@@ -1,5 +1,9 @@
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/property_box.dart';
+import 'package:dufuna/presentation/screen/home/home.dart';
+import 'package:dufuna/presentation/screen/home/pages/favourite_page.dart';
+import 'package:dufuna/presentation/screen/home/pages/home_page.dart';
+import 'package:dufuna/presentation/screen/home/pages/more_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/search_page.dart';
 import 'package:dufuna/presentation/screen/home/widgets/fake_row_items.dart';
 import 'package:dufuna/presentation/screen/home/widgets/fake_search.dart';
@@ -13,8 +17,27 @@ import '../../../core/util/colors.dart';
 import '../property/property_form.dart';
 import 'filter.dart';
 
-class OliveHome extends StatelessWidget {
+class OliveHome extends StatefulWidget {
   const OliveHome({super.key});
+
+  @override
+  State<OliveHome> createState() => _OliveHomeState();
+}
+
+class _OliveHomeState extends State<OliveHome> {
+  List<Widget> screens = [
+    const HomePageNew(),
+    SearchPage(),
+    FavouritePage(),
+    MorePage(),
+  ];
+
+  int _selectedIndex = 0;
+  _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +61,9 @@ class OliveHome extends StatelessWidget {
               children: <Widget>[
                 IconButton(
                   icon: Icon(Icons.home),
-                  onPressed: () {},
+                  onPressed: () {
+                    _onItemTapped(0);
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.search),
@@ -50,108 +75,45 @@ class OliveHome extends StatelessWidget {
                   width: 30,
                 ),
                 IconButton(
-                  icon: Icon(Icons.person),
+                  icon: Icon(Icons.favorite_outline_outlined),
                   onPressed: () {
-                    context.push(SearchPage());
+                    _onItemTapped(2);
+
+                    // context.push(FavouritePage());
                   },
                 ),
                 IconButton(
                   icon: Icon(Icons.menu),
-                  onPressed: () {},
+                  onPressed: () {
+                    _onItemTapped(3);
+                    // context.push(MorePage());
+                  },
                 ),
               ],
             ),
           ),
         ),
       ),
-      appBar: AppBar(
-        title: const Text('Olive Home'),
-        actions: [
-          IconButton(
-            onPressed: () => context.push(const FilterPage()),
-            icon: Icon(
-              PhosphorIcons.funnel,
-              color: AppColors.kDark,
-            ),
-          ),
-          IconButton(
-            onPressed: () => context.push(DetailForm()),
-            icon: Icon(
-              PhosphorIcons.funnel,
-              color: AppColors.kDark,
-            ),
-          )
-        ],
-      ),
-      body: ListView(
-        children: [
-          FakeSearchBox(),
-          Text("Explore OliveHome"),
-          FakeRow(),
-
-          Text("Explore OliveHome"),
-          FakeRow(
-            height: rh * 0.40,
-            child: PropertyBox(),
-          ),
-
-          Text("Explore OliveHome"),
-          FakeRow(
-            height: rh * 0.40,
-            child: PropertyBox(),
-          ),
-
-          //     child: ListView(
-          //         scrollDirection: Axis.horizontal,
-          //         children: List.generate(
-          //             5,
-          //             (index) => Container(
-          //                   height: 40,
-          //                   width: 40,
-          //                   child: Column(
-          //                     children: [
-          //                       Image.asset(
-          //                         "assets/images/gs6.png",
-          //                         fit: BoxFit.contain,
-          //                       ),
-          //                       Text("Search Houses")
-          //                     ],
-          //                   ),
-          //                 )))),
-          Expanded(child: Text("Hello World")),
-          Expanded(
-            flex: 20,
-            child: Consumer<OliveProvider>(
-              builder: (context, oliveProvider, child) {
-                if (oliveProvider.properties.length == 0) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-
-                return SingleChildScrollView(
-                  child: Column(
-                    children: List.generate(oliveProvider.properties.length,
-                        (index) => PropertyBox()),
-                  ),
-                );
-              },
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: ElevatedButton(
-              onPressed: () => context.push(DetailForm()),
-              child: Text("Add Property"),
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(20),
-            child: ElevatedButton(
-              onPressed: () => context.push(DetailForm()),
-              child: Text("Add Property"),
-            ),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Olive Home'),
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () => context.push(const FilterPage()),
+      //       icon: Icon(
+      //         PhosphorIcons.funnel,
+      //         color: AppColors.kDark,
+      //       ),
+      //     ),
+      //     IconButton(
+      //       onPressed: () => context.push(DetailForm()),
+      //       icon: Icon(
+      //         PhosphorIcons.funnel,
+      //         color: AppColors.kDark,
+      //       ),
+      //     )
+      //   ],
+      // ),
+      body: screens.elementAt(_selectedIndex),
     );
   }
 }

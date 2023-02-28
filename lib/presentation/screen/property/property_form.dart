@@ -320,7 +320,7 @@ class _DetailFormState extends State<DetailForm> {
         title: const Text('Detail Form'),
       ),
       body: FormBuilder(
-        autovalidateMode: AutovalidateMode.always,
+        // autovalidateMode: AutovalidateMode.always,
         key: _formkey,
         child: SingleChildScrollView(
             child: Column(
