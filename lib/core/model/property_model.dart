@@ -176,7 +176,7 @@ class PropertyModel {
       this.imgPath2,
       this.imgPath3,
       this.imgPath4,
-      this.wardNumber, this.status});
+      this.wardNumber, this.status="pending"});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{

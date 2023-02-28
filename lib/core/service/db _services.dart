@@ -54,18 +54,32 @@ class DatabaseServices {
     return data.data() as Map;
   }
 
-  List<PropertyModel> getProperties() {
+  Future<List<PropertyModel>> getProperties() async {
     List<PropertyModel> propertiesList = [];
-    properties.get().then((value) {
+      // QuerySnapshot propertyQuerySnap =
+      //   await properties.get();
+
+
+    await properties.get().then((value) {
       print(value.docs.length);
 
-      for (int i = 0; i < value.docs.length; i++) {
-        print("for loop executed");
-
-        propertiesList.add(PropertyModel.fromMap(value.docs[i].data() as Map));
     
+
+      for (int i = 0; i < value.docs.length; i++) {
+        PropertyModel property =
+            PropertyModel.fromMap(value.docs[i].data() as Map);
+        property.id = value.docs[i].id;
+        print(property.id);
+        try {
+          propertiesList.add(property);
+          print("Property added successfully");
+        } catch (e) {
+          print(e);
+        }
       }
     });
+
+    print(propertiesList.toString());
 
     print("Length of properties from services ${propertiesList.length} ");
     return propertiesList;

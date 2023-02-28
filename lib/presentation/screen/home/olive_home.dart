@@ -1,5 +1,8 @@
 import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/provider/property_provider.dart';
+import 'package:dufuna/core/widget/property_box.dart';
+import 'package:dufuna/presentation/screen/home/widgets/fake_row_items.dart';
+import 'package:dufuna/presentation/screen/home/widgets/fake_search.dart';
+import 'package:dufuna/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
@@ -33,37 +36,68 @@ class OliveHome extends StatelessWidget {
           )
         ],
       ),
-      body: Consumer<OliveProvider>(
-        builder: (context, oliveProvider, child) {
-          oliveProvider.getProperties();
-          if (oliveProvider.properties.length == 0) {
-            return const Center(child: CircularProgressIndicator());
-          }
+      body: ListView(
+        children: [
+          FakeSearchBox(),
+          Text("Explore OliveHome"),
+          FakeRow(),
 
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  height: 200,
-                  width: double.infinity,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: oliveProvider.properties.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 200,
-                        width: 200,
-                        child: Text(
-                          oliveProvider.properties[index].areaUnit!,
-                        ),
-                      );
-                    },
+          Text("Explore OliveHome"),
+          FakeRow(
+            height: 400,
+            child: PropertyBox(),
+          ),
+
+          //     child: ListView(
+          //         scrollDirection: Axis.horizontal,
+          //         children: List.generate(
+          //             5,
+          //             (index) => Container(
+          //                   height: 40,
+          //                   width: 40,
+          //                   child: Column(
+          //                     children: [
+          //                       Image.asset(
+          //                         "assets/images/gs6.png",
+          //                         fit: BoxFit.contain,
+          //                       ),
+          //                       Text("Search Houses")
+          //                     ],
+          //                   ),
+          //                 )))),
+          Expanded(child: Text("Hello World")),
+          Expanded(
+            flex: 20,
+            child: Consumer<OliveProvider>(
+              builder: (context, oliveProvider, child) {
+                if (oliveProvider.properties.length == 0) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                return SingleChildScrollView(
+                  child: Column(
+                    children: List.generate(oliveProvider.properties.length,
+                        (index) => PropertyBox()),
                   ),
-                )
-              ],
+                );
+              },
             ),
-          );
-        },
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: ElevatedButton(
+              onPressed: () => context.push(DetailForm()),
+              child: Text("Add Property"),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: ElevatedButton(
+              onPressed: () => context.push(DetailForm()),
+              child: Text("Add Property"),
+            ),
+          )
+        ],
       ),
     );
   }
