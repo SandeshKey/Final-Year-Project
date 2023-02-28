@@ -1,3 +1,4 @@
+import 'package:dufuna/core/util/colors.dart';
 import 'package:flutter/material.dart';
 
 class FakeRow extends StatelessWidget {
@@ -8,28 +9,54 @@ class FakeRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height?? 150,
+      height: height ?? 150,
       width: double.maxFinite,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: List.generate(
-            5,
-            (index) =>
-                child ??
+          5,
+          (index) => Padding(
+            padding: const EdgeInsets.fromLTRB(12, 0, 0, 12),
+            child: child ??
                 Container(
-                  height: 100,
-                  width: 150,
-                  decoration: BoxDecoration(border: Border.all(width: 10)),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/images/gs6.png",
-                        fit: BoxFit.cover,
-                      ),
-                      Text("Search Houses")
-                    ],
+                  decoration: BoxDecoration(
+                    color: ColorUtils.pureWhite,
+                    border: Border.all(
+                      width: .5,
+                      color: ColorUtils.buttonRed,
+                    ),
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                )),
+                  height: 150,
+                  width: 150,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.zero,
+                            bottomRight: Radius.zero,
+                            topLeft: Radius.circular(8),
+                            topRight: Radius.circular(8),
+                          ),
+                          child: Image.asset(
+                            "assets/images/villa_detail4.png",
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Find Home",
+                            style: TextStyle(
+                                color: ColorUtils.themeBlack,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ]),
+                ),
+          ),
+        ),
       ),
     );
   }
