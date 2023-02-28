@@ -33,13 +33,18 @@ class _FormTextFieldState extends State<FormTextField> {
       padding: const EdgeInsets.fromLTRB(10, 8, 8, 8.0),
       child: FormBuilderTextField(
         maxLength: widget.isLimited! ? 45 : null,
-        // key: formkey,
         initialValue: widget.initialValue,
-
         validator: FormBuilderValidators.required(),
         maxLines: widget.maxLines,
         name: widget.label!.capitalize().replaceAll(' ', ''),
         decoration: InputDecoration(
+            contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+                borderSide: BorderSide(
+                  color: Colors.black,
+                  width: 1.0,
+                )),
             labelText: widget.label!,
             labelStyle: const TextStyle(
               fontSize: 18.0,
