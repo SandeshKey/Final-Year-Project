@@ -1,7 +1,6 @@
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/property_box.dart';
-import 'package:dufuna/presentation/screen/home/pages/search_page.dart';
 import 'package:dufuna/presentation/screen/home/widgets/fake_row_items.dart';
 import 'package:dufuna/presentation/screen/home/widgets/fake_search.dart';
 import 'package:dufuna/provider/olive_provider.dart';
@@ -10,7 +9,6 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../config/constants.dart';
-import '../../../core/util/colors.dart';
 import '../property/property_form.dart';
 import 'filter.dart';
 
@@ -19,37 +17,78 @@ class OliveHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Olive Home'),
-        actions: [
-          IconButton(
-            onPressed: () => context.push(const FilterPage()),
-            icon: Icon(
-              PhosphorIcons.funnel,
-              color: AppColors.kDark,
-            ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: ColorUtils.themeBlack,
+        appBar: AppBar(
+          backgroundColor: ColorUtils.buttonRed,
+          title: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 12, 0),
+                child: Image.asset(
+                  "assets/images/applogo.png",
+                  height: 28,
+                ),
+              ),
+              const Text(
+                'Olive Homes',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ],
           ),
-          IconButton(
-            onPressed: () => context.push(DetailForm()),
-            icon: Icon(
-              PhosphorIcons.funnel,
-              color: AppColors.kDark,
+          actions: [
+            IconButton(
+              onPressed: () => context.push(const FilterPage()),
+              icon: Icon(
+                PhosphorIcons.funnel,
+                color: AppColors.kDark,
+              ),
             ),
-          )
-        ],
-      ),
-      body: ListView(
-        children: [
-          FakeSearchBox(),
-          Text("Explore OliveHome"),
-          FakeRow(),
+            IconButton(
+              onPressed: () => context.push(DetailForm()),
+              icon: Icon(
+                PhosphorIcons.funnel,
+                color: AppColors.kDark,
+              ),
+            )
+          ],
+        ),
+        body: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+              child: const FakeSearchBox(),
+            ),
+            const Padding(
+              padding: const EdgeInsets.fromLTRB(12, 8, 0, 8),
+              child: Text(
+                "Explore Olive Homes",
+                style: TextStyle(
+                    color: ColorUtils.pureWhite,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700),
+              ),
+            ),
+            const FakeRow(),
 
-          Text("Explore OliveHome"),
-          FakeRow(
-            height: 400,
-            child: PropertyBox(),
-          ),
+            const Padding(
+              padding: const EdgeInsets.fromLTRB(12, 16, 0, 0),
+              child: Text(
+                "Explore Properties",
+                style: TextStyle(
+                    color: ColorUtils.pureWhite,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700),
+              ),
+            ),
+            const FakeRow(
+              height: 345,
+              child: PropertyBox(),
+            ),
 
             //     child: ListView(
             //         scrollDirection: Axis.horizontal,
@@ -74,7 +113,7 @@ class OliveHome extends StatelessWidget {
                 child: Text(
                   "Get Your Dream House",
                   style: TextStyle(
-                      color: ColorUtils.buttonRed,
+                      color: ColorUtils.pureWhite,
                       fontSize: 22,
                       fontWeight: FontWeight.w700),
                 ),

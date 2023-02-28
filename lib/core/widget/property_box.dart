@@ -12,6 +12,7 @@ class PropertyBox extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Container(
           decoration: BoxDecoration(
+            color: ColorUtils.pureWhite,
             borderRadius: BorderRadius.circular(12),
             border: (Border.all(
               width: .5,
