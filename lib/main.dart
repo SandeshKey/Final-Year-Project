@@ -6,9 +6,11 @@ import 'package:dufuna/injector.dart';
 import 'package:dufuna/presentation/provider/property_provider.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
+import 'package:dufuna/presentation/screen/home/olive_home.dart';
 import 'package:dufuna/presentation/screen/home/payment.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
+import 'package:dufuna/provider/property_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -34,15 +36,16 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<PropertyProvider>(create: (_) => getIt())
+        ChangeNotifierProvider<PropertyProvider>(create: (_) => getIt()),
+        ChangeNotifierProvider<OliveProvider>(create: (_) => OliveProvider()),
       ],
       child: MaterialApp(
         title: AppStrings.kTitle,
-        theme: AppTheme.defaultTheme,
-        // home:  HomePage(),
+        // theme: AppTheme.defaultTheme,
+      home:  OliveHome(),
         // home: const SplashScreen(),
         // home: AuthWrapper(),
-        home: PaymentScreen(),
+        // home: PaymentScreen(),
         // home: const PropertyBox(),
         // home: PropertyDetails(),
         // home: PropertyContainer(),

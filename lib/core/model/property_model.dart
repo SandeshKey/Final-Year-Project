@@ -1,15 +1,19 @@
 class PropertyModel {
-  static const tblProperty = 'property';
   static const colId = 'id';
+  static const colPropertyFor = 'propertyFor';
+  static const colListingType = 'listingType';
+  static const colPropertyTitle = 'propertyTitle';
+
   static const colLandDetail = 'landDetail';
   static const colPropertyId = 'propertyId';
+  static const colAddress = 'address';
+  static const colArea = 'area';
+
   static const colCity = 'city';
-  static const colPropertyFor = 'propertyFor';
+
   static const colPropertyType = 'propertyType';
   static const colPropertyPurpose = 'propertyPurpose';
   static const colPropertyFeature = 'propertyFeature';
-  static const colAddressLine1 = 'addressLine1';
-  static const colAddressLine2 = 'addressLine2';
   static const colNearestLandmark = 'nearestLandmark';
   static const colAreaUnit = 'areaUnit';
   static const colType = 'type';
@@ -55,8 +59,18 @@ class PropertyModel {
   static const colWardNumber = 'wardNumber';
   static const colPriceUnit1 = 'priceUnit1';
   static const colAgentAddress = 'agentAddress';
+  static const colStatus = 'status';
 
-  int? id;
+  String? id;
+  String? propertyFor;
+  String? listingType; // normal , urgent, premium
+  String? propertyPurpose; // residential, commercial, industrial
+  String? propertyIs; // house, flat, land, office, shop
+  String? propertyType; // house flat, land, office, shop
+  String? propertyTitle; // House for sale
+  String? area;
+  String? address;
+
   int? wardNumber;
   int? commonBedroom;
   int? attachedBedroom;
@@ -66,10 +80,7 @@ class PropertyModel {
   String? ownershipType;
   String? ownerOrAgentName;
   String? landDetail;
-  String? propertyIs;
-  String? propertyFor;
-  String? propertyType;
-  String? propertyPurpose;
+
   String? propertyFeature;
   String? addressLine1;
   String? addressLine2;
@@ -108,12 +119,19 @@ class PropertyModel {
   String? propertyElectricity;
   String? propertyWatersupply;
   String? agentAddress;
+  String? status;
 
   PropertyModel(
-      
-      {
-        this.agentAddress,  
-        this.priceUnit1,
+      {this.id,
+      this.propertyFor,
+      this.listingType,
+      this.propertyIs,
+      this.propertyTitle,
+      this.area,
+      this.city,
+      this.address,
+      this.agentAddress,
+      this.priceUnit1,
       this.commonBedroom,
       this.attachedBedroom,
       this.carCount,
@@ -121,12 +139,9 @@ class PropertyModel {
       this.ownerOrAgentName,
       this.ownershipType,
       this.landDetail,
-      this.propertyIs,
       this.propertyElectricity,
       this.propertyWatersupply,
-      this.city,
       this.propertyId,
-      this.propertyFor,
       this.propertyType,
       this.propertyPurpose,
       this.propertyFeature,
@@ -161,10 +176,18 @@ class PropertyModel {
       this.imgPath2,
       this.imgPath3,
       this.imgPath4,
-      this.wardNumber});
+      this.wardNumber, this.status});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
+      colId: id,
+      colPropertyFor: propertyFor,
+      colListingType: listingType,
+      colPropertyIs: propertyIs,
+      colPropertyTitle: propertyTitle,
+      colArea: area,
+      colAddress: address,
+      colCity: city,
       colAgentAddress: agentAddress,
       colPriceUnit1: priceUnit1,
       colWardNumber: wardNumber,
@@ -176,18 +199,12 @@ class PropertyModel {
       colCommonBedroom: commonBedroom,
       colAttachedBedroom: attachedBedroom,
       colLandDetail: landDetail,
-      colPropertyIs: propertyIs,
       colPropertyWatersupply: propertyWatersupply,
       colPropertyElectricity: propertyElectricity,
       colPropertyId: propertyId,
-      colCity: city,
-      colId: id,
-      colPropertyFor: propertyFor,
       colPropertyType: propertyType,
       colPropertyPurpose: propertyPurpose,
       colPropertyFeature: propertyFeature,
-      colAddressLine1: addressLine1,
-      colAddressLine2: addressLine2,
       colNearestLandmark: nearestLandmark,
       colAreaUnit: areaUnit,
       colPropertyArea: propertyArea,
@@ -217,6 +234,7 @@ class PropertyModel {
       colImage2: imgPath2,
       colImage3: imgPath3,
       colImage4: imgPath4,
+      colStatus: status
     };
 
     if (id != null) {
@@ -226,8 +244,9 @@ class PropertyModel {
   }
 
   PropertyModel.fromMap(Map<dynamic, dynamic> map) {
+    id = map[colId];
     agentAddress = map[colAgentAddress];
-    
+
     priceUnit1 = map[colPriceUnit1];
     wardNumber = map[colWardNumber];
     carCount = map[colCarCount];
@@ -250,8 +269,6 @@ class PropertyModel {
     propertyType = map[colPropertyType];
     propertyPurpose = map[colPropertyPurpose];
     propertyFeature = map[colPropertyFeature];
-    addressLine1 = map[colAddressLine1];
-    addressLine2 = map[colAddressLine2];
     nearestLandmark = map[colNearestLandmark];
     areaUnit = map[colAreaUnit];
     propertyArea = map[colPropertyArea];
@@ -280,6 +297,7 @@ class PropertyModel {
     imgPath2 = map[colImage2];
     imgPath3 = map[colImage3];
     imgPath4 = map[colImage4];
+    status = map[colStatus];
 
     // print(waterSupply);
   }

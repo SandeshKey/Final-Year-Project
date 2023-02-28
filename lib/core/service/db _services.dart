@@ -14,7 +14,7 @@ class DatabaseServices {
 
   Future<void> addProperty(PropertyModel property) async {
     print("Attermpting to add property");
-    await properties.doc(property.id!.toString()).set(property.toMap());
+    await properties.doc().set(property.toMap());
     print(" Added property");
   }
 
@@ -52,5 +52,22 @@ class DatabaseServices {
   getUserData(String userId) async {
     var data = await users.doc(userId).get();
     return data.data() as Map;
+  }
+
+  List<PropertyModel> getProperties() {
+    List<PropertyModel> propertiesList = [];
+    properties.get().then((value) {
+      print(value.docs.length);
+
+      for (int i = 0; i < value.docs.length; i++) {
+        print("for loop executed");
+
+        propertiesList.add(PropertyModel.fromMap(value.docs[i].data() as Map));
+    
+      }
+    });
+
+    print("Length of properties from services ${propertiesList.length} ");
+    return propertiesList;
   }
 }
