@@ -163,12 +163,21 @@ class _PropertyBoxState extends State<PropertyBox> {
                                       // ),
                                       content: SingleChildScrollView(
                                         child: Container(
-                                          height: MediaQuery.of(context).size.height* 0.8,
-                                          width: MediaQuery.of(context).size.width* 0.6,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.8,
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              1,
                                           // width: 300,
                                           color: Colors.indigo,
-
-
+                                          child: Column(
+                                            children: [
+                                              
+                                            ],
+                                          ),
                                         ),
                                         // child: Column(
                                         //   children: [
