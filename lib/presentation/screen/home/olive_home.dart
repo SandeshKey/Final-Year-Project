@@ -3,7 +3,7 @@ import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/property_box.dart';
 import 'package:dufuna/presentation/screen/home/widgets/fake_row_items.dart';
 import 'package:dufuna/presentation/screen/home/widgets/fake_search.dart';
-import 'package:dufuna/provider/olive_provider.dart';
+import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
@@ -17,146 +17,103 @@ class OliveHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double rh = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorUtils.themeBlack,
-        appBar: AppBar(
-          backgroundColor: ColorUtils.buttonRed,
-          title: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 12, 0),
-                child: Image.asset(
-                  "assets/images/applogo.png",
-                  height: 28,
-                ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => context.push(DetailForm()),
+          child: const Icon(Icons.add),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: BottomAppBar(
+          shape: const CircularNotchedRectangle(),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.06,
+            child: Material(
+              shadowColor: Colors.black,
+              elevation: 50,
+              // color: ColorUtils.themeBlack,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.home),
+                    onPressed: () {
+                      _onItemTapped(0);
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
+                      context.push(SearchPage());
+                    },
+                  ),
+                  // ),
+                  // const Text(
+                  //   'Olive Homes',
+                  //   style: TextStyle(
+                  //     fontSize: 24,
+                  //     fontWeight: FontWeight.w700,
+                  //   ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.favorite_outline_outlined),
+                    onPressed: () {
+                      _onItemTapped(2);
+
+                      // context.push(FavouritePage());
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.menu),
+                    onPressed: () {
+                      _onItemTapped(3);
+                      // context.push(MorePage());
+                    },
+                  ),
+                ],
               ),
-              const Text(
-                'Olive Homes',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
+            ),
+            // actions: [
+            //   IconButton(
+            //     onPressed: () => context.push(const FilterPage()),
+            //     icon: Icon(
+            //       PhosphorIcons.funnel,
+            //       color: AppColors.kDark,
+            //     ),
+            //   ),
+            //   IconButton(
+            //     onPressed: () => context.push(DetailForm()),
+            //     icon: Icon(
+            //       PhosphorIcons.funnel,
+            //       color: AppColors.kDark,
+            //     ),
+            //   )
+            // ],
           ),
-          actions: [
-            IconButton(
-              onPressed: () => context.push(const FilterPage()),
-              icon: Icon(
-                PhosphorIcons.funnel,
-                color: AppColors.kDark,
-              ),
-            ),
-            IconButton(
-              onPressed: () => context.push(DetailForm()),
-              icon: Icon(
-                PhosphorIcons.funnel,
-                color: AppColors.kDark,
-              ),
-            )
-          ],
         ),
-        body: ListView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-              child: const FakeSearchBox(),
-            ),
-            const Padding(
-              padding: const EdgeInsets.fromLTRB(12, 8, 0, 8),
-              child: Text(
-                "Explore Olive Homes",
-                style: TextStyle(
-                    color: ColorUtils.pureWhite,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-            const FakeRow(),
-
-            const Padding(
-              padding: const EdgeInsets.fromLTRB(12, 16, 0, 0),
-              child: Text(
-                "Explore Properties",
-                style: TextStyle(
-                    color: ColorUtils.pureWhite,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-            const FakeRow(
-              height: 345,
-              child: PropertyBox(),
-            ),
-
-            //     child: ListView(
-            //         scrollDirection: Axis.horizontal,
-            //         children: List.generate(
-            //             5,
-            //             (index) => Container(
-            //                   height: 40,
-            //                   width: 40,
-            //                   child: Column(
-            //                     children: [
-            //                       Image.asset(
-            //                         "assets/images/gs6.png",
-            //                         fit: BoxFit.contain,
-            //                       ),
-            //                       Text("Search Houses")
-            //                     ],
-            //                   ),
-            //                 )))),
-            const Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                child: Text(
-                  "Get Your Dream House",
-                  style: TextStyle(
-                      color: ColorUtils.pureWhite,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 20,
-              child: Consumer<OliveProvider>(
-                builder: (context, oliveProvider, child) {
-                  if (oliveProvider.properties.length == 0) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-
-                  return SingleChildScrollView(
-                    child: Column(
-                      children: List.generate(
-                        oliveProvider.properties.length,
-                        (index) => Padding(
-                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                          child: PropertyBox(),
-                        ),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: () => context.push(DetailForm()),
-                child: Text("Add Property"),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(20),
-              child: ElevatedButton(
-                onPressed: () => context.push(DetailForm()),
-                child: Text("Add Property"),
-              ),
-            )
-          ],
-        ),
+        // appBar: AppBar(
+        //   title: const Text('Olive Home'),
+        //   actions: [
+        //     IconButton(
+        //       onPressed: () => context.push(const FilterPage()),
+        //       icon: Icon(
+        //         PhosphorIcons.funnel,
+        //         color: AppColors.kDark,
+        //       ),
+        //     ),
+        //     IconButton(
+        //       onPressed: () => context.push(DetailForm()),
+        //       icon: Icon(
+        //         PhosphorIcons.funnel,
+        //         color: AppColors.kDark,
+        //       ),
+        //     )
+        //   ],
+        // ),
+        body: screens.elementAt(_selectedIndex),
       ),
     );
   }
