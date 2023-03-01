@@ -10,7 +10,7 @@ import 'package:dufuna/presentation/screen/home/olive_home.dart';
 import 'package:dufuna/presentation/screen/home/payment.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
-import 'package:dufuna/provider/olive_provider.dart';
+import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';

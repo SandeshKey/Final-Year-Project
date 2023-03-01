@@ -1,4 +1,4 @@
-import 'package:dufuna/provider/olive_provider.dart';
+import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
