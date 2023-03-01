@@ -173,6 +173,11 @@ class _PropertyBoxState extends State<PropertyBox> {
                                               1,
                                           // width: 300,
                                           color: Colors.indigo,
+                                          child: Column(
+                                            children: [
+                                              
+                                            ],
+                                          ),
                                         ),
                                         // child: Column(
                                         //   children: [
