@@ -1,10 +1,21 @@
 import 'package:dufuna/core/util/colors.dart';
+import 'package:dufuna/presentation/forms/contact_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
 
-class PropertyBox extends StatelessWidget {
+class PropertyBox extends StatefulWidget {
   const PropertyBox({Key? key}) : super(key: key);
 
+  @override
+  State<PropertyBox> createState() => _PropertyBoxState();
+}
+
+class _PropertyBoxState extends State<PropertyBox> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _fullNameController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _messageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -123,33 +134,190 @@ class PropertyBox extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(64, 0, 0, 0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1,
+                          child: GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    // return ;
+                                    return AlertDialog(
+                                      title: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(" Contact Seller"),
+                                          IconButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              icon: Icon(PhosphorIcons.x))
+                                        ],
+                                      ),
+                                      // content: SingleChildScrollView(
+                                      //   child: Column(
+                                      //     children: [
+                                      //       Text(" K xaa")
+                                      //     ],
+                                      //   ),
+
+                                      // ),
+                                      content: SingleChildScrollView(
+                                        child: Container(
+                                          height: MediaQuery.of(context).size.height* 0.8,
+                                          width: MediaQuery.of(context).size.width* 0.6,
+                                          // width: 300,
+                                          color: Colors.indigo,
+
+
+                                        ),
+                                        // child: Column(
+                                        //   children: [
+                                        //     Padding(
+                                        //       padding:
+                                        //           const EdgeInsets.all(8.0),
+                                        //       child: Row(
+                                        //         mainAxisAlignment:
+                                        //             MainAxisAlignment
+                                        //                 .spaceBetween,
+                                        //         children: [
+                                        //           Text(" Contact Seller"),
+                                        //           IconButton(
+                                        //               onPressed: () {
+                                        //                 Navigator.pop(context);
+                                        //               },
+                                        //               icon:
+                                        //                   Icon(PhosphorIcons.x))
+                                        //         ],
+                                        //       ),
+                                        //     ),
+                                        //     Row(
+                                        //       children: [
+                                        //         CircleAvatar(
+                                        //           radius: 30,
+                                        //           backgroundColor:
+                                        //               Colors.grey[300],
+                                        //           child: Icon(
+                                        //               Icons.person_2_outlined),
+                                        //         ),
+                                        //         Column(
+                                        //           mainAxisAlignment:
+                                        //               MainAxisAlignment.center,
+                                        //           crossAxisAlignment:
+                                        //               CrossAxisAlignment.start,
+                                        //           children: [
+                                        //             Text("Seller Name"),
+                                        //             Text(
+                                        //                 "selleremail@gmail.com"),
+                                        //             Text("9812345678")
+                                        //           ],
+                                        //         ),
+                                        //         Container(
+                                        //           height: MediaQuery.of(context)
+                                        //                   .size
+                                        //                   .height *
+                                        //               0.02,
+                                        //           color: Colors.greenAccent,
+                                        //           child: Row(
+                                        //             mainAxisAlignment:
+                                        //                 MainAxisAlignment
+                                        //                     .spaceBetween,
+                                        //             children: [
+                                        //               IconButton(
+                                        //                   onPressed: () {
+                                        //                     Navigator.pop(
+                                        //                         context);
+                                        //                   },
+                                        //                   icon: Icon(
+                                        //                       PhosphorIcons
+                                        //                           .phone)),
+                                        //               Text("Contact")
+                                        //             ],
+                                        //           ),
+                                        //         ),
+                                        //         TextField(
+                                        //           controller: _emailController,
+                                        //           decoration: InputDecoration(
+                                        //             labelText: 'Email',
+                                        //             border:
+                                        //                 OutlineInputBorder(),
+                                        //           ),
+                                        //         ),
+                                        //         TextField(
+                                        //           controller:
+                                        //               _fullNameController,
+                                        //           decoration: InputDecoration(
+                                        //             labelText: 'Full Name',
+                                        //             border:
+                                        //                 OutlineInputBorder(),
+                                        //           ),
+                                        //         ),
+                                        //         TextField(
+                                        //           controller: _phoneController,
+                                        //           decoration: InputDecoration(
+                                        //             labelText: 'Phone',
+                                        //             border:
+                                        //                 OutlineInputBorder(),
+                                        //           ),
+                                        //         ),
+                                        //         TextField(
+                                        //           maxLines: 3,
+                                        //           controller:
+                                        //               _messageController,
+                                        //           decoration: InputDecoration(
+                                        //             labelText: 'Message',
+                                        //             border:
+                                        //                 OutlineInputBorder(),
+                                        //           ),
+                                        //         ),
+                                        //         ElevatedButton(
+                                        //           onPressed: () {
+                                        //             print(
+                                        //                 _emailController.text);
+                                        //             print(_fullNameController
+                                        //                 .text);
+                                        //             print(
+                                        //                 _phoneController.text);
+                                        //             print(_messageController
+                                        //                 .text);
+                                        //           },
+                                        //           child: Text('Submit'),
+                                        //         ),
+                                        //       ],
+                                        //     )
+                                        //   ],
+                                        // ),
+                                      ),
+                                    );
+                                  });
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(4),
                               ),
-                              borderRadius: BorderRadius.circular(4),
+                              height: 40,
+                              width: 100,
+                              child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: const [
+                                    Icon(
+                                      Icons.call,
+                                      size: 19,
+                                    ),
+                                    Text(
+                                      "Contact",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: ColorUtils.themeBlack,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 16,
+                                          decoration: TextDecoration.none),
+                                    )
+                                  ]),
                             ),
-                            height: 40,
-                            width: 100,
-                            child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: const [
-                                  Icon(
-                                    Icons.call,
-                                    size: 19,
-                                  ),
-                                  Text(
-                                    "Contact",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: ColorUtils.themeBlack,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16,
-                                        decoration: TextDecoration.none),
-                                  )
-                                ]),
                           ),
                         ),
                       ],
