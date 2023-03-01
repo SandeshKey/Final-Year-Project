@@ -21,21 +21,28 @@ class HomePageNew extends StatelessWidget {
           decoration: BoxDecoration(
             color: ColorUtils.buttonRed,
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20),
-              bottomRight: Radius.circular(20),
+              bottomLeft: Radius.circular(8),
+              bottomRight: Radius.circular(8),
             ),
           ),
-          height: rh * 0.08,
+          height: rh * 0.07,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SizedBox(
                 width: 10,
               ),
-              CircleAvatar(child: Image.asset("assets/images/App Icon.png")),
+              CircleAvatar(
+                child: Image.asset(
+                  "assets/images/applogo.png",
+                ),
+              ),
               Text(
-                "Olive Home",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                "Olive Homes",
+                style: TextStyle(
+                    color: ColorUtils.pureWhite,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 width: 200,
@@ -47,18 +54,48 @@ class HomePageNew extends StatelessWidget {
           child: ListView(
             children: [
               FakeSearchBox(),
-              Text("Explore OliveHome"),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 8, 0, 8),
+                child: Text(
+                  "Explore Olive Homes",
+                  style: TextStyle(
+                    color: ColorUtils.pureWhite,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
               FakeRow(),
 
-              Text("Explore OliveHome"),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
+                child: Text(
+                  "Find Properties",
+                  style: TextStyle(
+                    color: ColorUtils.pureWhite,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
               FakeRow(
-                height: rh * 0.40,
+                height: rh * 0.37,
                 child: PropertyBox(),
               ),
 
-              Text("Explore OliveHome"),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                child: Text(
+                  "Best in Town",
+                  style: TextStyle(
+                    color: ColorUtils.pureWhite,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
               FakeRow(
-                height: rh * 0.40,
+                height: rh * 0.37,
                 child: PropertyBox(),
               ),
 
@@ -79,7 +116,27 @@ class HomePageNew extends StatelessWidget {
               //                     ],
               //                   ),
               //                 )))),
-              Expanded(child: Text("Hello World")),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(24, 8, 24, 4),
+                child: Divider(
+                  color: ColorUtils.grey,
+                  thickness: .5,
+                ),
+              ),
+              const Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 4),
+                  child: Text(
+                    "Premium Properties",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorUtils.pureWhite,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
               Expanded(
                 flex: 20,
                 child: Consumer<OliveProvider>(
@@ -90,8 +147,17 @@ class HomePageNew extends StatelessWidget {
 
                     return SingleChildScrollView(
                       child: Column(
-                        children: List.generate(oliveProvider.properties.length,
-                            (index) => PropertyBox()),
+                        children: List.generate(
+                          oliveProvider.properties.length,
+                          (index) => Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                            child: Container(
+                              height: 325,
+                              // width: MediaQuery.of(context).size.width,
+                              child: PropertyBox(),
+                            ),
+                          ),
+                        ),
                       ),
                     );
                   },
