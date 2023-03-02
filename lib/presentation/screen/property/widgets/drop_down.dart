@@ -1,3 +1,4 @@
+import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/string_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -26,7 +27,7 @@ class FormDropDown extends StatelessWidget {
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide: BorderSide(
-                    color: Colors.black,
+                    color: ColorUtils.themeBlack,
                     width: 1.0,
                   )),
               // contentPadding: EdgeInsets.all(10),
@@ -46,7 +47,7 @@ class FormDropDown extends StatelessWidget {
                     value: dropdownItems![index],
                     child: Text(
                       dropdownItems![index],
-                      style: TextStyle(color: Colors.indigo),
+                      style: TextStyle(color: ColorUtils.themeBlack),
                     ),
                   ))),
     );

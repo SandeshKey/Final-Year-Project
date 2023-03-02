@@ -10,6 +10,7 @@ import 'package:dufuna/presentation/screen/home/widgets/fake_row_items.dart';
 import 'package:dufuna/presentation/screen/home/widgets/fake_search.dart';
 import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -62,38 +63,51 @@ class _OliveHomeState extends State<OliveHome> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  // InkWell(
-                  //   onTap: () {}, // Image tapped
-                  //   splashColor: Colors.white10, // Splash color over image
-                  //   child: Ink.image(
-                  //     fit: BoxFit.cover, // Fixes border issues
-                  //     width: 100,
-                  //     height: 100,
-                  //     image: AssetImage(
-                  //       'assets/images/applogo.png',
-                  //     ),
-                  //   ),
-                  // ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.home_outlined,
-                      size: 28,
-                      color: ColorUtils.buttonRed,
-                    ),
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       _onItemTapped(0);
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.search_rounded,
-                      size: 28,
-                      color: ColorUtils.buttonRed,
+                    }, // Image tapped
+                    splashColor: Colors.white10, // Splash color over image
+                    child: SvgPicture.asset(
+                      "assets/images/IconHome.svg",
+                      height: 28,
+                      width: 28,
                     ),
-                    onPressed: () {
-                      context.push(SearchPage());
-                    },
                   ),
+
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.home_outlined,
+                  //     size: 28,
+                  //     color: ColorUtils.buttonRed,
+                  //   ),
+                  //   onPressed: () {
+                  //     _onItemTapped(0);
+                  //   },
+                  // ),
+
+                  InkWell(
+                    onTap: () {
+                      context.push(SearchPage());
+                    }, // Image tapped
+                    splashColor: Colors.white10, // Splash color over image
+                    child: SvgPicture.asset(
+                      "assets/images/IconSearch.svg",
+                      height: 24,
+                      width: 24,
+                    ),
+                  ),
+
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.search_rounded,
+                  //     size: 28,
+                  //     color: ColorUtils.buttonRed,
+                  //   ),
+                  //   onPressed: () {
+                  //     context.push(SearchPage());
+                  //   },
+                  // ),
                   // ),
                   // const Text(
                   //   'Olive Homes',
@@ -101,32 +115,61 @@ class _OliveHomeState extends State<OliveHome> {
                   //     fontSize: 24,
                   //     fontWeight: FontWeight.w700,
                   //   ),
-                  SizedBox(
-                    width: 24,
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.favorite_outline_outlined,
-                      size: 24,
-                      color: ColorUtils.buttonRed,
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 4, 0),
+                    child: SizedBox(
+                      width: 22,
                     ),
-                    onPressed: () {
-                      _onItemTapped(2);
+                  ),
 
-                      // context.push(FavouritePage());
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.menu,
-                      size: 24,
-                      color: ColorUtils.buttonRed,
+                  InkWell(
+                    onTap: () {
+                      _onItemTapped(2);
+                    }, // Image tapped
+                    splashColor: Colors.white10, // Splash color over image
+                    child: SvgPicture.asset(
+                      "assets/images/IconFavorite.svg",
+                      height: 26,
+                      width: 26,
                     ),
-                    onPressed: () {
-                      _onItemTapped(3);
-                      // context.push(MorePage());
-                    },
                   ),
+
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.favorite_outline_outlined,
+                  //     size: 24,
+                  //     color: ColorUtils.buttonRed,
+                  //   ),
+                  //   onPressed: () {
+                  //     _onItemTapped(2);
+
+                  //     // context.push(FavouritePage());
+                  //   },
+                  // ),
+
+                  InkWell(
+                    onTap: () {
+                      _onItemTapped(3);
+                    }, // Image tapped
+                    splashColor: Colors.white10, // Splash color over image
+                    child: SvgPicture.asset(
+                      "assets/images/IconMenu.svg",
+                      height: 28,
+                      width: 28,
+                    ),
+                  ),
+
+                  // IconButton(
+                  //   icon: Icon(
+                  //     Icons.menu,
+                  //     size: 24,
+                  //     color: ColorUtils.buttonRed,
+                  //   ),
+                  //   onPressed: () {
+                  //     _onItemTapped(3);
+                  //     // context.push(MorePage());
+                  //   },
+                  // ),
                 ],
               ),
             ),

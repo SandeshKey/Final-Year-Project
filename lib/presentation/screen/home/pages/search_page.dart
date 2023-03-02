@@ -6,11 +6,11 @@ class SearchPage extends StatelessWidget {
 
   final List<String> dropdownValues = [
     'All Properties',
-    'Value 1',
-    'Value 2',
-    'Value 3',
-    'Value 4',
-    'Value 5'
+    'Rental Rooms',
+    'Apartments',
+    'Flat Spaces',
+    'Farm House',
+    'Mansion'
   ];
 
   @override
@@ -51,8 +51,13 @@ class SearchPage extends StatelessWidget {
               child: TextField(
                 autofocus: true,
                 decoration: InputDecoration(
-                  labelText: 'Search',
-                  border: OutlineInputBorder(),
+                  labelText: 'Search Properties',
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                        color: ColorUtils.buttonRed, width: 0.0),
+                  ),
+                  border: const OutlineInputBorder(),
+                  labelStyle: new TextStyle(color: ColorUtils.themeBlack),
                 ),
                 onSubmitted: (String value) {
                   print(value);
