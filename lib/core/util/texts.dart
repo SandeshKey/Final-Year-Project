@@ -15,9 +15,9 @@ class TextUtils {
   );
 
   static TextStyle titleHead = const TextStyle(
-    fontSize: 22,
     color: ColorUtils.pureWhite,
-    fontWeight: FontWeight.w700,
+    fontSize: 24,
+    fontWeight: FontWeight.w600,
     overflow: TextOverflow.fade,
   );
 }

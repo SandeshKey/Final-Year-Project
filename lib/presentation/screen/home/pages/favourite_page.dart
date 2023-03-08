@@ -47,7 +47,7 @@ class FavouritePage extends StatelessWidget {
                               style: TextStyle(
                                 color: ColorUtils.pureWhite,
                                 fontSize: 24,
-                                fontWeight: FontWeight.w700,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
