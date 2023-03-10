@@ -95,6 +95,133 @@ class ProfilePage extends StatelessWidget {
               ),
             ]),
           ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            child: Divider(
+              color: ColorUtils.grey,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "User's Name Here",
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 67, 68, 73),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        // borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        borderSide: BorderSide(
+                          color: ColorUtils.buttonRed,
+                        ),
+                      ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Icon(
+                          Icons.person_pin,
+                          color: ColorUtils.grey,
+                          size: 22,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "User's Email Here",
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 67, 68, 73),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        // borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        borderSide: BorderSide(
+                          color: ColorUtils.buttonRed,
+                        ),
+                      ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Icon(
+                          Icons.email,
+                          color: ColorUtils.grey,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: TextField(
+                    obscureText: true,
+                    obscuringCharacter: '*',
+                    decoration: InputDecoration(
+                      hintText: "User's Password Here",
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 67, 68, 73),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        // borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        borderSide: BorderSide(
+                          color: ColorUtils.buttonRed,
+                        ),
+                      ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Icon(
+                          Icons.lock_person,
+                          color: ColorUtils.grey,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: "User's Phone Number Here",
+                      filled: true,
+                      fillColor: Color.fromARGB(255, 67, 68, 73),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        // borderSide: BorderSide(color: Colors.grey),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(32),
+                        borderSide: BorderSide(
+                          color: ColorUtils.buttonRed,
+                        ),
+                      ),
+                      prefixIcon: Padding(
+                        padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        child: Icon(
+                          Icons.phone_in_talk,
+                          color: ColorUtils.grey,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ]),
       ),
     );
