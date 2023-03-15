@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dufuna.dufuna">
+    package="com.sandesh.olivehomes">
    <application
-        android:label="dufuna"
+        android:label="Olive Homes"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

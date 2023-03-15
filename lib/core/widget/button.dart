@@ -29,10 +29,10 @@ class Button extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-        style: Theme.of(context)
-            .elevatedButtonTheme
-            .style!
-            .copyWith(backgroundColor: MaterialStateProperty.all(color)),
+        // style: Theme.of(context)
+        //     .elevatedButtonTheme
+        //     .style!
+        //     .copyWith(backgroundColor: MaterialStateProperty.all(color)),
       ),
     );
   }

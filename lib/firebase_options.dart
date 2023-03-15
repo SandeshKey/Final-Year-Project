@@ -63,7 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '248901085459',
     projectId: 'sandesh-final-year',
     storageBucket: 'sandesh-final-year.appspot.com',
-    iosClientId: '248901085459-0kb50je38arl8r4cd3emtj5fbehpa056.apps.googleusercontent.com',
-    iosBundleId: 'com.dufuna.dufuna',
+    iosClientId:
+        '248901085459-0kb50je38arl8r4cd3emtj5fbehpa056.apps.googleusercontent.com',
+    iosBundleId: 'com.sandesh.olivehomes',
   );
 }

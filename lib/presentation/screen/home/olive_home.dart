@@ -1,14 +1,9 @@
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/core/widget/property_box.dart';
-import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/pages/favourite_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/home_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/more_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/search_page.dart';
-import 'package:dufuna/presentation/screen/home/widgets/fake_row_items.dart';
-import 'package:dufuna/presentation/screen/home/widgets/fake_search.dart';
-import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';

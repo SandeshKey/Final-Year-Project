@@ -2,18 +2,21 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dufuna/core/service/db%20_services.dart';
 import 'package:dufuna/core/util/colors.dart';
+import 'package:dufuna/presentation/image_picker_view.dart';
 import 'package:dufuna/presentation/screen/property/widgets/radio_buttons.dart';
 import 'package:dufuna/presentation/screen/property/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:provider/provider.dart';
 // import 'package:form_builder_file_picker/form_builder_file_picker.dart';
 import 'package:toast/toast.dart';
 import '../../../core/model/property_model.dart';
 import 'package:path/path.dart' as paths;
 
 import '../../../data/datas/data.dart';
+import '../../../view_model/image_view_model.dart';
 import 'widgets/drop_down.dart';
 import 'widgets/slider.dart';
 // import 'demo_home.dart';
@@ -305,6 +308,8 @@ class _DetailFormState extends State<DetailForm> {
 
   @override
   Widget build(BuildContext context) {
+    ImageViewModel imageViewModel =
+        Provider.of<ImageViewModel>(context, listen: false);
     ToastContext().init(context);
 
     PropertyModel myproperty1 = PropertyModel();
@@ -637,7 +642,9 @@ class _DetailFormState extends State<DetailForm> {
                   // enabled: true,
                 ),
               ),
-              showAttachments(widget.isfromEdit!)!,
+
+              ImagePickerView(),
+              // showAttachments(widget.isfromEdit!)!,
 
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -677,6 +684,15 @@ class _DetailFormState extends State<DetailForm> {
                     onPressed: () async {
                       print(" THis is printed at very first");
 
+                      if (imageViewModel.images.length != 4) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text("Please select 4 images"),
+                        ));
+                        return;
+                      }
+
+                      imageViewModel.uploadImages(context);
+
                       if (_formkey.currentState!.validate() == true) {
                         _formkey.currentState?.save();
 
@@ -691,11 +707,18 @@ class _DetailFormState extends State<DetailForm> {
                         print("property id is ${json['propertyId']}");
 
                         PropertyModel property = PropertyModel(
+                          propertyType: json['propertyType'],
+                          propertyPurpose: json['propertyPurpose'],
+                          propertyFeature: json['propertyFeature'],
                           address: json['addressLine1'],
+                          city: json['city'],
+                          wardNumber: int.parse(json['wardNumber']),
+                          nearestLandmark: json['nearestLandmark'],
+                          listingType: json['type'],
 
                           propertyId: json['propertyId'],
                           propertyIs: json['propertyIs'],
-                          propertyFor: json['propertyFor'],
+                          propertyFor: json['choice_chip'],
                           propertyArea: json['propertyArea'],
                           areaUnit: json['areaUnit'],
                           type: json['type'],
@@ -707,24 +730,28 @@ class _DetailFormState extends State<DetailForm> {
                           propertyFace: json['propertyFace'],
                           propertyElectricity:
                               json['propertyElectricity'].toString(),
-                          propertyWatersupply:
-                              json['propertyWatersupply'].toString(),
+                          waterSupply: json['propertyWatersupply']!.toString(),
                           ownershipType: json['ownershipType'],
                           ownerOrAgentName: json['ownerOrAgentName'],
-                          agentAddress: json['agentAddress'],
+                          agentAddress: json['ownerOrAgentAddress'],
                           phoneNumber: json['phoneNumber'].toString(),
                           name: json['name'],
                           entryDate: json['submitDate'].toString(),
-                          carParking: json['carParking'],
+                          carParking: json['carParking'].toString(),
                           carCount: int.parse(json['carCount'] == null
                               ? "0"
                               : json['carCount']),
-                          bikeParking: json['bikeParking'],
+                          bikeParking: json['bikeParking'].toString(),
                           bikeCount: int.parse(json['bikeCount'] == null
                               ? "0"
                               : json['bikeCount']),
 
                           propertyTitle: json['propertyFeature'],
+                          livingRoom: json['livingRoom'],
+                          kitchen: json['kitchen'],
+                          bathRoom: json['bathroom'],
+                          commonBedroom: json['commonBedroom'],
+                          attachedBedroom: json['attachedBedroom'],
 
                           // attachments: json['attachments'],
                         );
@@ -988,7 +1015,7 @@ class _DetailFormState extends State<DetailForm> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(140, 16, 140, 16),
-                      child: const Text(
+                      child: imageViewModel.isUploading ==true? CircularProgressIndicator(): Text(
                         "Save",
                         style: TextStyle(
                           fontSize: 18,

@@ -9,7 +9,7 @@ class FakeRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? MediaQuery.of(context).size.height * 0.16,
+      height: height ?? MediaQuery.of(context).size.height * 0.18,
       width: double.maxFinite,
       child: ListView(
         scrollDirection: Axis.horizontal,

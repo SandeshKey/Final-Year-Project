@@ -3,6 +3,7 @@ import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:dufuna/presentation/screen/auth/register_screen.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
+import 'package:dufuna/presentation/screen/home/olive_home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,7 +20,24 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-   TextEditingController emailController = TextEditingController();
+  @override
+  void initState() {
+    Future.delayed(
+        Duration(
+          seconds: 2,
+        ), () {
+     FirebaseAuth.instance.currentUser != null
+        ? Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const OliveHome()))
+        : null;
+    });
+
+    
+    // TODO: implement initState
+    super.initState();
+  }
+
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   String? errorMessage;
@@ -69,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 InputTextField(
-                  controller: emailController,
+                    controller: emailController,
                     onSaved: (hi) {},
                     labelText: "Email",
                     hintText: "Enter your name"),
@@ -79,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
                 InputTextField(
-                  controller: passwordController,
+                    controller: passwordController,
                     onSaved: (hi) {},
                     labelText: "Password",
                     hintText: "Enter your password"),
@@ -107,21 +125,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 WideButton(
                   "Sign In",
-                  onClick: () async{
-                     await login();
-
+                  onClick: () async {
+                    await login();
 
                     if (errorMessage != null) {
                       ScaffoldMessenger.of(context)
                           .showSnackBar(SnackBar(content: Text(errorMessage!)));
                     } else {
-                      
                       ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text("login Successfully")));
-                      context.push(const HomePage());
-
+                      context.push(const OliveHome());
                     }
-                   
                   },
                 ),
 
