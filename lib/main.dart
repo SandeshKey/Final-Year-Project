@@ -7,6 +7,9 @@ import 'package:dufuna/presentation/provider/property_provider.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/olive_home.dart';
+import 'package:dufuna/presentation/screen/home/pages/change_password.dart';
+import 'package:dufuna/presentation/screen/home/pages/contact_us.dart';
+import 'package:dufuna/presentation/screen/home/pages/forget_password.dart';
 import 'package:dufuna/presentation/screen/home/pages/profile_page.dart';
 import 'package:dufuna/presentation/screen/home/payment.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
@@ -48,14 +51,15 @@ class App extends StatelessWidget {
       child: MaterialApp(
         title: AppStrings.kTitle,
         // theme: AppTheme.defaultTheme,
-        // home: OliveHome(),
-        home: ProfilePage(),
+        home: OliveHome(),
+        // home: ContactUS(),
         // home: const SplashScreen(),
         // home: AuthWrapper(),
         // home: PaymentScreen(),
         // home: const PropertyBox(),
         // home: PropertyDetails(),
         // home: PropertyContainer(),
+        // home: HomePage(),
         debugShowCheckedModeBanner: false,
       ),
     );

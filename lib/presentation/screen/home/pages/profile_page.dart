@@ -1,5 +1,6 @@
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/texts.dart';
+import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -110,6 +111,7 @@ class ProfilePage extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "User's Name Here",
+                      hintStyle: TextStyle(color: ColorUtils.pureWhite),
                       filled: true,
                       fillColor: Color.fromARGB(255, 67, 68, 73),
                       enabledBorder: OutlineInputBorder(
@@ -138,6 +140,7 @@ class ProfilePage extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "User's Email Here",
+                      hintStyle: TextStyle(color: ColorUtils.pureWhite),
                       filled: true,
                       fillColor: Color.fromARGB(255, 67, 68, 73),
                       enabledBorder: OutlineInputBorder(
@@ -168,6 +171,7 @@ class ProfilePage extends StatelessWidget {
                     obscuringCharacter: '*',
                     decoration: InputDecoration(
                       hintText: "User's Password Here",
+                      hintStyle: TextStyle(color: ColorUtils.pureWhite),
                       filled: true,
                       fillColor: Color.fromARGB(255, 67, 68, 73),
                       enabledBorder: OutlineInputBorder(
@@ -196,6 +200,7 @@ class ProfilePage extends StatelessWidget {
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: "User's Phone Number Here",
+                      hintStyle: TextStyle(color: ColorUtils.pureWhite),
                       filled: true,
                       fillColor: Color.fromARGB(255, 67, 68, 73),
                       enabledBorder: OutlineInputBorder(
@@ -222,6 +227,7 @@ class ProfilePage extends StatelessWidget {
               ],
             ),
           ),
+          WideButton("Submit Changes"),
         ]),
       ),
     );
