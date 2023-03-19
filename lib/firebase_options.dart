@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBeuEvNKHrMKcLyW3XF65TresLGqiixbqE',
-    appId: '1:248901085459:android:890a163a8eeb1b7d9a12e6',
-    messagingSenderId: '248901085459',
-    projectId: 'sandesh-final-year',
-    storageBucket: 'sandesh-final-year.appspot.com',
+    apiKey: 'AIzaSyCcvtmYUMK2QpTP1mfiwxC5eJe2wzbdZ5E',
+    appId: '1:97916510776:android:e396142a2d4fa9495d3ccd',
+    messagingSenderId: '97916510776',
+    projectId: 'real-state-project-ab3fc',
+    storageBucket: 'real-state-project-ab3fc.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCqpXAFRc1LmYboqrZCXaxqKqc1vYBX8So',
-    appId: '1:248901085459:ios:5cbf807a124e84d59a12e6',
-    messagingSenderId: '248901085459',
-    projectId: 'sandesh-final-year',
-    storageBucket: 'sandesh-final-year.appspot.com',
-    iosClientId:
-        '248901085459-0kb50je38arl8r4cd3emtj5fbehpa056.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDQkqt_PLqIeTQJ41hVPY3x5unXRGeprHk',
+    appId: '1:97916510776:ios:edb13c7e9279a94c5d3ccd',
+    messagingSenderId: '97916510776',
+    projectId: 'real-state-project-ab3fc',
+    storageBucket: 'real-state-project-ab3fc.appspot.com',
+    iosClientId: '97916510776-h7mvuru0vrukcjbj8ocln0c3ecq2v62h.apps.googleusercontent.com',
     iosBundleId: 'com.sandesh.olivehomes',
   );
 }

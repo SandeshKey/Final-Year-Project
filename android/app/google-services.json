@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "248901085459",
-    "project_id": "sandesh-final-year",
-    "storage_bucket": "sandesh-final-year.appspot.com"
+    "project_number": "97916510776",
+    "project_id": "real-state-project-ab3fc",
+    "storage_bucket": "real-state-project-ab3fc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:248901085459:android:890a163a8eeb1b7d9a12e6",
+        "mobilesdk_app_id": "1:97916510776:android:e396142a2d4fa9495d3ccd",
         "android_client_info": {
           "package_name": "com.sandesh.olivehomes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "248901085459-db7kq802s0n4p99ovvm08l6gha2u2d6c.apps.googleusercontent.com",
+          "client_id": "97916510776-5kbnmf2vsunhe08b8pblc3a3qe99f0rl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBeuEvNKHrMKcLyW3XF65TresLGqiixbqE"
+          "current_key": "AIzaSyCcvtmYUMK2QpTP1mfiwxC5eJe2wzbdZ5E"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "248901085459-db7kq802s0n4p99ovvm08l6gha2u2d6c.apps.googleusercontent.com",
+              "client_id": "97916510776-5kbnmf2vsunhe08b8pblc3a3qe99f0rl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
