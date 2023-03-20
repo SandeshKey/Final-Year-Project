@@ -1,4 +1,5 @@
 import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
+import 'package:dufuna/view_model/mini_filter_view_model.dart';
 import 'package:dufuna/view_model/property_view_model.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -47,6 +48,7 @@ class App extends StatelessWidget {
         ), 
 
         ChangeNotifierProvider<PropertyViewModel>(create: (_) => PropertyViewModel()),
+        ChangeNotifierProvider<MiniFilterViewModel>(create: (_)=> MiniFilterViewModel())
       ],
       child: const MaterialApp(
         title: AppStrings.kTitle,

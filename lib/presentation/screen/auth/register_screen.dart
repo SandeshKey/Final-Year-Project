@@ -10,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/service/auth_services.dart';
 import '../../../core/util/colors.dart';
+import '../home/olive_home.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -110,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               return;
 
                             }
-                        context.push(const HomePage());
+                        context.push(const OliveHome());
                       } on FirebaseException catch (e) {
                         print(e);
                       }

@@ -60,6 +60,10 @@ class PropertyModel {
   static const colPriceUnit1 = 'priceUnit1';
   static const colAgentAddress = 'agentAddress';
   static const colStatus = 'status';
+  static const colIsVerfied = 'isVerified';
+  static const colIsPremium = 'isPremium';
+  static const colIsUrgent = 'isUrgent';
+  static const colIsFavourite = "isFavourite";
 
   String? id;
   String? propertyFor;
@@ -70,7 +74,6 @@ class PropertyModel {
   String? propertyTitle; // House for sale
   String? area;
   String? address;
-
   int? wardNumber;
   int? commonBedroom;
   int? attachedBedroom;
@@ -120,9 +123,17 @@ class PropertyModel {
   String? propertyWatersupply;
   String? agentAddress;
   String? status;
+  bool? isPremium;
+  bool? isUrgent;
+  bool? isFavourite;
+  bool? isVerified;
 
   PropertyModel(
-      {this.id,
+      {this.isFavourite,
+      this.isPremium,
+      this.isUrgent,
+      this.isVerified,
+      this.id,
       this.propertyFor,
       this.listingType,
       this.propertyIs,
@@ -176,10 +187,15 @@ class PropertyModel {
       this.imgPath2,
       this.imgPath3,
       this.imgPath4,
-      this.wardNumber, this.status="pending"});
+      this.wardNumber,
+      this.status = "pending"});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
+      colIsFavourite: isFavourite,
+      colIsPremium: isPremium,
+      colIsUrgent: isUrgent,
+      colIsVerfied: isVerified,
       colId: id,
       colPropertyFor: propertyFor,
       colListingType: listingType,
@@ -244,8 +260,13 @@ class PropertyModel {
   }
 
   PropertyModel.fromMap(Map<dynamic, dynamic> map) {
+    isFavourite = map[colIsFavourite];
+    isPremium = map[colIsPremium];
+    isUrgent = map[colIsUrgent];
+    isVerified = map[colIsVerfied];
     id = map[colId];
     agentAddress = map[colAgentAddress];
+
 
     priceUnit1 = map[colPriceUnit1];
     wardNumber = map[colWardNumber];

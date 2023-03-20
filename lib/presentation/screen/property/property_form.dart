@@ -690,8 +690,12 @@ class _DetailFormState extends State<DetailForm> {
                         ));
                         return;
                       }
+                      else{
+                      // imageViewModel.uploadImages(context);
 
-                      imageViewModel.uploadImages(context);
+
+                      }
+
 
                       if (_formkey.currentState!.validate() == true) {
                         _formkey.currentState?.save();
@@ -752,6 +756,14 @@ class _DetailFormState extends State<DetailForm> {
                           bathRoom: json['bathroom'],
                           commonBedroom: json['commonBedroom'],
                           attachedBedroom: json['attachedBedroom'],
+                          imgPath1: "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
+                          imgPath2: "https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg",
+                          imgPath3: "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
+                          imgPath4: "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
+                          isFavourite: false,
+                          isUrgent: false,
+                          isVerified: false,
+                          isPremium: false
 
                           // attachments: json['attachments'],
                         );

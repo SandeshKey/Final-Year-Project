@@ -1,4 +1,5 @@
 import 'package:dufuna/core/util/extension.dart';
+import 'package:dufuna/presentation/screen/home/widgets/text_heading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -67,35 +68,36 @@ class HomePageNew extends StatelessWidget {
               ),
               FakeRow(),
 
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 12, 0, 0),
-                child: Text(
-                  "Find Properties",
-                  style: TextStyle(
-                    color: ColorUtils.pureWhite,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
+              TextHeading(text1: "Urgent", text2: "Properties"),
               FakeRow(
-                height: rh * 0.37,
+                height: rh * 0.40,
+                child: PropertyBox(),
+              ),
+              TextHeading(text1: "Premium", text2: "Properties"),
+
+              FakeRow(
+                height: rh * 0.40,
                 child: PropertyBox(),
               ),
 
-              Padding(
-                padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                child: Text(
-                  "Best in Town",
-                  style: TextStyle(
-                    color: ColorUtils.pureWhite,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
+              TextHeading(text1: "Featured", text2: "Properties"),
+
               FakeRow(
-                height: rh * 0.37,
+                height: rh * 0.40,
+                child: PropertyBox(),
+              ),
+
+              TextHeading(text1: "", text2: "House & Apartments"),
+
+              FakeRow(
+                height: rh * 0.40,
+                child: PropertyBox(),
+              ),
+
+              TextHeading(text1: "", text2: "Lands"),
+
+              FakeRow(
+                height: rh * 0.40,
                 child: PropertyBox(),
               ),
 
@@ -146,7 +148,8 @@ class HomePageNew extends StatelessWidget {
                     }
 
                     return SingleChildScrollView(
-                      child: Column(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
                         children: List.generate(
                           oliveProvider.properties.length,
                           (index) => Padding(
@@ -163,19 +166,8 @@ class HomePageNew extends StatelessWidget {
                   },
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: ElevatedButton(
-                  onPressed: () => context.push(DetailForm()),
-                  child: Text("Add Property"),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: ElevatedButton(
-                  onPressed: () => context.push(DetailForm()),
-                  child: Text("Add Property"),
-                ),
+              const SizedBox(
+                height: 20,
               )
             ],
           ),
