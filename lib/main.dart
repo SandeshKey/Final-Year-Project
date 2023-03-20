@@ -62,7 +62,6 @@ class App extends StatelessWidget {
         // home: const PropertyBox(),
         // home: PropertyDetails(),
         // home: PropertyContainer(),
-
         debugShowCheckedModeBanner: false,
       ),
     );
