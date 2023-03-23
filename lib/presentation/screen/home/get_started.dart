@@ -3,6 +3,7 @@ import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/positioned_bubble.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:dufuna/presentation/screen/auth/register_screen.dart';
+import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -75,7 +76,7 @@ class GetStarted extends StatelessWidget {
                           fontWeight: FontWeight.bold),
                     ),
                     const Text(
-                      "Olive Home",
+                      "Olive Homes",
                       style: TextStyle(
                           color: ColorUtils.pureWhite,
                           fontSize: 30,
@@ -84,7 +85,7 @@ class GetStarted extends StatelessWidget {
                     WideButton(
                       "Get Started",
                       onClick: () {
-                        context.push(const RegisterScreen());
+                        context.push(const LottieLoading());
                       },
                     ),
                     const SizedBox(

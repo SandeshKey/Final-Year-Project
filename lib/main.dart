@@ -1,4 +1,7 @@
 import 'package:dufuna/presentation/provider/favorite_provider.dart';
+import 'package:dufuna/presentation/screen/home/get_started.dart';
+import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
+import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:dufuna/view_model/mini_filter_view_model.dart';
@@ -30,9 +33,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseAppCheck.instance.activate(
-
-  );
+  await FirebaseAppCheck.instance.activate();
 
   runApp(const App());
 }
@@ -43,20 +44,25 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> FavoriteProvider()),
+        ChangeNotifierProvider(create: (context) => FavoriteProvider()),
         ChangeNotifierProvider<PropertyProvider>(create: (_) => getIt()),
         ChangeNotifierProvider<OliveProvider>(create: (_) => OliveProvider()),
         ChangeNotifierProvider<ImageViewModel>(
           create: (_) => ImageViewModel(),
-        ), 
-
-        ChangeNotifierProvider<PropertyViewModel>(create: (_) => PropertyViewModel()),
-        ChangeNotifierProvider<MiniFilterViewModel>(create: (_)=> MiniFilterViewModel())
+        ),
+        ChangeNotifierProvider<PropertyViewModel>(
+            create: (_) => PropertyViewModel()),
+        ChangeNotifierProvider<MiniFilterViewModel>(
+            create: (_) => MiniFilterViewModel())
       ],
       child: MaterialApp(
         title: AppStrings.kTitle,
         // home: HomePageNew()
         // theme: AppTheme.defaultTheme,
+
+        // home: SplashScreen(),
+        // home: LottieLoading(),
+        home: GetStarted(),
 
         // home: AuthWrapper(),
 
@@ -65,7 +71,7 @@ class App extends StatelessWidget {
         // home: AuthWrapper(),
         // home: PaymentScreen(),
         // home: const PropertyBox(),
-        home: PropertyDetails(),
+        // home: PropertyDetails(),
         // home: PropertyContainer(),
         debugShowCheckedModeBanner: false,
       ),
