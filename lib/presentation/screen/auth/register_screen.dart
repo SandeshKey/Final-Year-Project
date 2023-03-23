@@ -46,100 +46,116 @@ class _RegisterScreenState extends State<RegisterScreen> {
       child: Scaffold(
         backgroundColor: ColorUtils.themeBlack,
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              const SizedBox(
-                width: double.maxFinite,
-              ),
-              SvgPicture.asset("assets/images/signup.svg"),
-              Text(
-                "Register",
-                style: TextUtils.boldHeading,
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              InputTextField(
-                controller: fullNameController,
-                  onSaved: (hi) {},
-                  labelText: "Name",
-                  hintText: "Enter your name"),
-              const SizedBox(
-                height: 8,
-              ),
-              InputTextField(
-                controller: emailController,
-                  onSaved: (hi) {},
-                  labelText: "Email",
-                  hintText: "Enter your name"),
-              const SizedBox(
-                height: 8,
-              ),
-              InputTextField(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                const SizedBox(
+                  width: double.maxFinite,
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 24, 0, 16),
+                  child: SvgPicture.asset("assets/images/signup.svg"),
+                ),
+                const SizedBox(
+                  width: double.maxFinite,
+                  height: 20,
+                ),
+                Text(
+                  "Register",
+                  style: TextStyle(
+                    color: ColorUtils.pureWhite,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                const SizedBox(
+                  width: double.maxFinite,
+                  height: 20,
+                ),
+                InputTextField(
+                    controller: fullNameController,
+                    onSaved: (hi) {},
+                    labelText: "Name",
+                    hintText: "Enter your name"),
+                const SizedBox(
+                  height: 12,
+                ),
+                InputTextField(
+                    controller: emailController,
+                    onSaved: (hi) {},
+                    labelText: "Email",
+                    hintText: "Enter your name"),
+                const SizedBox(
+                  height: 12,
+                ),
+                InputTextField(
+                    onSaved: (hi) {},
+                    labelText: "Phone Number",
+                    hintText: "Enter your name"),
+                const SizedBox(
+                  height: 12,
+                ),
+                InputTextField(
+                    controller: passwordController,
+                    onSaved: (hi) {},
+                    labelText: "Password",
+                    hintText: "Enter your password"),
+                const SizedBox(
+                  height: 12,
+                ),
+                InputTextField(
+                    onSaved: (hi) {},
+                    labelText: "Confirm Password",
+                    hintText: "Confirm your password"),
+                const SizedBox(
+                  height: 40,
+                ),
+                WideButton(
+                  "Sign Up",
+                  onClick: () async {
+                    try {
+                      await AuthServices().signUp(emailController.text,
+                          passwordController.text, fullNameController.text);
 
-                  onSaved: (hi) {},
-                  labelText: "Phone Number",
-                  hintText: "Enter your name"),
-              const SizedBox(
-                height: 8,
-              ),
-              InputTextField(
-                controller: passwordController,
-                  onSaved: (hi) {},
-                  labelText: "Password",
-                  hintText: "Enter your password"),
-              const SizedBox(
-                height: 8,
-              ),
-              InputTextField(
-                
-                  onSaved: (hi) {},
-                  labelText: "Confirm Password",
-                  hintText: "Confirm your password"),
-              const SizedBox(
-                height: 40,
-              ),
-               WideButton("Sign Up", onClick: () async{
-
-                  try {
-                        await AuthServices().signUp(emailController.text,
-                            passwordController.text, fullNameController.text);
-
-                            if(!mounted){
-                              return;
-
-                            }
-                        context.push(const OliveHome());
-                      } on FirebaseException catch (e) {
-                        print(e);
+                      if (!mounted) {
+                        return;
                       }
+                      context.push(const OliveHome());
+                    } on FirebaseException catch (e) {
+                      print(e);
+                    }
+                  },
+                ),
 
-              },),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Already have an account?",
-                    style: TextUtils.buttonText,
-                  ),
-                  TextButton(
-                    onPressed: () async {
-
-                      context.push(const LoginScreen());
-                    
-                    },
-                    child: const Text("Login",
-                        style: TextStyle(color: ColorUtils.buttonRed)),
-                  ),
-                ],
-              )
-              // SizedBox(
-              //   height: 260,
-              // )
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Already have an account?",
+                      style: TextUtils.buttonText,
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        context.push(const LoginScreen());
+                      },
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color.fromARGB(255, 247, 73, 76),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+                // SizedBox(
+                //   height: 260,
+                // )
+              ],
+            ),
           ),
         ),
       ),

@@ -19,8 +19,8 @@ class FavouritePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: ColorUtils.buttonRed,
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(8),
-                    bottomRight: Radius.circular(8),
+                    bottomLeft: Radius.circular(4),
+                    bottomRight: Radius.circular(4),
                   ),
                 ),
                 child: Padding(
@@ -37,6 +37,7 @@ class FavouritePage extends StatelessWidget {
                             child: const Icon(
                               Icons.arrow_back_ios,
                               color: ColorUtils.pureWhite,
+                              // color: ColorUtils.buttonRed,
                               size: 24,
                             ),
                           ),
@@ -56,7 +57,7 @@ class FavouritePage extends StatelessWidget {
                       const Icon(
                         Icons.delete_rounded,
                         color: ColorUtils.pureWhite,
-                        size: 30,
+                        size: 24,
                       )
                     ],
                   ),
@@ -95,7 +96,10 @@ class FavouritePage extends StatelessWidget {
                                   children: [
                                     Text(
                                       "Lakecity Apartment",
-                                      style: TextUtils.titleHead,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: ColorUtils.pureWhite,
+                                          fontWeight: FontWeight.bold),
                                       maxLines: 1,
                                       softWrap: false,
                                     ),
@@ -117,7 +121,10 @@ class FavouritePage extends StatelessWidget {
                                       children: [
                                         Text(
                                           "Rs. 1400000",
-                                          style: TextUtils.titleHead,
+                                          style: TextStyle(
+                                              color: ColorUtils.pureWhite,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
                                           maxLines: 1,
                                           softWrap: false,
                                         ),
