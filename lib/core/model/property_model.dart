@@ -64,6 +64,7 @@ class PropertyModel {
   static const colIsPremium = 'isPremium';
   static const colIsUrgent = 'isUrgent';
   static const colIsFavourite = "isFavourite";
+  static const colAddedBy = "addedBy";
 
   String? id;
   String? propertyFor;
@@ -127,6 +128,7 @@ class PropertyModel {
   bool? isUrgent;
   bool? isFavourite;
   bool? isVerified;
+  String? addedBy;
 
   PropertyModel(
       {this.isFavourite,
@@ -188,10 +190,12 @@ class PropertyModel {
       this.imgPath3,
       this.imgPath4,
       this.wardNumber,
+      this.addedBy,
       this.status = "pending"});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
+      colAddedBy: addedBy,
       colIsFavourite: isFavourite,
       colIsPremium: isPremium,
       colIsUrgent: isUrgent,
@@ -260,13 +264,13 @@ class PropertyModel {
   }
 
   PropertyModel.fromMap(Map<dynamic, dynamic> map) {
+    addedBy = map[colAddedBy];
     isFavourite = map[colIsFavourite];
     isPremium = map[colIsPremium];
     isUrgent = map[colIsUrgent];
     isVerified = map[colIsVerfied];
     id = map[colId];
     agentAddress = map[colAgentAddress];
-
 
     priceUnit1 = map[colPriceUnit1];
     wardNumber = map[colWardNumber];
@@ -291,6 +295,7 @@ class PropertyModel {
     propertyPurpose = map[colPropertyPurpose];
     propertyFeature = map[colPropertyFeature];
     nearestLandmark = map[colNearestLandmark];
+    propertyTitle = map[colPropertyTitle];
     areaUnit = map[colAreaUnit];
     propertyArea = map[colPropertyArea];
     type = map[colType];

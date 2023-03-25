@@ -4,7 +4,7 @@ import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/text_input.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:dufuna/presentation/screen/auth/login_screen.dart';
-import 'package:dufuna/presentation/screen/home/home.dart';
+// import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

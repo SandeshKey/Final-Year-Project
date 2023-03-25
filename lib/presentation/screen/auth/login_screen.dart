@@ -2,7 +2,7 @@ import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:dufuna/presentation/screen/auth/register_screen.dart';
-import 'package:dufuna/presentation/screen/home/home.dart';
+// import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/olive_home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,15 +24,14 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     Future.delayed(
         Duration(
-          seconds: 2,
+          milliseconds: 2,
         ), () {
-     FirebaseAuth.instance.currentUser != null
-        ? Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const OliveHome()))
-        : null;
+      FirebaseAuth.instance.currentUser != null
+          ? Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const OliveHome()))
+          : null;
     });
 
-    
     // TODO: implement initState
     super.initState();
   }

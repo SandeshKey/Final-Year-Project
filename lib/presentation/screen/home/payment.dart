@@ -1,5 +1,4 @@
 import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

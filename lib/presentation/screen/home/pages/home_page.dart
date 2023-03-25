@@ -1,5 +1,7 @@
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/presentation/screen/home/widgets/text_heading.dart';
+import 'package:dufuna/presentation/widgets/custom_appbar.dart';
+import 'package:dufuna/presentation/widgets/home_small_box.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,39 +20,7 @@ class HomePageNew extends StatelessWidget {
     double rh = MediaQuery.of(context).size.height;
     return Column(
       children: [
-        Container(
-          decoration: BoxDecoration(
-            color: ColorUtils.buttonRed,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(8),
-              bottomRight: Radius.circular(8),
-            ),
-          ),
-          height: rh * 0.07,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(
-                width: 10,
-              ),
-              CircleAvatar(
-                child: Image.asset(
-                  "assets/images/applogo.png",
-                ),
-              ),
-              Text(
-                "Olive Homes",
-                style: TextStyle(
-                    color: ColorUtils.pureWhite,
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                width: 200,
-              ),
-            ],
-          ),
-        ),
+        CustomAppBar(),
         Expanded(
           child: ListView(
             children: [
@@ -66,7 +36,7 @@ class HomePageNew extends StatelessWidget {
                   ),
                 ),
               ),
-              FakeRow(),
+              HomeSmallRow(),
 
               TextHeading(text1: "Urgent", text2: "Properties"),
               FakeRow(

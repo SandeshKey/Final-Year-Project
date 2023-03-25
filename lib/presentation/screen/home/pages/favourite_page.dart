@@ -1,9 +1,8 @@
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/texts.dart';
-import 'package:dufuna/presentation/screen/home/home.dart';
+// import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class FavouritePage extends StatelessWidget {
   const FavouritePage({super.key});

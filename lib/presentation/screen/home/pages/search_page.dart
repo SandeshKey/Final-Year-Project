@@ -1,5 +1,9 @@
 import 'package:dufuna/core/util/colors.dart';
+import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../widgets/search_result_property.dart';
 
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});
@@ -15,6 +19,7 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OliveProvider _oliveProvider = Provider.of<OliveProvider>(context);
     return SafeArea(
       child: Scaffold(
         // backgroundColor: ColorUtils.themeBlack,
@@ -59,18 +64,21 @@ class SearchPage extends StatelessWidget {
                   border: const OutlineInputBorder(),
                   labelStyle: new TextStyle(color: ColorUtils.themeBlack),
                 ),
-                onSubmitted: (String value) {
-                  print(value);
+                onChanged: (String text) {
+                  if (text == '' || text == null) {
+                    _oliveProvider.refreshProperties();
+                  } else
+                    _oliveProvider.searchProperties(text);
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: DropdownButtonFormField<String>(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Filter By',
                   border: OutlineInputBorder(),
                 ),
@@ -86,19 +94,27 @@ class SearchPage extends StatelessWidget {
                 value: dropdownValues[0],
               ),
             ),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text('Property $index'),
-                    subtitle: Text('Property $index'),
-                    trailing: Icon(Icons.arrow_forward_ios),
-                    onTap: () {},
-                  );
-                },
-              ),
-            )
+
+            Consumer<OliveProvider>(builder: (_, value, __) {
+              return Expanded(
+                child: ListView.builder(
+                  itemCount: value.properties.length,
+                  itemBuilder: (context, index) {
+                    return SearchResultProperty(
+                      myProperty: value.properties[index],
+                    );
+                  },
+                ),
+              );
+            }),
+            // Expanded(
+            //   child: ListView.builder(
+            //     itemCount: 10,
+            //     itemBuilder: (context, index) {
+            //       return SearchResultProperty();
+            //     },
+            //   ),
+            // )
           ],
         ),
       ),

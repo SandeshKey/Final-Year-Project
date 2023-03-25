@@ -3,7 +3,7 @@ import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../core/util/texts.dart';
+import '../../../core/util/texts.dart';
 
 class ChangePassword extends StatelessWidget {
   const ChangePassword({super.key});

@@ -1,5 +1,11 @@
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/presentation/screen/admin/admin_home.dart';
+import 'package:dufuna/presentation/screen/home/pages/contact_us.dart';
+import 'package:dufuna/presentation/screen/auth/forget_password.dart';
+import 'package:dufuna/presentation/screen/home/pages/my_properties_screen.dart';
+import 'package:dufuna/presentation/screen/home/pages/profile_page.dart';
+import 'package:dufuna/presentation/screen/home/pages/search_page.dart';
+import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -64,20 +70,63 @@ class MorePage extends StatelessWidget {
               context.push(AdminHome());
             },
           ),
-          Expanded(
-              child: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) => Column(
-              children: [
-                ListTile(
-                  leading: Icon(Icons.home),
-                  title: Text('Service $index'),
-                  trailing: Icon(Icons.arrow_forward_ios),
-                ),
-                Divider(),
-              ],
-            ),
-          ))
+          Divider(),
+          ListTile(
+            leading: Icon(PhosphorIcons.userLight),
+            title: Text('My Properties'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              context.push(MyProperties());
+            },
+          ),
+          ListTile(
+            leading: Icon(PhosphorIcons.userLight),
+            title: Text('Profile Page'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              context.push(ProfilePage());
+            },
+          ),
+          ListTile(
+            leading: Icon(PhosphorIcons.userLight),
+            title: Text('Forget Password'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              context.push(ForgetPassword());
+            },
+          ),
+
+          ListTile(
+            leading: Icon(PhosphorIcons.userLight),
+            title: Text('Property View'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              context.push(PropertyDetails());
+            },
+          ),
+
+          ListTile(
+            leading: Icon(PhosphorIcons.userLight),
+            title: Text('Contact Us'),
+            trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              context.push(ContactUS());
+            },
+          ),
+          // Expanded(
+          //     child: ListView.builder(
+          //   itemCount: 10,
+          //   itemBuilder: (context, index) => Column(
+          //     children: [
+          //       ListTile(
+          //         leading: Icon(Icons.home),
+          //         title: Text('Service $index'),
+          //         trailing: Icon(Icons.arrow_forward_ios),
+          //       ),
+          //       Divider(),
+          //     ],
+          //   ),
+          // ))
         ],
       )),
     );

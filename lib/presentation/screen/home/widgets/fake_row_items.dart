@@ -1,6 +1,8 @@
 import 'package:dufuna/core/util/colors.dart';
 import 'package:flutter/material.dart';
 
+
+
 class FakeRow extends StatelessWidget {
   final double? height;
   final Widget? child;
@@ -33,7 +35,7 @@ class FakeRow extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.zero,
                             bottomRight: Radius.zero,
                             topLeft: Radius.circular(8),
