@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dufuna/core/util/colors.dart';
+import 'package:dufuna/presentation/provider/favorite_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class PropertyDetails extends StatefulWidget {
   PropertyDetails({Key? key}) : super(key: key);
@@ -24,6 +26,8 @@ class _PropertyDetailsState extends State<PropertyDetails> {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<FavoriteProvider>(context);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorUtils.themeBlack,
@@ -98,6 +102,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                         height: 36,
                         width: 36,
                         child: const Icon(
+                          
                           Icons.favorite,
                           color: ColorUtils.pureWhite,
                           size: 24,
@@ -284,44 +289,53 @@ class _PropertyDetailsState extends State<PropertyDetails> {
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(12, 0, 0, 8),
-              child: Column(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  Column(
                     children: [
                       Row(
                         children: [
-                          const CircleAvatar(
-                            radius: 24,
-                            backgroundImage:
-                                AssetImage("assets/images/villa_details2.png"),
+                          Row(
+                            children: [
+                              const CircleAvatar(
+                                radius: 24,
+                                backgroundImage: AssetImage(
+                                    "assets/images/villa_details2.png"),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 4),
+                                  child: Text(
+                                    "Shyam Bahadur Thapa",
+                                    style: TextStyle(
+                                        color: ColorUtils.pureWhite,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w800),
+                                  ),
+                                ),
+                                Text(
+                                  "Owner",
+                                  style: TextStyle(
+                                      color: ColorUtils.pureWhite,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 0, 4),
-                              child: Text(
-                                "Shyam Bahadur Thapa",
-                                style: TextStyle(
-                                    color: ColorUtils.pureWhite,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w800),
-                              ),
-                            ),
-                            Text(
-                              "Owner",
-                              style: TextStyle(
-                                  color: ColorUtils.pureWhite,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ],
-                        ),
-                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
                       Container(
                         decoration: BoxDecoration(
                           color: ColorUtils.buttonRed,
@@ -335,17 +349,20 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                           size: 24,
                         ),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: ColorUtils.buttonRed,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 36,
-                        width: 36,
-                        child: const Icon(
-                          Icons.phone,
-                          color: ColorUtils.pureWhite,
-                          size: 24,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: ColorUtils.buttonRed,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          height: 36,
+                          width: 36,
+                          child: const Icon(
+                            Icons.phone,
+                            color: ColorUtils.pureWhite,
+                            size: 24,
+                          ),
                         ),
                       ),
                     ],
