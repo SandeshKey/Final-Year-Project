@@ -1,3 +1,5 @@
+import 'package:dufuna/core/model/property.dart';
+import 'package:dufuna/core/model/property_model.dart';
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/presentation/forms/contact_form.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class PropertyBox extends StatefulWidget {
-  const PropertyBox({Key? key}) : super(key: key);
+  final PropertyModel? property;
+  const PropertyBox({Key? key, this.property}) : super(key: key);
 
   @override
   State<PropertyBox> createState() => _PropertyBoxState();
@@ -47,12 +50,19 @@ class _PropertyBoxState extends State<PropertyBox> {
                         topLeft: Radius.circular(8),
                         topRight: Radius.circular(8),
                       ),
-                      child: Image.asset(
-                        "./assets/images/housetry.png",
-                        height: 180,
-                        width: MediaQuery.of(context).size.width,
-                        fit: BoxFit.fill,
-                      ),
+                      child: widget.property?.imgPath1 == null
+                          ? Image.asset(
+                              "./assets/images/housetry.png",
+                              height: 180,
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.fill,
+                            )
+                          : Image.network(
+                              widget.property!.imgPath1!,
+                              height: 180,
+                              width: MediaQuery.of(context).size.width,
+                              fit: BoxFit.fill,
+                            ),
                     ),
                   ),
                   Padding(
@@ -174,9 +184,7 @@ class _PropertyBoxState extends State<PropertyBox> {
                                           // width: 300,
                                           color: Colors.indigo,
                                           child: Column(
-                                            children: [
-                                              
-                                            ],
+                                            children: [],
                                           ),
                                         ),
                                         // child: Column(

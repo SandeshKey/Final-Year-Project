@@ -40,12 +40,14 @@ class HomePageNew extends StatelessWidget {
 
               TextHeading(text1: "Urgent", text2: "Properties"),
               FakeRow(
+                type: "urgent",
                 height: rh * 0.40,
                 child: PropertyBox(),
               ),
               TextHeading(text1: "Premium", text2: "Properties"),
 
               FakeRow(
+                type: "premium",
                 height: rh * 0.40,
                 child: PropertyBox(),
               ),
@@ -53,6 +55,7 @@ class HomePageNew extends StatelessWidget {
               TextHeading(text1: "Featured", text2: "Properties"),
 
               FakeRow(
+                type: "featured",
                 height: rh * 0.40,
                 child: PropertyBox(),
               ),
@@ -60,6 +63,7 @@ class HomePageNew extends StatelessWidget {
               TextHeading(text1: "", text2: "House & Apartments"),
 
               FakeRow(
+                type: "house",
                 height: rh * 0.40,
                 child: PropertyBox(),
               ),
@@ -67,6 +71,7 @@ class HomePageNew extends StatelessWidget {
               TextHeading(text1: "", text2: "Lands"),
 
               FakeRow(
+                type: "land",
                 height: rh * 0.40,
                 child: PropertyBox(),
               ),
