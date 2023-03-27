@@ -1,9 +1,9 @@
-import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/presentation/screen/home/widgets/text_heading.dart';
 import 'package:dufuna/presentation/widgets/custom_appbar.dart';
 import 'package:dufuna/presentation/widgets/home_small_box.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/util/colors.dart';
+import '../view_all_screen.dart';
 import '../widgets/fake_row_items.dart';
 import '../widgets/fake_search.dart';
 
@@ -19,8 +19,8 @@ class HomePageNew extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-             const FakeSearchBox(),
-            const  Padding(
+              const FakeSearchBox(),
+              const Padding(
                 padding: const EdgeInsets.fromLTRB(12, 8, 0, 8),
                 child: Text(
                   "Explore Olive Homes",
@@ -31,35 +31,70 @@ class HomePageNew extends StatelessWidget {
                   ),
                 ),
               ),
-            const  HomeSmallRow(),
+              const HomeSmallRow(),
 
-              const TextHeading(text1: "Urgent", text2: "Properties"),
+              TextHeading(
+                text1: "Urgent",
+                text2: "Properties",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                },
+              ),
               FakeRow(
                 type: "urgent",
                 height: rh * 0.40,
               ),
-              TextHeading(text1: "Premium", text2: "Properties"),
+              TextHeading(
+                text1: "Premium",
+                text2: "Properties",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                },
+              ),
 
               FakeRow(
                 type: "premium",
                 height: rh * 0.40,
               ),
 
-              TextHeading(text1: "Featured", text2: "Properties"),
+              TextHeading(
+                text1: "Featured",
+                text2: "Properties",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                },
+              ),
 
               FakeRow(
                 type: "featured",
                 height: rh * 0.40,
               ),
 
-              TextHeading(text1: "House &", text2: "Apartments"),
+              TextHeading(
+                text1: "House &",
+                text2: "Apartments",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                },
+              ),
 
               FakeRow(
                 type: "house",
                 height: rh * 0.40,
               ),
 
-              TextHeading(text1: "Lands", text2: ""),
+              TextHeading(
+                text1: "Lands",
+                text2: "",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                },
+              ),
 
               FakeRow(
                 type: "land",

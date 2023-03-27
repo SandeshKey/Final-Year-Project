@@ -1,5 +1,6 @@
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/widget/property_box.dart';
+import 'package:dufuna/presentation/screen/home/widgets/search_result_property.dart';
 import 'package:dufuna/view_model/mini_filter_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -7,7 +8,13 @@ import 'package:provider/provider.dart';
 class ViewAllPage extends StatelessWidget {
   ViewAllPage({super.key});
 
-  final List<String> dropdownValues = ["Premium", "Urgent", "Featured"];
+  final List<String> dropdownValues = [
+    "Premium",
+    "Urgent",
+    "Featured",
+    "House & Apartments",
+    "Land",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +93,9 @@ class ViewAllPage extends StatelessWidget {
                     return miniFilterViewModel.mfProperties.length == 0
                         ? Center(
                             child: Text("No Properties with current Filter"))
-                        : PropertyBox();
+                        : SearchResultProperty(
+                            myProperty:
+                                miniFilterViewModel.mfProperties[index]);
                   },
                 ),
               )

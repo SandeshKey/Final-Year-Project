@@ -16,7 +16,9 @@ class SearchResultProperty extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          context.push(PropertyDetails());
+          context.push(PropertyDetails(
+           propertyModel: myProperty,
+          ));
         },
         child: Container(
           height: MediaQuery.of(context).size.height * 0.18,

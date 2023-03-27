@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dufuna/core/model/user.dart';
+import 'package:flutter/foundation.dart';
 
 import '../model/property_model.dart';
 
@@ -15,7 +16,9 @@ class DatabaseServices {
   Future<void> addProperty(PropertyModel property) async {
     print("Attermpting to add property");
     await properties.doc().set(property.toMap());
-    print(" Added property");
+    if (kDebugMode) {
+      print(" Added property");
+    }
   }
 
   Future<void> updateProperty(

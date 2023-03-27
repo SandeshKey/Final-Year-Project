@@ -1,8 +1,13 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dufuna/core/model/property_model.dart';
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/texts.dart';
+import 'package:dufuna/presentation/screen/home/widgets/favourite_item.dart';
+import 'package:dufuna/view_model/fav_property_view_model.dart';
 // import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class FavouritePage extends StatelessWidget {
   const FavouritePage({super.key});
@@ -15,7 +20,7 @@ class FavouritePage extends StatelessWidget {
           body: Column(
             children: [
               Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: ColorUtils.buttonRed,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(4),
@@ -62,86 +67,42 @@ class FavouritePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Expanded(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: ColorUtils.themeBlack,
-                          // border:
-                          //     Border.all(color: ColorUtils.buttonRed, width: 1),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        height: 150,
-                        child: Row(
-                          children: [
-                            Image(
-                              height: double.maxFinite,
-                              fit: BoxFit.cover,
-                              image: AssetImage(
-                                "assets/images/villa_details3.png",
-                              ),
-                              width: 160,
-                            ),
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      "Lakecity Apartment",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color: ColorUtils.pureWhite,
-                                          fontWeight: FontWeight.bold),
-                                      maxLines: 1,
-                                      softWrap: false,
-                                    ),
-                                    Text(
-                                      "Pokhara Lakeside",
-                                      style: TextStyle(
-                                          color: ColorUtils.pureWhite,
-                                          fontSize: 16),
-                                    ),
-                                    Text(
-                                      "+977 9827100678",
-                                      style: TextStyle(
-                                          color: ColorUtils.pureWhite,
-                                          fontSize: 16),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          "Rs. 1400000",
-                                          style: TextStyle(
-                                              color: ColorUtils.pureWhite,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                          maxLines: 1,
-                                          softWrap: false,
-                                        ),
-                                        SvgPicture.asset(
-                                            "assets/images/Favorited Icon.svg"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+
+              Expanded(child: Consumer<FavoritePropertiesViewModel>(
+                builder: (context, value, child) {
+                  return FutureBuilder(
+                      future: value.getFavoriteProperties(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          List<PropertyModel> data = snapshot.data!;
+                          print(data);
+                          return ListView.builder(
+                            itemCount: data.length,
+                            itemBuilder: (context, index) {
+                              return FavouriteItem(
+                                property: data[index] as PropertyModel,
+                              );
+                            },
+                          );
+                        } else {
+                          return const Center(
+                            child: Text(
+                              'No favourite Properties! Please add some',
+                              style: TextStyle(
+                                color: ColorUtils.pureWhite,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                          );
+                        }
+                      });
+                },
+              )),
+              // const FavouriteItem(),
+              // const FavouriteItem(),
+              // const FavouriteItem(),
+              // const Expanded(child: FavouriteItem()),
 
               // Container(
               //   height: MediaQuery.of(context).size.height * 0.08,
@@ -157,11 +118,11 @@ class FavouritePage extends StatelessWidget {
               //     ],
               //   ),
               // ),
-              Expanded(
-                child: Center(
-                  child: Text('No favourite Properties! Please add some'),
-                ),
-              ),
+              // const Expanded(
+              //   child: Center(
+              //     child: Text('No favourite Properties! Please add some'),
+              //   ),
+              // ),
             ],
           )),
     );

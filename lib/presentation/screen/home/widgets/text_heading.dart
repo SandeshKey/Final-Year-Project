@@ -6,8 +6,9 @@ import '../view_all_screen.dart';
 class TextHeading extends StatelessWidget {
   final String text1;
   final String text2;
+  final VoidCallback onTap;
 
-  const TextHeading({super.key, required this.text1, required this.text2});
+  const TextHeading({super.key, required this.text1, required this.text2, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +41,7 @@ class TextHeading extends StatelessWidget {
               ],
             ),
             InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ViewAllPage()));
-              },
+              onTap: onTap,
               child: Text(
                 "View All",
                 style: TextStyle(

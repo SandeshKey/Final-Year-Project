@@ -1,12 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dufuna/core/model/property_model.dart';
 import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/presentation/provider/favorite_provider.dart';
+import 'package:dufuna/view_model/fav_property_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class PropertyDetails extends StatefulWidget {
-  PropertyDetails({Key? key}) : super(key: key);
+  final PropertyModel? propertyModel;
+  PropertyDetails({Key? key, this.propertyModel}) : super(key: key);
 
   @override
   State<PropertyDetails> createState() => _PropertyDetailsState();
@@ -23,10 +24,12 @@ class _PropertyDetailsState extends State<PropertyDetails> {
   final CarouselController carouselController = CarouselController();
 
   int currentIndex = 0;
+  bool added = false;
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<FavoriteProvider>(context);
+    FavoritePropertiesViewModel favoritePropertiesViewModel =
+        Provider.of<FavoritePropertiesViewModel>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -101,11 +104,44 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                         ),
                         height: 36,
                         width: 36,
-                        child: const Icon(
-                          
-                          Icons.favorite,
-                          color: ColorUtils.pureWhite,
-                          size: 24,
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.favorite,
+                            color: ColorUtils.pureWhite,
+                            size: 24,
+                          ),
+                          onPressed: () {
+
+                            if(!added){
+                              favoritePropertiesViewModel
+                                .addFavoriteProperty(widget.propertyModel!);
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("Added to favorites"),
+                              ),
+                            );
+                            
+                            setState(() {
+
+                              added = true;
+                            });
+
+                            }
+
+                            else{
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Already added to favorites"),
+                                ),
+                              );
+                            }
+
+                            
+
+
+                            
+                          },
                         ),
                       ),
                       Padding(

@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dufuna/presentation/provider/favorite_provider.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
+import 'package:dufuna/view_model/fav_property_view_model.dart';
 import 'package:dufuna/view_model/mini_filter_view_model.dart';
 import 'package:dufuna/view_model/property_view_model.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
@@ -53,7 +55,9 @@ class App extends StatelessWidget {
         ChangeNotifierProvider<PropertyViewModel>(
             create: (_) => PropertyViewModel()),
         ChangeNotifierProvider<MiniFilterViewModel>(
-            create: (_) => MiniFilterViewModel())
+            create: (_) => MiniFilterViewModel()),
+
+        ChangeNotifierProvider<FavoritePropertiesViewModel>(create: (context) => FavoritePropertiesViewModel()),
       ],
       child: MaterialApp(
         title: AppStrings.kTitle,
