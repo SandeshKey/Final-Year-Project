@@ -43,15 +43,40 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                     print(currentIndex);
                   },
                   child: CarouselSlider(
-                    items: imageList
-                        .map(
-                          (item) => Image.asset(
-                            item['image_path'],
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                          ),
-                        )
-                        .toList(),
+                    items: [
+
+                      Image.network(
+                        widget.propertyModel!.imgPath1!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      
+                      ), Image.network(
+                        widget.propertyModel!.imgPath2!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      
+                      ), Image.network(
+                        widget.propertyModel!.imgPath3!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      
+                      ), Image.network(
+                        widget.propertyModel!.imgPath4!,
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      
+                      ),
+
+                    ],
+                    // items: imageList
+                    //     .map(
+                    //       (item) => Image.asset(
+                    //         item['image_path'],
+                    //         fit: BoxFit.cover,
+                    //         width: double.infinity,
+                    //       ),
+                    //     )
+                    //     .toList(),
                     carouselController: carouselController,
                     options: CarouselOptions(
                       scrollPhysics: const BouncingScrollPhysics(),

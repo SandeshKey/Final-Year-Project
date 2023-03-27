@@ -1,11 +1,14 @@
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/presentation/screen/admin/admin_home.dart';
+import 'package:dufuna/presentation/screen/auth/login_screen.dart';
 import 'package:dufuna/presentation/screen/home/pages/contact_us.dart';
 import 'package:dufuna/presentation/screen/auth/forget_password.dart';
 import 'package:dufuna/presentation/screen/home/pages/my_properties_screen.dart';
 import 'package:dufuna/presentation/screen/home/pages/profile_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/search_page.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
@@ -40,9 +43,12 @@ class MorePage extends StatelessWidget {
               child: Row(
                 children: [
                   CircleAvatar(
-                    child: Text("MR"),
-                    radius: 30,
+                    child: Image.network(FirebaseAuth
+                            .instance.currentUser!.photoURL ??
+                        "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"),
                   ),
+                  // child: FirebaseAuth.instance.currentUser.photoURL==??("MR"),
+
                   SizedBox(
                     width: 20,
                   ),
@@ -51,13 +57,41 @@ class MorePage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Moses Rusell",
+                        FirebaseAuth.instance.currentUser!.displayName ??
+                            "Moses Rusell",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),
                       ),
-                      Text("moses.r@gmail.com")
+                      Text(FirebaseAuth.instance.currentUser!.email ??
+                          "moses.r@gmail.com")
                     ],
-                  )
+                  ),
+
+                  // Logout Button
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        height: 40,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            FirebaseAuth.instance
+                                .signOut()
+                                .then((value) => context.push(LoginScreen()));
+                          },
+                          child: Text(
+                            "Logout",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),

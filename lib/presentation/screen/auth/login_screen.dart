@@ -219,16 +219,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       SizedBox(
                         width: 30,
                       ),
-                      Container(
-                        height: hh * 0.05,
-                        width: ww * 0.15,
-                        decoration: const BoxDecoration(
-                            // color: ColorUtils.pureWhite,
-                            // borderRadius: BorderRadius.circular(10),
-                            ),
-                        child: SvgPicture.asset(
-                          "assets/images/gmail.svg",
-                          height: 20,
+                      InkWell(
+                        onTap: () async {
+                          await AuthServices().logininwithgoogle();
+                          context.push(const OliveHome());
+                        },
+                        child: Container(
+                          height: hh * 0.05,
+                          width: ww * 0.15,
+                          decoration: const BoxDecoration(
+                              // color: ColorUtils.pureWhite,
+                              // borderRadius: BorderRadius.circular(10),
+                              ),
+                          child: SvgPicture.asset(
+                            "assets/images/gmail.svg",
+                            height: 20,
+                          ),
                         ),
                       ),
                       Container(
