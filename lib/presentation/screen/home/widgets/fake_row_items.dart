@@ -14,33 +14,34 @@ class FakeRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<PropertyViewModel>(builder: (_, value, __) {
-
       List<PropertyModel> _properties = [];
 
-      switch(type){
+      switch (type) {
         case "urgent":
           value.getUrgentProperties();
           _properties = value.urgentProperties;
-          
+
           break;
         case "premium":
           value.getPremiumProperties();
           _properties = value.premiumProperties;
           break;
-        // case "featured":
-        //   value.getFeaturedProperties();
-        //   break;
-        // case "house":
-        //   value.getHouseProperties();
-        //   break;
-        // case "apartment":
-        //   value.getApartmentProperties();
-        //   break;
-        // default:
-        //   value.getUrgentProperties();
-
+        case "featured":
+          value.getFeatured();
+          _properties = value.featuredProperties;
+          break;
+        case "house":
+          value.getHouses();
+          _properties = value.houses;
+          break;
+        case "land":
+          value.getLands();
+          _properties = value.lands;
+          break;
+        default:
+          value.getUrgentProperties();
       }
-      
+
       if (_properties.isEmpty) {
         return const Center(child: CircularProgressIndicator());
       }
@@ -53,47 +54,47 @@ class FakeRow extends StatelessWidget {
             _properties.length,
             (index) => Padding(
               padding: const EdgeInsets.fromLTRB(12, 0, 0, 12),
-              child: child==null ? PropertyBox(
-                property: _properties[index],
-              
-              ):
-                  Container(
-                    decoration: BoxDecoration(
-                      color: ColorUtils.pureWhite,
-                      border: Border.all(
-                        width: .5,
-                        color: ColorUtils.buttonRed,
+              child: child == null
+                  ? PropertyBox(
+                      property: _properties[index],
+                    )
+                  : Container(
+                      decoration: BoxDecoration(
+                        color: ColorUtils.pureWhite,
+                        border: Border.all(
+                          width: .5,
+                          color: ColorUtils.buttonRed,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      borderRadius: BorderRadius.circular(12),
+                      // height: 150,
+                      width: 150,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.zero,
+                                bottomRight: Radius.zero,
+                                topLeft: Radius.circular(8),
+                                topRight: Radius.circular(8),
+                              ),
+                              child: Image.asset(
+                                "assets/images/villa_detail4.png",
+                              ),
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: Text(
+                                "Find Home",
+                                style: TextStyle(
+                                    color: ColorUtils.themeBlack,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ]),
                     ),
-                    // height: 150,
-                    width: 150,
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.zero,
-                              bottomRight: Radius.zero,
-                              topLeft: Radius.circular(8),
-                              topRight: Radius.circular(8),
-                            ),
-                            child: Image.asset(
-                              "assets/images/villa_detail4.png",
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              "Find Home",
-                              style: TextStyle(
-                                  color: ColorUtils.themeBlack,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                        ]),
-                  ),
             ),
           ),
         ),

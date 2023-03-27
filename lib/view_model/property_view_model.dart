@@ -27,6 +27,57 @@ class PropertyViewModel extends ChangeNotifier {
   List<PropertyModel> get urgentProperties => _urgentProperties;
   List<PropertyModel> _premiumProperties = [];
   List<PropertyModel> get premiumProperties => _premiumProperties;
+  List<PropertyModel> _featuredProperties = [];
+  List<PropertyModel> get featuredProperties => _featuredProperties;
+
+  List<PropertyModel> _houses = [];
+  List<PropertyModel> get houses => _houses;
+
+  List<PropertyModel> _lands = [];
+  List<PropertyModel> get lands => _lands;
+
+
+  getFeatured()async{
+      
+      _featuredProperties = await _firestore
+          .collection('properties')
+          .where('isFavourite', isEqualTo: true)
+          .get()
+          .then((value) =>
+              value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
+  
+      notifyListeners();
+  
+  }
+
+ getLands()async{
+
+    _lands = await _firestore
+        .collection('properties')
+        .where('propertyType', isEqualTo: "Land")
+        .get()
+        .then((value) =>
+            value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
+
+    // print(object)
+
+    notifyListeners();
+
+  }
+
+  getHouses()async{
+
+    _houses = await _firestore
+        .collection('properties')
+        .where('propertyType', isNotEqualTo: "Land")
+        .get()
+        .then((value) =>
+            value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
+
+    notifyListeners();
+
+  }
+
 
   Future<List<PropertyModel>> getUnverifiedProperties() async {
     return await _firestore
@@ -70,24 +121,10 @@ class PropertyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<PropertyModel>> getHouses() async {
-    return await _firestore
-        .collection('properties')
-        .where('type', isEqualTo: "house")
-        .get()
-        .then((value) =>
-            value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
-  }
+ 
 
   // get lands
-  Future<List<PropertyModel>> getLands() async {
-    return await _firestore
-        .collection('properties')
-        .where('type', isEqualTo: "land")
-        .get()
-        .then((value) =>
-            value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
-  }
+
 
   // Get all properties from Firebase Firestore
   Future<void> getAllProperties() async {

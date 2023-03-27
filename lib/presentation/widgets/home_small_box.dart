@@ -24,8 +24,6 @@ class HomeSmallRow extends StatelessWidget {
             onTap: () {},
             title: "Find Lands",
           ),
-          HomeSmallBox(onTap: () {}),
-          HomeSmallBox(onTap: () {}),
         ],
       ),
     );

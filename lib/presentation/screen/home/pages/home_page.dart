@@ -3,12 +3,7 @@ import 'package:dufuna/presentation/screen/home/widgets/text_heading.dart';
 import 'package:dufuna/presentation/widgets/custom_appbar.dart';
 import 'package:dufuna/presentation/widgets/home_small_box.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../../core/util/colors.dart';
-import '../../../../core/widget/property_box.dart';
-import '../../provider/olive_provider.dart';
-import '../../property/property_form.dart';
 import '../widgets/fake_row_items.dart';
 import '../widgets/fake_search.dart';
 
@@ -24,8 +19,8 @@ class HomePageNew extends StatelessWidget {
         Expanded(
           child: ListView(
             children: [
-              FakeSearchBox(),
-              Padding(
+             const FakeSearchBox(),
+            const  Padding(
                 padding: const EdgeInsets.fromLTRB(12, 8, 0, 8),
                 child: Text(
                   "Explore Olive Homes",
@@ -36,20 +31,18 @@ class HomePageNew extends StatelessWidget {
                   ),
                 ),
               ),
-              HomeSmallRow(),
+            const  HomeSmallRow(),
 
-              TextHeading(text1: "Urgent", text2: "Properties"),
+              const TextHeading(text1: "Urgent", text2: "Properties"),
               FakeRow(
                 type: "urgent",
                 height: rh * 0.40,
-                child: PropertyBox(),
               ),
               TextHeading(text1: "Premium", text2: "Properties"),
 
               FakeRow(
                 type: "premium",
                 height: rh * 0.40,
-                child: PropertyBox(),
               ),
 
               TextHeading(text1: "Featured", text2: "Properties"),
@@ -57,23 +50,20 @@ class HomePageNew extends StatelessWidget {
               FakeRow(
                 type: "featured",
                 height: rh * 0.40,
-                child: PropertyBox(),
               ),
 
-              TextHeading(text1: "", text2: "House & Apartments"),
+              TextHeading(text1: "House &", text2: "Apartments"),
 
               FakeRow(
                 type: "house",
                 height: rh * 0.40,
-                child: PropertyBox(),
               ),
 
-              TextHeading(text1: "", text2: "Lands"),
+              TextHeading(text1: "Lands", text2: ""),
 
               FakeRow(
                 type: "land",
                 height: rh * 0.40,
-                child: PropertyBox(),
               ),
 
               //     child: ListView(
@@ -100,47 +90,47 @@ class HomePageNew extends StatelessWidget {
                   thickness: .5,
                 ),
               ),
-              const Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 8, 0, 4),
-                  child: Text(
-                    "Premium Properties",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: ColorUtils.pureWhite,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 20,
-                child: Consumer<OliveProvider>(
-                  builder: (context, oliveProvider, child) {
-                    if (oliveProvider.properties.length == 0) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
+              // const Expanded(
+              //   child: Padding(
+              //     padding: const EdgeInsets.fromLTRB(0, 8, 0, 4),
+              //     child: Text(
+              //       "Premium Properties",
+              //       textAlign: TextAlign.center,
+              //       style: TextStyle(
+              //         color: ColorUtils.pureWhite,
+              //         fontSize: 24,
+              //         fontWeight: FontWeight.w600,
+              //       ),
+              //     ),
+              //   ),
+              // ),
+              // Expanded(
+              //   flex: 20,
+              //   child: Consumer<OliveProvider>(
+              //     builder: (context, oliveProvider, child) {
+              //       if (oliveProvider.properties.length == 0) {
+              //         return const Center(child: CircularProgressIndicator());
+              //       }
 
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: List.generate(
-                          oliveProvider.properties.length,
-                          (index) => Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                            child: Container(
-                              height: 325,
-                              // width: MediaQuery.of(context).size.width,
-                              child: PropertyBox(),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
+              //       return SingleChildScrollView(
+              //         scrollDirection: Axis.horizontal,
+              //         child: Row(
+              //           children: List.generate(
+              //             oliveProvider.properties.length,
+              //             (index) => Padding(
+              //               padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              //               child: Container(
+              //                 height: 325,
+              //                 // width: MediaQuery.of(context).size.width,
+              //                 child: PropertyBox(),
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
               const SizedBox(
                 height: 20,
               )
