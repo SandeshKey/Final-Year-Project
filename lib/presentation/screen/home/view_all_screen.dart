@@ -1,13 +1,21 @@
+import 'package:dufuna/core/model/property_model.dart';
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/widget/property_box.dart';
 import 'package:dufuna/presentation/screen/home/widgets/search_result_property.dart';
 import 'package:dufuna/view_model/mini_filter_view_model.dart';
+import 'package:dufuna/view_model/property_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ViewAllPage extends StatelessWidget {
-  ViewAllPage({super.key});
+class ViewAllPage extends StatefulWidget {
+  final String? currentType;
+  ViewAllPage({super.key, this.currentType});
 
+  @override
+  State<ViewAllPage> createState() => _ViewAllPageState();
+}
+
+class _ViewAllPageState extends State<ViewAllPage> {
   final List<String> dropdownValues = [
     "Premium",
     "Urgent",
@@ -21,8 +29,10 @@ class ViewAllPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
           // backgroundColor: ColorUtils.themeBlack,
-          body: Consumer<MiniFilterViewModel>(
-        builder: (context, miniFilterViewModel, child) {
+          body: Consumer<PropertyViewModel>(
+        builder: (context, propertyViewModel, child) {
+          List<PropertyModel> myproperties = [];
+
           return Column(
             children: [
               Container(
@@ -39,7 +49,7 @@ class ViewAllPage extends StatelessWidget {
                           },
                           icon: Icon(Icons.arrow_back),
                         ),
-                        Text('${miniFilterViewModel.currentFilter} Properties'),
+                        Text('${widget.currentType} Properties'),
                       ],
                     ),
                     IconButton(
@@ -68,34 +78,42 @@ class ViewAllPage extends StatelessWidget {
                           ))
                       .toList(),
                   onChanged: (String? value) {
-                    miniFilterViewModel.setCurrentFilter(value!);
                     switch (value) {
                       case "Premium":
-                        miniFilterViewModel.setPremiumMfProperties();
+                        setState(() {
+                        myproperties = propertyViewModel.premiumProperties;
+
+                          
+                        });
+                        print(myproperties);
+                        
+
                         break;
                       case "Urgent":
-                        miniFilterViewModel.setUrgentMfProperties();
+                      setState(() {
+                        myproperties = propertyViewModel.urgentProperties;
+
+                        
+                      });
                         break;
                       case "Featured":
-                        miniFilterViewModel.setFeaturedMfProperties();
+                        myproperties = propertyViewModel.featuredProperties;
                         break;
                     }
 
                     // Handle dropdown selection here
                   },
-                  value: dropdownValues[0],
+                  value: widget.currentType ?? dropdownValues[0],
                 ),
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: miniFilterViewModel.mfProperties.length,
+                  itemCount: myproperties.length,
                   itemBuilder: (context, index) {
-                    return miniFilterViewModel.mfProperties.length == 0
+                    return myproperties.length == 0
                         ? Center(
                             child: Text("No Properties with current Filter"))
-                        : SearchResultProperty(
-                            myProperty:
-                                miniFilterViewModel.mfProperties[index]);
+                        : SearchResultProperty(myProperty: myproperties[index]);
                   },
                 ),
               )

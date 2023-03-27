@@ -38,7 +38,9 @@ class HomePageNew extends StatelessWidget {
                 text2: "Properties",
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                      MaterialPageRoute(builder: (context) => ViewAllPage(
+                        currentType: "Urgent",
+                      )));
                 },
               ),
               FakeRow(
@@ -50,7 +52,10 @@ class HomePageNew extends StatelessWidget {
                 text2: "Properties",
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                      MaterialPageRoute(builder: (context) => ViewAllPage(
+                        currentType: "Premium",
+                    
+                      )));
                 },
               ),
 
@@ -64,7 +69,9 @@ class HomePageNew extends StatelessWidget {
                 text2: "Properties",
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                      MaterialPageRoute(builder: (context) => ViewAllPage(
+                        currentType: "Featured",
+                      )));
                 },
               ),
 
@@ -78,7 +85,9 @@ class HomePageNew extends StatelessWidget {
                 text2: "Apartments",
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                      MaterialPageRoute(builder: (context) => ViewAllPage(
+                        currentType: "House & Apartments",
+                      )));
                 },
               ),
 
@@ -92,7 +101,9 @@ class HomePageNew extends StatelessWidget {
                 text2: "",
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage()));
+                      MaterialPageRoute(builder: (context) => ViewAllPage(
+                        currentType: "Land",
+                      )));
                 },
               ),
 
