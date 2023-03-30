@@ -18,7 +18,6 @@ import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'injector.dart';
 import 'presentation/provider/property_provider.dart';
 import 'presentation/screen/auth/login_screen.dart';
 import 'presentation/screen/home/olive_home.dart';
@@ -31,7 +30,6 @@ void main() async {
     statusBarBrightness: Brightness.light, // Set status bar brightness
   ));
   WidgetsFlutterBinding.ensureInitialized();
-  await initApp();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -47,7 +45,7 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => FavoriteProvider()),
-        ChangeNotifierProvider<PropertyProvider>(create: (_) => getIt()),
+      
         ChangeNotifierProvider<OliveProvider>(create: (_) => OliveProvider()),
         ChangeNotifierProvider<ImageViewModel>(
           create: (_) => ImageViewModel(),

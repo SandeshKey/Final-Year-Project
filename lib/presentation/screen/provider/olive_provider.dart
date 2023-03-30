@@ -1,15 +1,35 @@
 import 'package:dufuna/core/service/db%20_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/model/property_model.dart';
 
 class OliveProvider extends ChangeNotifier {
+  DatabaseServices _databaseServices = DatabaseServices();
   OliveProvider() {
     refreshProperties();
   }
   List<PropertyModel> _properties = [];
 
   List<PropertyModel> get properties => _properties;
+  List<PropertyModel> _myProperties = [];
+
+  List<PropertyModel> get myProperties => _myProperties;
+
+  void deleteProperty(PropertyModel property) async {
+    await _properties.remove(property);
+    await _databaseServices.deleteProperty(property.id!);
+    refreshProperties();
+    notifyListeners();
+  }
+
+  void getMyProperties() async {
+    _myProperties = await _properties
+        .where((element) =>
+            element.addedBy == FirebaseAuth.instance.currentUser!.uid)
+        .toList();
+    notifyListeners();
+  }
 
   void getProperties() async {
     _properties = await DatabaseServices().getProperties();

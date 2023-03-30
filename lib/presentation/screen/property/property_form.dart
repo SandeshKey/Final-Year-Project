@@ -1,16 +1,15 @@
-import 'dart:convert';
 import 'dart:io';
 import 'package:dufuna/core/service/db%20_services.dart';
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/presentation/image_picker_view.dart';
 import 'package:dufuna/presentation/screen/property/widgets/radio_buttons.dart';
 import 'package:dufuna/presentation/screen/property/widgets/text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
-// import 'package:form_builder_file_picker/form_builder_file_picker.dart';
 import 'package:toast/toast.dart';
 import '../../../core/model/property_model.dart';
 import 'package:path/path.dart' as paths;
@@ -689,13 +688,9 @@ class _DetailFormState extends State<DetailForm> {
                           content: Text("Please select 4 images"),
                         ));
                         return;
+                      } else {
+                        // imageViewModel.uploadImages(context);
                       }
-                      else{
-                      // imageViewModel.uploadImages(context);
-
-
-                      }
-
 
                       if (_formkey.currentState!.validate() == true) {
                         _formkey.currentState?.save();
@@ -756,14 +751,19 @@ class _DetailFormState extends State<DetailForm> {
                           bathRoom: json['bathroom'],
                           commonBedroom: json['commonBedroom'],
                           attachedBedroom: json['attachedBedroom'],
-                          imgPath1: "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
-                          imgPath2: "https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg",
-                          imgPath3: "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
-                          imgPath4: "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
+                          imgPath1:
+                              "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
+                          imgPath2:
+                              "https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg",
+                          imgPath3:
+                              "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
+                          imgPath4:
+                              "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
                           isFavourite: false,
                           isUrgent: false,
                           isVerified: false,
-                          isPremium: false
+                          isPremium: false,
+                          addedBy: FirebaseAuth.instance.currentUser!.uid,
 
                           // attachments: json['attachments'],
                         );
@@ -771,122 +771,6 @@ class _DetailFormState extends State<DetailForm> {
                         print("property id is ${property.propertyId}");
 
                         DatabaseServices().addProperty(property);
-
-                        // _property.propertyIs = json['propertyIs'];
-                        // _property.propertyFor = json['choice_chip'];
-
-                        // if (_property.propertyFor == "Rent" &&
-                        //     _property.propertyIs == "Land") {
-                        //   _property.propertyId = "SRL${json['propertyId']}";
-                        // } else if (_property.propertyFor == "Sale" &&
-                        //     _property.propertyIs == "Land") {
-                        //   _property.propertyId = "SSL${json['propertyId']}";
-                        // } else if (_property.propertyFor == "Rent" &&
-                        //     _property.propertyIs == "House & others") {
-                        //   _property.propertyId = "SRH${json['propertyId']}";
-                        // } else if (_property.propertyFor == "Sale" &&
-                        //     _property.propertyIs == "House & others") {
-                        //   _property.propertyId = "SSH${json['propertyId']}";
-                        // } else if (_property.propertyFor == "Exchange" &&
-                        //     _property.propertyIs == "House & others") {
-                        //   _property.propertyId = "SEH${json['propertyId']}";
-                        // } else if (_property.propertyFor == "Exchange" &&
-                        //     _property.propertyIs == "Land") {
-                        //   _property.propertyId = "SEL${json['propertyId']}";
-                        // } else {
-                        //   _property.propertyId = "SE${json['propertyId']}";
-                        // }
-
-                        // _property.ownershipType = json['ownershipType'];
-                        // _property.ownerOrAgentName = json['ownerOrAgentName'];
-                        // _property.agentAddress = json['ownerOrAgentAddress'];
-                        // _property.propertyElectricity =
-                        //     json['propertyElectricity'].toString();
-                        // _property.propertyWatersupply =
-                        //     json['propertyWatersupply'].toString();
-                        // _property.propertyType = json['propertyType'];
-                        // _property.propertyArea = json['propertyArea'].toString();
-                        // _property.nearestLandmark = json['nearestLandmark'];
-                        // _property.propertyPurpose = json['propertyPurpose'];
-                        // _property.priceUnit1 = json['priceUnit'];
-                        // _property.areaUnit = json['areaUnit'];
-                        // _property.propertyFace = json['propertyFace'];
-                        // _property.roadType = json['roadType'];
-                        // _property.roadSize = json['slider'];
-                        // _property.price = int.parse(json['price']);
-                        // _property.wardNumber = int.parse(json['wardNumber']);
-                        // _property.priceUnit = json['perUnit'];
-                        // _property.storey = json['Storey'];
-                        // _property.bikeParking = json['bikeParking'].toString();
-                        // _property.carParking = json['carParking'].toString();
-                        // _property.furnished = json['furnished'].toString();
-                        // _property.wifi = json['wifi'].toString();
-                        // _property.ownerName = json['ownerName'];
-                        // _property.phoneNumber = json['phoneNumber'];
-                        // _property.name = json['name'];
-                        // _property.entryDate = json['submitDate'].toString();
-                        // _property.buildDate = json['buildYear'].toString();
-                        // _property.carCount = int.parse(
-                        //     json['carCount'] == null ? "0" : json['carCount']);
-                        // _property.bikeCount = int.parse(
-                        //     json['bikeCount'] == null ? "0" : json['bikeCount']);
-                        // _property.attachedBedroom = int.parse(
-                        //     json['attachedBedroom'] == null
-                        //         ? "0"
-                        //         : json['attachedBedroom']);
-                        // _property.commonBedroom = int.parse(
-                        //     json['commonBedroom'] == null
-                        //         ? "0"
-                        //         : json['commonBedroom']);
-                        // _property.bedRoom = int.parse(
-                        //     json['bedroom'] == null ? "0" : json['bedroom']);
-                        // _property.bathRoom = int.parse(
-                        //     json['bathroom'] == null ? "0" : json['bathroom']);
-                        // _property.attachedBathroom = int.parse(
-                        //     json['attachedBathroom'] == null
-                        //         ? "0"
-                        //         : json['attachedBathroom']);
-                        // _property.livingRoom = int.parse(
-                        //     json['livingRoom'] == null ? "0" : json['bathroom']);
-                        // _property.kitchen = int.parse(
-                        //     json['kitchen'] == null ? "0" : json['kitchen']);
-
-                        // _property.propertyFeature = json['propertyFeature'];
-                        // _property.addressLine1 = json['addressLine1'];
-                        // _property.addressLine2 = json['addressLine2'];
-
-                        // _property.city = json['city'];
-                        // _property.type = json['type'];
-                        // _property.landDetail = json['landDetail'];
-
-                        // _property.imgPath1 = json['images'] == null
-                        //     ? null
-                        //     : await tempToFileConverter("${json['images'][0].path}")
-                        //         .then((value) => value
-                        //             .replaceAll('File:', '')
-                        //             .replaceAll("'", '')
-                        //             .replaceAll(' ', ''));
-                        // _property.imgPath2 = json['images'] == null
-                        //     ? null
-                        //     : await tempToFileConverter("${json['images'][1].path}")
-                        //         .then((value) => value
-                        //             .replaceAll('File:', '')
-                        //             .replaceAll("'", '')
-                        //             .replaceAll(' ', ''));
-                        // _property.imgPath3 = json['images'] == null
-                        //     ? null
-                        //     : await tempToFileConverter("${json['images'][2].path}")
-                        //         .then((value) => value
-                        //             .replaceAll('File:', '')
-                        //             .replaceAll("'", '')
-                        //             .replaceAll(' ', ''));
-                        // _property.imgPath4 = json['images'] == null
-                        //     ? null
-                        //     : await tempToFileConverter("${json['images'][3].path}")
-                        //         .then((value) => value
-                        //             .replaceAll('File:', '')
-                        //             .replaceAll("'", '')
-                        //             .replaceAll(' ', ''));
 
                         if (widget.myproperty?.id! == null) {
                           // await _dbHelpers.insertProperty(_property);
@@ -1027,14 +911,16 @@ class _DetailFormState extends State<DetailForm> {
                     },
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(140, 16, 140, 16),
-                      child: imageViewModel.isUploading ==true? CircularProgressIndicator(): Text(
-                        "Save",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: ColorUtils.pureWhite,
-                        ),
-                      ),
+                      child: imageViewModel.isUploading == true
+                          ? CircularProgressIndicator()
+                          : Text(
+                              "Save",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: ColorUtils.pureWhite,
+                              ),
+                            ),
                     )),
               ),
             ],

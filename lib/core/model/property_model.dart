@@ -65,6 +65,7 @@ class PropertyModel {
   static const colIsUrgent = 'isUrgent';
   static const colIsFavourite = "isFavourite";
   static const colAddedBy = "addedBy";
+ 
 
   String? id;
   String? propertyFor;

@@ -13,6 +13,8 @@ class DatabaseServices {
   CollectionReference properties =
       FirebaseFirestore.instance.collection('properties');
 
+  
+
   Future<void> addProperty(PropertyModel property) async {
     print("Attermpting to add property");
     await properties.doc().set(property.toMap());
