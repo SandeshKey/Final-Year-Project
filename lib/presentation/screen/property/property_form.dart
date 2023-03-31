@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:dufuna/core/service/db%20_services.dart';
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/presentation/image_picker_view.dart';
-import 'package:dufuna/presentation/screen/property/widgets/radio_buttons.dart';
-import 'package:dufuna/presentation/screen/property/widgets/text_field.dart';
+import 'package:dufuna/presentation/screen/home/form_widgets/radio_buttons.dart';
+import 'package:dufuna/presentation/screen/home/form_widgets/text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -16,8 +16,8 @@ import 'package:path/path.dart' as paths;
 
 import '../../../data/datas/data.dart';
 import '../../../view_model/image_view_model.dart';
-import 'widgets/drop_down.dart';
-import 'widgets/slider.dart';
+import '../home/form_widgets/drop_down.dart';
+import '../home/form_widgets/slider.dart';
 // import 'demo_home.dart';
 
 class DetailForm extends StatefulWidget {
@@ -46,7 +46,7 @@ class _DetailFormState extends State<DetailForm> {
   }
 
   showLand(bool? isLand) {
-    if (isLand != true) {
+    if (!isLand!) {
       return Column(
         children: [
           _header("Room Layout"),
@@ -87,13 +87,13 @@ class _DetailFormState extends State<DetailForm> {
                     keyboardType: TextInputType.number,
                   )),
               SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.50,
-                  child: FormTextField(
-                    initialValue:
-                        widget.myproperty?.attachedBathroom.toString(),
-                    label: "Attached Bedroom",
-                    keyboardType: TextInputType.number,
-                  )),
+                width: MediaQuery.of(context).size.width * 0.50,
+                child: FormTextField(
+                  initialValue: widget.myproperty?.attachedBathroom.toString(),
+                  label: "Attached Bedroom",
+                  keyboardType: TextInputType.number,
+                ),
+              ),
             ],
           ),
           Row(
@@ -513,6 +513,7 @@ class _DetailFormState extends State<DetailForm> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.50,
                     child: FormDropDown(
+                      
                       initialValue: widget.myproperty?.type,
                       dropdownItems: type,
                       label: "Type",
@@ -539,14 +540,14 @@ class _DetailFormState extends State<DetailForm> {
                       label: "Price Unit",
                     ),
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.50,
-                    child: FormDropDown(
-                      initialValue: widget.myproperty?.priceUnit,
-                      dropdownItems: priceUnit,
-                      label: "Per Unit",
-                    ),
-                  ),
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width * 0.50,
+                  //   child: FormDropDown(
+                  //     initialValue: widget.myproperty?.priceUnit,
+                  //     dropdownItems: priceUnit,
+                  //     label: "Per Unit",
+                  //   ),
+                  // ),
                 ],
               ),
               FormDropDown(
@@ -768,7 +769,7 @@ class _DetailFormState extends State<DetailForm> {
                           // attachments: json['attachments'],
                         );
 
-                        print("property id is ${property.propertyId}");
+                        // print("property id is ${property.propertyId}");
 
                         DatabaseServices().addProperty(property);
 

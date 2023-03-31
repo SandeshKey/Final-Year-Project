@@ -6,7 +6,8 @@ import 'package:provider/provider.dart';
 import '../view_model/image_view_model.dart';
 
 class ImagePickerView extends StatelessWidget {
-  const ImagePickerView({Key? key}) : super(key: key);
+  const ImagePickerView({Key? key, this.isEdit}) : super(key: key);
+  final bool? isEdit;
 
   @override
   Widget build(BuildContext context) {

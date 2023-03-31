@@ -112,6 +112,8 @@ class MyPropertyBox extends StatelessWidget {
                                   context.push(DetailForm(
                                     myproperty: myProperty,
                                     isfromEdit: true,
+                                    isLand: true,
+                                    
                                   ));
                                 },
                                 icon: Icon(

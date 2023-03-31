@@ -39,7 +39,7 @@ class FormDropDown extends StatelessWidget {
           validator: FormBuilderValidators.required(
             errorText: "Please select a value",
           ),
-          initialValue: initialValue ?? null,
+          initialValue: initialValue??dropdownItems![0],
           name: label!.capitalize().replaceAll(' ', ''),
           items: List.generate(
               dropdownItems!.length,
