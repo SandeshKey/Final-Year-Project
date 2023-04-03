@@ -14,6 +14,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/service/auth_services.dart';
 import '../../../core/util/colors.dart';
 import '../../../core/widget/text_input.dart';
+import 'forget_password.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -123,28 +124,46 @@ class _LoginScreenState extends State<LoginScreen> {
                       labelText: "Password",
                       hintText: "Enter your password"),
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
-                        child: Checkbox(
-                            value: true,
-                            onChanged: (value) {
-                              value == true ? false : true;
-                            }),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
-                        child: const Text(
-                          "Remember Me",
+                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: InkWell(
+                        onTap: () {
+                          context.push(const ForgetPassword());
+                        },
+                        child: Text(
+                          "Forgot Password?  ",
+                          textAlign: TextAlign.left,
                           style: TextStyle(
-                            color: Colors.white,
+                            color: ColorUtils.pureWhite,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ]),
+
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.end,
+                  //   children: [
+                  //     Padding(
+                  //       padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                  //       child: Checkbox(
+                  //           value: true,
+                  //           onChanged: (value) {
+                  //             value == true ? false : true;
+                  //           }),
+                  //     ),
+                  //     Padding(
+                  //       padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
+                  //       child: const Text(
+                  //         "Remember Me",
+                  //         style: TextStyle(
+                  //           color: Colors.white,
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   const SizedBox(
                     width: double.maxFinite,
                     height: 20,

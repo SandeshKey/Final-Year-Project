@@ -5,7 +5,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../model/user.dart';
 import 'db _services.dart';
 
-
 class AuthServices {
   final FirebaseAuth _firebaseAuth =
       FirebaseAuth.instance; // details about login or sign in
@@ -54,6 +53,12 @@ class AuthServices {
     ));
 
     debugPrint(user.user?.displayName);
+  }
+
+  // forgot password
+
+  Future<void> forgotPassword(String email) async {
+    await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
   // database services
