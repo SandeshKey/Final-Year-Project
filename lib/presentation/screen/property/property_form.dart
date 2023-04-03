@@ -513,7 +513,6 @@ class _DetailFormState extends State<DetailForm> {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.50,
                     child: FormDropDown(
-                      
                       initialValue: widget.myproperty?.type,
                       dropdownItems: type,
                       label: "Type",
@@ -643,7 +642,7 @@ class _DetailFormState extends State<DetailForm> {
                 ),
               ),
 
-              ImagePickerView(),
+              ImagePickerView(isEdit: widget.isfromEdit),
               // showAttachments(widget.isfromEdit!)!,
 
               Padding(
@@ -682,15 +681,15 @@ class _DetailFormState extends State<DetailForm> {
                       ),
                     ),
                     onPressed: () async {
-                      print(" THis is printed at very first");
-
-                      if (imageViewModel.images.length != 4) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Please select 4 images"),
-                        ));
-                        return;
-                      } else {
-                        // imageViewModel.uploadImages(context);
+                      if (widget.isfromEdit == false) {
+                        if (imageViewModel.images.length != 4) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text("Please select 4 images"),
+                          ));
+                          return;
+                        } else {
+                          // imageViewModel.uploadImages(context);
+                        }
                       }
 
                       if (_formkey.currentState!.validate() == true) {
@@ -715,6 +714,7 @@ class _DetailFormState extends State<DetailForm> {
                           wardNumber: int.parse(json['wardNumber']),
                           nearestLandmark: json['nearestLandmark'],
                           listingType: json['type'],
+                          landDetail: json['landDetail'],
 
                           propertyId: json['propertyId'],
                           propertyIs: json['propertyIs'],
@@ -730,7 +730,8 @@ class _DetailFormState extends State<DetailForm> {
                           propertyFace: json['propertyFace'],
                           propertyElectricity:
                               json['propertyElectricity'].toString(),
-                          waterSupply: json['propertyWatersupply']!.toString(),
+                          waterSupply:
+                              json['propertyWaterSupply'] ?? true.toString(),
                           ownershipType: json['ownershipType'],
                           ownerOrAgentName: json['ownerOrAgentName'],
                           agentAddress: json['ownerOrAgentAddress'],
@@ -738,13 +739,9 @@ class _DetailFormState extends State<DetailForm> {
                           name: json['name'],
                           entryDate: json['submitDate'].toString(),
                           carParking: json['carParking'].toString(),
-                          carCount: int.parse(json['carCount'] == null
-                              ? "0"
-                              : json['carCount']),
+                          carCount: int.parse(json['carCount'] ?? "0"),
                           bikeParking: json['bikeParking'].toString(),
-                          bikeCount: int.parse(json['bikeCount'] == null
-                              ? "0"
-                              : json['bikeCount']),
+                          bikeCount: int.parse(json['bikeCount'] ?? "0"),
 
                           propertyTitle: json['propertyFeature'],
                           livingRoom: json['livingRoom'],
@@ -769,11 +766,14 @@ class _DetailFormState extends State<DetailForm> {
                           // attachments: json['attachments'],
                         );
 
-                        // print("property id is ${property.propertyId}");
+                        // p
 
                         DatabaseServices().addProperty(property);
 
+                        print(widget.myproperty?.id);
+
                         if (widget.myproperty?.id! == null) {
+                          print('id is not null');
                           // await _dbHelpers.insertProperty(_property);
                           print(" Property added");
                         } else {
@@ -821,42 +821,26 @@ class _DetailFormState extends State<DetailForm> {
                                 json['submitDate'].toString();
                             myproperty1.buildDate =
                                 json['buildYear'].toString();
-                            myproperty1.carCount = int.parse(
-                                json['carCount'] == null
-                                    ? "0"
-                                    : json['carCount']);
-                            myproperty1.bikeCount = int.parse(
-                                json['bikeCount'] == null
-                                    ? "0"
-                                    : json['bikeCount']);
-                            myproperty1.attachedBedroom = int.parse(
-                                json['attachedBedroom'] == null
-                                    ? "0"
-                                    : json['attachedBedroom']);
-                            myproperty1.commonBedroom = int.parse(
-                                json['commonBedroom'] == null
-                                    ? "0"
-                                    : json['commonBedroom']);
-                            myproperty1.bedRoom = int.parse(
-                                json['bedroom'] == null
-                                    ? "0"
-                                    : json['bedroom']);
-                            myproperty1.bathRoom = int.parse(
-                                json['bathroom'] == null
-                                    ? "0"
-                                    : json['bathroom']);
-                            myproperty1.attachedBathroom = int.parse(
-                                json['attachedBathroom'] == null
-                                    ? "0"
-                                    : json['attachedBathroom']);
+                            myproperty1.carCount =
+                                int.parse(json['carCount'] ?? "0");
+                            myproperty1.bikeCount =
+                                int.parse(json['bikeCount'] ?? "0");
+                            myproperty1.attachedBedroom =
+                                int.parse(json['attachedBedroom'] ?? "0");
+                            myproperty1.commonBedroom =
+                                int.parse(json['commonBedroom'] ?? "0");
+                            myproperty1.bedRoom =
+                                int.parse(json['bedroom'] ?? "0");
+                            myproperty1.bathRoom =
+                                int.parse(json['bathroom'] ?? "0");
+                            myproperty1.attachedBathroom =
+                                int.parse(json['attachedBathroom'] ?? "0");
                             myproperty1.livingRoom = int.parse(
                                 json['livingRoom'] == null
                                     ? "0"
                                     : json['bathroom']);
-                            myproperty1.kitchen = int.parse(
-                                json['kitchen'] == null
-                                    ? "0"
-                                    : json['kitchen']);
+                            myproperty1.kitchen =
+                                int.parse(json['kitchen'] ?? "0");
 
                             myproperty1.propertyFeature =
                                 json['propertyFeature'];
@@ -876,12 +860,9 @@ class _DetailFormState extends State<DetailForm> {
                             myproperty1.type = json['type'];
                             myproperty1.landDetail = json['landDetail'];
                           });
-                          print(" updatesd iamge 1 is ${myproperty1.imgPath1}");
-                          print(" updatesd iamge 2 is ${myproperty1.imgPath2}");
-                          print(" updatesd iamge 3 is ${myproperty1.imgPath3}");
-                          print(" updatesd iamge 4 is ${myproperty1.imgPath4}");
 
                           // await _dbHelpers.updateProperty(myproperty1);
+                          await DatabaseServices().updateProperty(myproperty1);
 
                           print("Property Updated");
                           // print(_property.propertyId);

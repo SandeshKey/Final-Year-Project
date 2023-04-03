@@ -31,7 +31,31 @@ class _ViewAllPageState extends State<ViewAllPage> {
           // backgroundColor: ColorUtils.themeBlack,
           body: Consumer<PropertyViewModel>(
         builder: (context, propertyViewModel, child) {
-          List<PropertyModel> myproperties = [];
+          List<PropertyModel> myproperties = propertyViewModel.urgentProperties;
+
+          switch (widget.currentType) {
+            case "Premium":
+              myproperties = propertyViewModel.premiumProperties;
+
+              print(myproperties);
+
+              break;
+            case "Urgent":
+              myproperties = propertyViewModel.urgentProperties;
+
+              break;
+            case "Featured":
+              myproperties = propertyViewModel.featuredProperties;
+              break;
+
+            case "House & Apartments":
+              myproperties = propertyViewModel.houses;
+              break;
+
+            case "Land":
+              myproperties = propertyViewModel.lands;
+              break;
+          }
 
           return Column(
             children: [
@@ -64,48 +88,43 @@ class _ViewAllPageState extends State<ViewAllPage> {
               SizedBox(
                 height: 10,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: DropdownButtonFormField<String>(
-                  decoration: InputDecoration(
-                    labelText: 'Filter By',
-                    border: OutlineInputBorder(),
-                  ),
-                  items: dropdownValues
-                      .map((value) => DropdownMenuItem(
-                            value: value,
-                            child: Text(value),
-                          ))
-                      .toList(),
-                  onChanged: (String? value) {
-                    switch (value) {
-                      case "Premium":
-                        setState(() {
-                        myproperties = propertyViewModel.premiumProperties;
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: DropdownButtonFormField<String>(
+              //     decoration: InputDecoration(
+              //       labelText: 'Filter By',
+              //       border: OutlineInputBorder(),
+              //     ),
+              //     items: dropdownValues
+              //         .map((value) => DropdownMenuItem(
+              //               value: value,
+              //               child: Text(value),
+              //             ))
+              //         .toList(),
+              //     onChanged: (String? value) {
+              //       switch (value) {
+              //         case "Premium":
+              //           setState(() {
+              //             myproperties = propertyViewModel.premiumProperties;
+              //           });
+              //           print(myproperties);
 
-                          
-                        });
-                        print(myproperties);
-                        
+              //           break;
+              //         case "Urgent":
+              //           setState(() {
+              //             myproperties = propertyViewModel.urgentProperties;
+              //           });
+              //           break;
+              //         case "Featured":
+              //           myproperties = propertyViewModel.featuredProperties;
+              //           break;
+              //       }
 
-                        break;
-                      case "Urgent":
-                      setState(() {
-                        myproperties = propertyViewModel.urgentProperties;
-
-                        
-                      });
-                        break;
-                      case "Featured":
-                        myproperties = propertyViewModel.featuredProperties;
-                        break;
-                    }
-
-                    // Handle dropdown selection here
-                  },
-                  value: widget.currentType ?? dropdownValues[0],
-                ),
-              ),
+              //       // Handle dropdown selection here
+              //     },
+              //     value: widget.currentType ?? dropdownValues[0],
+              //   ),
+              // ),
               Expanded(
                 child: ListView.builder(
                   itemCount: myproperties.length,

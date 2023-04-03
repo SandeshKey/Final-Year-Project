@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppStrings {
-  static const kTitle = 'Dufuna';
+  static const kTitle = 'Olive Homes';
 }
 
 class AppColors {

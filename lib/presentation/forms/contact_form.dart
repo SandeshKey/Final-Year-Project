@@ -10,13 +10,13 @@ class ContactForm extends StatefulWidget {
 }
 
 class _ContactFormState extends State<ContactForm> {
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _fullNameController = TextEditingController();
-  TextEditingController _phoneController = TextEditingController();
-  TextEditingController _messageController = TextEditingController();
-
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
+@override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.8,
       width: MediaQuery.of(context).size.width * 0.7,
       child: Column(
@@ -26,12 +26,12 @@ class _ContactFormState extends State<ContactForm> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(" Contact Seller"),
+                const Text(" Contact Seller"),
                 IconButton(
                     onPressed: () {
                       context.pop();
                     },
-                    icon: Icon(PhosphorIcons.x))
+                    icon: const Icon(PhosphorIcons.x))
               ],
             ),
           ),
@@ -40,15 +40,16 @@ class _ContactFormState extends State<ContactForm> {
               CircleAvatar(
                 radius: 30,
                 backgroundColor: Colors.grey[300],
-                child: Icon(Icons.person_2_outlined),
+                child: const Icon(Icons.person_2_outlined),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
+                // ignore: prefer_const_literals_to_create_immutables
                 children: [
-                  Text("Seller Name"),
-                  Text("selleremail@gmail.com"),
-                  Text("9812345678")
+                  const Text("Seller Name"),
+                  const Text("selleremail@gmail.com"),
+                  const Text("9812345678")
                 ],
               ),
               Container(
@@ -61,28 +62,28 @@ class _ContactFormState extends State<ContactForm> {
                         onPressed: () {
                           context.pop();
                         },
-                        icon: Icon(PhosphorIcons.phone)),
-                    Text("Contact")
+                        icon: const Icon(PhosphorIcons.phone)),
+                    const Text("Contact")
                   ],
                 ),
               ),
               TextField(
                 controller: _emailController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
                 ),
               ),
               TextField(
                 controller: _fullNameController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Full Name',
                   border: OutlineInputBorder(),
                 ),
               ),
               TextField(
                 controller: _phoneController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Phone',
                   border: OutlineInputBorder(),
                 ),
@@ -90,7 +91,7 @@ class _ContactFormState extends State<ContactForm> {
               TextField(
                 maxLines: 3,
                 controller: _messageController,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Message',
                   border: OutlineInputBorder(),
                 ),
@@ -102,7 +103,7 @@ class _ContactFormState extends State<ContactForm> {
                   print(_phoneController.text);
                   print(_messageController.text);
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           )

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dufuna/presentation/provider/favorite_provider.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
+import 'package:dufuna/presentation/screen/home/pages/home_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
@@ -57,24 +58,12 @@ class App extends StatelessWidget {
 
         ChangeNotifierProvider<FavoritePropertiesViewModel>(create: (context) => FavoritePropertiesViewModel()),
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         title: AppStrings.kTitle,
-        // home: HomePageNew()
-        // theme: AppTheme.defaultTheme,
+        // home: HomePageNew(),
 
-        // home: SplashScreen(),
-        // home: LottieLoading(),
         home: GetStarted(),
 
-        // home: AuthWrapper(),
-
-        // home: ProfilePage(),
-        // home: const SplashScreen(),
-        // home: AuthWrapper(),
-        // home: PaymentScreen(),
-        // home: const PropertyBox(),
-        // home: PropertyDetails(),
-        // home: PropertyContainer(),
         debugShowCheckedModeBanner: false,
       ),
     );

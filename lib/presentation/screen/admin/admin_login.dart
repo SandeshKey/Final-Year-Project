@@ -1,9 +1,7 @@
-import 'package:dufuna/config/constants.dart';
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:dufuna/presentation/screen/admin/admin_home.dart';
-import 'package:dufuna/presentation/screen/admin/admin_login.dart';
 import 'package:dufuna/presentation/screen/auth/register_screen.dart';
 // import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/olive_home.dart';
@@ -15,19 +13,19 @@ import '../../../core/service/auth_services.dart';
 import '../../../core/util/colors.dart';
 import '../../../core/widget/text_input.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class AdminLogin extends StatefulWidget {
+  const AdminLogin({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<AdminLogin> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<AdminLogin> {
   @override
   void initState() {
     Future.delayed(
-        const Duration(
-          milliseconds: 1,
+        Duration(
+          milliseconds: 2,
         ), () {
       FirebaseAuth.instance.currentUser != null
           ? Navigator.pushReplacement(context,
@@ -75,19 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: double.maxFinite,
                     height: 50,
-                    child: InkWell(
-                      onTap: () {
-                        context.push(AdminLogin());
-                      },
-                      child: Text(
-                        "Admin Login",
-                        textAlign: TextAlign.end,
-                        style: TextStyle(color: AppColors.kError),
-                      ),
-                    ),
                   ),
                   SvgPicture.asset("assets/images/login.svg"),
 
@@ -134,9 +122,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               value == true ? false : true;
                             }),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 8, 8, 0),
-                        child: const Text(
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(0, 8, 8, 0),
+                        child: Text(
                           "Remember Me",
                           style: TextStyle(
                             color: Colors.white,
@@ -153,16 +141,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   WideButton(
                     "Sign In",
                     onClick: () async {
-                      await login();
-
-                      if (errorMessage != null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text(errorMessage!)));
+                      if (emailController.text != "admin" &&
+                          passwordController.text != "admin") {
+                        showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                title: Text("Authentication Failed"),
+                                content: Text(
+                                    "Please enter correct username and password or contact administaror"),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        context.pop();
+                                      },
+                                      child: Text("Ok"))
+                                ],
+                              );
+                            });
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text("login Successfully")));
-                        context.push(const OliveHome());
+                        context.push(const AdminHome());
                       }
+                      // await login();
                     },
                   ),
 

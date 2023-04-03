@@ -132,7 +132,11 @@ class PropertyModel {
   String? addedBy;
 
   PropertyModel(
-      {this.isFavourite,
+      
+      {
+        this.landDetail,
+        
+        this.isFavourite,
       this.isPremium,
       this.isUrgent,
       this.isVerified,
@@ -152,7 +156,6 @@ class PropertyModel {
       this.bikeCount,
       this.ownerOrAgentName,
       this.ownershipType,
-      this.landDetail,
       this.propertyElectricity,
       this.propertyWatersupply,
       this.propertyId,
@@ -196,6 +199,7 @@ class PropertyModel {
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
+      colLandDetail: landDetail,
       colAddedBy: addedBy,
       colIsFavourite: isFavourite,
       colIsPremium: isPremium,
@@ -219,7 +223,7 @@ class PropertyModel {
       colWifi: wifi,
       colCommonBedroom: commonBedroom,
       colAttachedBedroom: attachedBedroom,
-      colLandDetail: landDetail,
+    
       colPropertyWatersupply: propertyWatersupply,
       colPropertyElectricity: propertyElectricity,
       colPropertyId: propertyId,

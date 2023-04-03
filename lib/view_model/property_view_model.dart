@@ -36,22 +36,44 @@ class PropertyViewModel extends ChangeNotifier {
   List<PropertyModel> _lands = [];
   List<PropertyModel> get lands => _lands;
 
+  List<PropertyModel> currentProperties = [];
+  // getter
+  List<Map<String, dynamic>> get properties => _properties;
 
-  getFeatured()async{
-      
-      _featuredProperties = await _firestore
-          .collection('properties')
-          .where('isFavourite', isEqualTo: true)
-          .get()
-          .then((value) =>
-              value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
-  
-      notifyListeners();
-  
+  setCurrentProperties(String type) {
+    switch (type) {
+      case "Urgent":
+        currentProperties = _urgentProperties;
+        break;
+      case "Premium":
+        currentProperties = _premiumProperties;
+        break;
+      case "Featured":
+        currentProperties = _featuredProperties;
+        break;
+      case "House & Apartments":
+        currentProperties = _houses;
+        break;
+      case "Land":
+        currentProperties = _lands;
+        break;
+    }
+
+    // notifyListeners();
   }
 
- getLands()async{
+  getFeatured() async {
+    _featuredProperties = await _firestore
+        .collection('properties')
+        .where('isFavourite', isEqualTo: true)
+        .get()
+        .then((value) =>
+            value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
 
+    notifyListeners();
+  }
+
+  getLands() async {
     _lands = await _firestore
         .collection('properties')
         .where('propertyType', isEqualTo: "Land")
@@ -62,11 +84,9 @@ class PropertyViewModel extends ChangeNotifier {
     // print(object)
 
     notifyListeners();
-
   }
 
-  getHouses()async{
-
+  getHouses() async {
     _houses = await _firestore
         .collection('properties')
         .where('propertyType', isNotEqualTo: "Land")
@@ -75,9 +95,7 @@ class PropertyViewModel extends ChangeNotifier {
             value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
 
     notifyListeners();
-
   }
-
 
   Future<List<PropertyModel>> getUnverifiedProperties() async {
     return await _firestore
@@ -97,8 +115,8 @@ class PropertyViewModel extends ChangeNotifier {
             value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
   }
 
- getUrgentProperties() async {
-     _urgentProperties = await _firestore
+  getUrgentProperties() async {
+    _urgentProperties = await _firestore
         .collection('properties')
         .where('isUrgent', isEqualTo: true)
         .get()
@@ -106,8 +124,6 @@ class PropertyViewModel extends ChangeNotifier {
             value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
 
     notifyListeners();
-
-
   }
 
   getPremiumProperties() async {
@@ -121,10 +137,7 @@ class PropertyViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
- 
-
   // get lands
-
 
   // Get all properties from Firebase Firestore
   Future<void> getAllProperties() async {

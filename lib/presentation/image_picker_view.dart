@@ -13,7 +13,7 @@ class ImagePickerView extends StatelessWidget {
   Widget build(BuildContext context) {
     final imageViewModel = Provider.of<ImageViewModel>(context, listen: false);
 
-    return Material(
+    return isEdit== true? SizedBox():Material(
       child: SizedBox(
         height: 200,
         child: Column(

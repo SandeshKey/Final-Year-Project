@@ -8,14 +8,14 @@ import '../widgets/search_result_property.dart';
 class SearchPage extends StatelessWidget {
   SearchPage({super.key});
 
-  final List<String> dropdownValues = [
-    'All Properties',
-    'Rental Rooms',
-    'Apartments',
-    'Flat Spaces',
-    'Farm House',
-    'Mansion'
-  ];
+  // final List<String> dropdownValues = [
+  //   'All Properties',
+  //   'Rental Rooms',
+  //   'Apartments',
+  //   'Flat Spaces',
+  //   'Farm House',
+  //   'Mansion'
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -75,25 +75,25 @@ class SearchPage extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  labelText: 'Filter By',
-                  border: OutlineInputBorder(),
-                ),
-                items: dropdownValues
-                    .map((value) => DropdownMenuItem(
-                          value: value,
-                          child: Text(value),
-                        ))
-                    .toList(),
-                onChanged: (String? value) {
-                  // Handle dropdown selection here
-                },
-                value: dropdownValues[0],
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: DropdownButtonFormField<String>(
+            //     decoration: const InputDecoration(
+            //       labelText: 'Filter By',
+            //       border: OutlineInputBorder(),
+            //     ),
+            //     items: dropdownValues
+            //         .map((value) => DropdownMenuItem(
+            //               value: value,
+            //               child: Text(value),
+            //             ))
+            //         .toList(),
+            //     onChanged: (String? value) {
+            //       // Handle dropdown selection here
+            //     },
+            //     value: dropdownValues[0],
+            //   ),
+            // ),
 
             Consumer<OliveProvider>(builder: (_, value, __) {
               return Expanded(
