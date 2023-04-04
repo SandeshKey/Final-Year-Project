@@ -129,7 +129,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: InkWell(
                         onTap: () {
-                          context.push(const ForgetPassword());
+                          print(emailController.text);
+                          if (emailController.text == '') {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text(
+                                        "Error:  Email Address Cannot be Empty")));
+                          } else {
+                            context.push(ForgetPassword(
+                              email: emailController.text,
+                            ));
+                          }
                         },
                         child: Text(
                           "Forgot Password?  ",

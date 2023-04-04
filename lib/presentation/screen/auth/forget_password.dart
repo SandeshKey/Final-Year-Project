@@ -1,12 +1,16 @@
 import 'package:dufuna/core/service/auth_services.dart';
 import 'package:dufuna/core/util/colors.dart';
+import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'check_screen.dart';
+
 class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({super.key});
+  final String email;
+  const ForgetPassword({super.key, required this.email});
 
   @override
   State<ForgetPassword> createState() => _ForgetPasswordState();
@@ -117,7 +121,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(4, 4, 4, 4),
                             child: Text(
-                              "+977 9827100678",
+                              "+977 98********",
                               style: TextStyle(
                                   color: ColorUtils.pureWhite,
                                   fontWeight: FontWeight.w500,
@@ -175,7 +179,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                             Padding(
                               padding: const EdgeInsets.fromLTRB(4, 4, 4, 4),
                               child: Text(
-                                "sandeshyes77@gmail.com",
+                                widget.email,
                                 overflow: TextOverflow.fade,
                                 maxLines: 1,
                                 softWrap: false,
@@ -199,8 +203,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             child: WideButton(
               "Continue",
               onClick: () async {
-                await AuthServices()
-                    .forgotPassword("acharyabibek746@gmail.com");
+                await AuthServices().forgotPassword(widget.email).then((value) => context.push(CheckScreen()));
               },
             ),
           ),

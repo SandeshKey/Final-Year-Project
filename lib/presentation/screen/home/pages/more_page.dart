@@ -121,14 +121,14 @@ class MorePage extends StatelessWidget {
               context.push(ProfilePage());
             },
           ),
-          ListTile(
-            leading: Icon(PhosphorIcons.userLight),
-            title: Text('Forget Password'),
-            trailing: Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              context.push(ForgetPassword());
-            },
-          ),
+          // ListTile(
+          //   leading: Icon(PhosphorIcons.userLight),
+          //   title: Text('Forget Password'),
+          //   trailing: Icon(Icons.arrow_forward_ios),
+          //   onTap: () {
+          //     context.push(ForgetPassword());
+          //   },
+          // ),
 
           ListTile(
             leading: Icon(PhosphorIcons.userLight),
