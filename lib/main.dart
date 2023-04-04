@@ -6,6 +6,7 @@ import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
 import 'package:dufuna/presentation/screen/property/property_details.dart';
 import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
+import 'package:dufuna/view_model/admin_view_model.dart';
 import 'package:dufuna/view_model/fav_property_view_model.dart';
 import 'package:dufuna/view_model/mini_filter_view_model.dart';
 import 'package:dufuna/view_model/property_view_model.dart';
@@ -46,7 +47,6 @@ class App extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => FavoriteProvider()),
-      
         ChangeNotifierProvider<OliveProvider>(create: (_) => OliveProvider()),
         ChangeNotifierProvider<ImageViewModel>(
           create: (_) => ImageViewModel(),
@@ -55,8 +55,9 @@ class App extends StatelessWidget {
             create: (_) => PropertyViewModel()),
         ChangeNotifierProvider<MiniFilterViewModel>(
             create: (_) => MiniFilterViewModel()),
-
-        ChangeNotifierProvider<FavoritePropertiesViewModel>(create: (context) => FavoritePropertiesViewModel()),
+        ChangeNotifierProvider<AdminViewModel>(create: (_) => AdminViewModel()),
+        ChangeNotifierProvider<FavoritePropertiesViewModel>(
+            create: (context) => FavoritePropertiesViewModel()),
       ],
       child: const MaterialApp(
         title: AppStrings.kTitle,
