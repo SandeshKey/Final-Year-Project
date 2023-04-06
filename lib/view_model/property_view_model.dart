@@ -65,6 +65,7 @@ class PropertyViewModel extends ChangeNotifier {
   getFeatured() async {
     _featuredProperties = await _firestore
         .collection('properties')
+        .where('status', isEqualTo: 'verified')
         .where('isFavourite', isEqualTo: true)
         .get()
         .then((value) =>
@@ -76,6 +77,7 @@ class PropertyViewModel extends ChangeNotifier {
   getLands() async {
     _lands = await _firestore
         .collection('properties')
+        .where('status', isEqualTo: 'verified')
         .where('propertyType', isEqualTo: "Land")
         .get()
         .then((value) =>
@@ -90,6 +92,7 @@ class PropertyViewModel extends ChangeNotifier {
     _houses = await _firestore
         .collection('properties')
         .where('propertyType', isNotEqualTo: "Land")
+        .where('status', isEqualTo: 'verified')
         .get()
         .then((value) =>
             value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
@@ -100,6 +103,7 @@ class PropertyViewModel extends ChangeNotifier {
   Future<List<PropertyModel>> getUnverifiedProperties() async {
     return await _firestore
         .collection('properties')
+        .where('status', isEqualTo: 'verified')
         .where('status', isEqualTo: "unverified")
         .get()
         .then((value) =>
@@ -118,6 +122,7 @@ class PropertyViewModel extends ChangeNotifier {
   getUrgentProperties() async {
     _urgentProperties = await _firestore
         .collection('properties')
+        .where('status', isEqualTo: 'verified')
         .where('isUrgent', isEqualTo: true)
         .get()
         .then((value) =>
@@ -129,6 +134,7 @@ class PropertyViewModel extends ChangeNotifier {
   getPremiumProperties() async {
     _premiumProperties = await _firestore
         .collection('properties')
+        .where('status', isEqualTo: 'verified')
         .where('isPremium', isEqualTo: true)
         .get()
         .then((value) =>
@@ -142,8 +148,10 @@ class PropertyViewModel extends ChangeNotifier {
   // Get all properties from Firebase Firestore
   Future<void> getAllProperties() async {
     try {
-      final QuerySnapshot querySnapshot =
-          await _firestore.collection('properties').get();
+      final QuerySnapshot querySnapshot = await _firestore
+          .collection('properties')
+          .where('status', isEqualTo: 'verified')
+          .get();
       _properties = querySnapshot.docs
           .map((doc) => doc.data() as Map<String, dynamic>)
           .toList();

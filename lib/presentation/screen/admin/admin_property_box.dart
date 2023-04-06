@@ -1,9 +1,6 @@
-import 'package:dufuna/core/model/property.dart';
 import 'package:dufuna/core/model/property_model.dart';
 import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/presentation/forms/contact_form.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class AdminPropertyBox extends StatefulWidget {
@@ -73,10 +70,10 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                       decoration: BoxDecoration(
                           color: ColorUtils.buttonRed,
                           borderRadius: BorderRadius.circular(4)),
-                      child: const Padding(
+                      child: Padding(
                         padding: EdgeInsets.all(8.0),
                         child: Text(
-                          "For Rent", //yo text center ma ayena
+                          "For ${widget.property!.propertyFor}", //yo text center ma ayena
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -88,13 +85,13 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                   )
                 ],
               ),
-              const Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 0, 8),
+              Padding(
+                padding: EdgeInsets.fromLTRB(16, 8, 0, 8),
                 child: Text(
-                  "Kritipur - Flat or Room for Rent",
+                  "${widget.property!.propertyIs} for ${widget.property!.propertyFor} in ${widget.property!.address} ",
                   textAlign: TextAlign.left, //yo text start ma gayena
                   style: TextStyle(
-                      color: ColorUtils.themeBlack,
+                      color: Color.fromARGB(255, 1, 5, 11),
                       fontWeight: FontWeight.w600,
                       fontSize: 20,
                       overflow: TextOverflow.fade,
@@ -104,7 +101,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
               Column(
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       Padding(
                         padding: EdgeInsets.fromLTRB(16, 8, 0, 8),
                         child: Icon(
@@ -114,7 +111,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                         ),
                       ),
                       Text(
-                        "Kritipur, Kathmandu",
+                        widget.property!.address ?? "Pokhara 1 Bagar ",
                         style: TextStyle(
                           color: ColorUtils.themeBlack,
                           fontWeight: FontWeight.w500,
@@ -133,8 +130,8 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          "Rs. 4,500",
+                        Text(
+                          "Rs. ${widget.property!.price} ${widget.property!.priceUnit}",
                           style: TextStyle(
                             color: ColorUtils.themeBlack,
                             fontWeight: FontWeight.w600,

@@ -35,8 +35,19 @@ class AdminViewModel extends ChangeNotifier {
         .collection('properties')
         .where('status', isEqualTo: "unverified")
         .get()
-        .then((value) =>
-            value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
+        .then((value) {
+      List<PropertyModel> properties = [];
+
+      for (var doc in value.docs) {
+        var data = doc.data();
+        PropertyModel property = PropertyModel.fromMap(data);
+        property.id = doc.id;
+        properties.add(property);
+      }
+
+      return properties;
+    }
+            );
     notifyListeners();
   }
 

@@ -760,6 +760,7 @@ class _DetailFormState extends State<DetailForm> {
                           isFavourite: false,
                           isUrgent: false,
                           isVerified: false,
+                          status: "unverified",
                           isPremium: false,
                           addedBy: FirebaseAuth.instance.currentUser!.uid,
 

@@ -1,7 +1,9 @@
 import 'package:dufuna/core/model/property.dart';
 import 'package:dufuna/core/model/property_model.dart';
 import 'package:dufuna/core/service/db%20_services.dart';
+import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/property_box.dart';
+import 'package:dufuna/presentation/screen/auth/login_screen.dart';
 import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
 import 'package:dufuna/view_model/admin_view_model.dart';
 import 'package:dufuna/view_model/property_view_model.dart';
@@ -60,19 +62,26 @@ class _AdminHomeState extends State<AdminHome> with TickerProviderStateMixin {
       appBar: AppBar(
         title: Text("Admin Panel"),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+          IconButton(
+              onPressed: () {
+                context.push(LoginScreen());
+              },
+              icon: Icon(Icons.logout)),
         ],
       ),
-
-
       body: Consumer<AdminViewModel>(builder: (_, value, __) {
         return TabBarView(controller: _tabController, children: [
           AdminPropertyList(
             propertyList: value.unVerifiedProperties,
+            showButtons: true,
           ),
-          AdminPropertyList(propertyList: value.verifiedProperties),
+          AdminPropertyList(
+            propertyList: value.verifiedProperties,
+            showButtons: false,
+          ),
           AdminPropertyList(
             propertyList: value.rejectedProperties,
+            showButtons: false,
           ),
         ]);
       }),

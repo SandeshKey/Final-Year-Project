@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dufuna/presentation/provider/favorite_provider.dart';
+import 'package:dufuna/presentation/screen/admin/admin_home.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
 import 'package:dufuna/presentation/screen/home/pages/home_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
@@ -64,6 +65,7 @@ class App extends StatelessWidget {
         // home: HomePageNew(),
 
         home: GetStarted(),
+        // home: AdminHome(),
 
         debugShowCheckedModeBanner: false,
       ),

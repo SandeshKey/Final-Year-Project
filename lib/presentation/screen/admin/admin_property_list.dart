@@ -8,59 +8,82 @@ import 'admin_property_box.dart';
 
 class AdminPropertyList extends StatelessWidget {
   final List<PropertyModel>? propertyList;
+  final bool showButtons;
 
   AdminPropertyList({
     super.key,
     this.propertyList,
+    required this.showButtons,
   });
 
   @override
   Widget build(BuildContext context) {
+    AdminViewModel adminViewModel = Provider.of(context, listen: true);
     if (propertyList == null) {
       return Center(child: CircularProgressIndicator());
     }
 
-    return ListView.builder(
-        itemCount: propertyList!.length,
-        itemBuilder: (context, index) {
-          return Container(
-            child: Column(
-              children: [
-                AdminPropertyBox(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton(
-                      //change color of button
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.green),
-                      ),
+    return showButtons == true
+        ? ListView.builder(
+            itemCount: propertyList!.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  AdminPropertyBox(
+                    property: propertyList![index],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        //change color of button
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.green),
+                        ),
 
-                      onPressed: () {
-                        PropertyModel _currentPrperty = propertyList![index];
-                        _currentPrperty.status = "verified";
-                        DatabaseServices().updateProperty(_currentPrperty);
-                      },
-                      child: Text("Approve"),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.red),
+                        onPressed: () {
+                          PropertyModel currentPrperty = propertyList![index];
+                          currentPrperty.status = "verified";
+                          DatabaseServices().updateProperty(currentPrperty);
+                          adminViewModel.refresh();
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Property Approved successfully")));
+                        },
+                        child: Text("Approve"),
                       ),
-                      onPressed: () {},
-                      child: Text("Reject"),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          );
-        });
+                      SizedBox(
+                        width: 10,
+                      ),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.red),
+                        ),
+                        onPressed: () async {
+                          print(propertyList![index].id);
+                          // print(currentPrperty.id);
+                          propertyList![index].status = "rejected";
+                          await DatabaseServices()
+                              .updateProperty(propertyList![index]);
+                          adminViewModel.refresh();
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text("Property Rejected successfully")));
+                        },
+                        child: Text("Reject"),
+                      ),
+                    ],
+                  )
+                ],
+              );
+            })
+        : ListView.builder(
+            itemCount: propertyList!.length,
+            itemBuilder: (context, index) {
+              return AdminPropertyBox(
+                property: propertyList![index],
+              );
+            });
     // return Consumer<AdminViewModel>(
     //   builder: (_, value, __) {
 
