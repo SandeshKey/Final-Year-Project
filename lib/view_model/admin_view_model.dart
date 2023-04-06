@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import '../core/model/property_model.dart';
 
 class AdminViewModel extends ChangeNotifier {
+  //constructor
+  AdminViewModel() {
+    setVerifiedProperties();
+    setUnVerifiedProperties();
+    setRejectedProperties();
+  }
+
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   List<PropertyModel> _verifiedProperties = [];
@@ -12,7 +19,6 @@ class AdminViewModel extends ChangeNotifier {
   List<PropertyModel> get unVerifiedProperties => _unVerifiedProperties;
   List<PropertyModel> _rejectedProperties = [];
   List<PropertyModel> get rejectedProperties => _rejectedProperties;
-  
 
   setVerifiedProperties() async {
     _verifiedProperties = await _firestore
@@ -42,5 +48,11 @@ class AdminViewModel extends ChangeNotifier {
         .then((value) =>
             value.docs.map((e) => PropertyModel.fromMap(e.data())).toList());
     notifyListeners();
+  }
+
+  refresh() async {
+    await setVerifiedProperties();
+    await setUnVerifiedProperties();
+    await setRejectedProperties();
   }
 }

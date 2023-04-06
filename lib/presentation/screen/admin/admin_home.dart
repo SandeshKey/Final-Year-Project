@@ -8,53 +8,74 @@ import 'package:dufuna/view_model/property_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AdminHome extends StatelessWidget {
+import 'admin_property_list.dart';
+
+class AdminHome extends StatefulWidget {
   const AdminHome({super.key});
+
+  @override
+  State<AdminHome> createState() => _AdminHomeState();
+}
+
+class _AdminHomeState extends State<AdminHome> with TickerProviderStateMixin {
+  TabController? _tabController;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController!.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Admin Panel"),
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+      bottomNavigationBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: TabBar(
+          controller: _tabController,
+          labelColor: Colors.black,
+          tabs: const [
+            Tab(
+              icon: Icon(Icons.home),
+              text: "Unverified",
+            ),
+            Tab(
+              icon: Icon(Icons.search),
+              text: "Verified",
+            ),
+            Tab(
+              icon: Icon(Icons.person),
+              text: "Rejected",
+            ),
           ],
         ),
-        body: Consumer<AdminViewModel>(
-          builder: (_, value, __) {
-            if (value.unVerifiedProperties.isEmpty) {
-              return CircularProgressIndicator();
-            }
-            return ListView.builder(
-                itemCount: value.unVerifiedProperties.length,
-                itemBuilder: (context, index) {
-                  return Container(
-                    child: Column(
-                      children: [
-                        PropertyBox(),
-                        Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {
-                                PropertyModel _currentPrperty =
-                                    value.unVerifiedProperties[index];
-                                _currentPrperty.status = "verified";
-                                DatabaseServices()
-                                    .updateProperty(_currentPrperty);
-                              },
-                              child: Text("Approve"),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: Text("Reject"),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  );
-                });
-          },
-        ));
+      ),
+      appBar: AppBar(
+        title: Text("Admin Panel"),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
+        ],
+      ),
+
+
+      body: Consumer<AdminViewModel>(builder: (_, value, __) {
+        return TabBarView(controller: _tabController, children: [
+          AdminPropertyList(
+            propertyList: value.unVerifiedProperties,
+          ),
+          AdminPropertyList(propertyList: value.verifiedProperties),
+          AdminPropertyList(
+            propertyList: value.rejectedProperties,
+          ),
+        ]);
+      }),
+    );
   }
 }
