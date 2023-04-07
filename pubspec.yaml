@@ -19,12 +19,13 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_form_builder: 7.0.0
+  flutter_native_splash: ^2.2.19
   flutter_spinkit: ^5.1.0
   flutter_svg: ^1.1.6
   font_awesome_flutter: ^10.4.0
   form_builder_validators: ^8.1.1
   get_it: ^7.2.0
-  google_sign_in: ^5.4.3
+  google_sign_in: ^6.0.2
   image_picker: ^0.8.4+8
   intl: null
   lottie: ^2.3.0

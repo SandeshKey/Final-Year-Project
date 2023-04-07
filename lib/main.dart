@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dufuna/presentation/provider/favorite_provider.dart';
 import 'package:dufuna/presentation/screen/admin/admin_home.dart';
 import 'package:dufuna/presentation/screen/home/get_started.dart';
+import 'package:dufuna/presentation/screen/home/logo_splash.dart';
 import 'package:dufuna/presentation/screen/home/pages/home_page.dart';
 import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
 import 'package:dufuna/presentation/screen/home/splash_screen.dart';
@@ -64,7 +65,8 @@ class App extends StatelessWidget {
         title: AppStrings.kTitle,
         // home: HomePageNew(),
 
-        home: GetStarted(),
+        // home: GetStarted(),
+        home: LogoSplash(),
         // home: AdminHome(),
 
         debugShowCheckedModeBanner: false,
