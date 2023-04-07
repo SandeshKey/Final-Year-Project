@@ -83,10 +83,49 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         context.push(AdminLogin());
                       },
-                      child: Text(
-                        "Admin Login",
-                        textAlign: TextAlign.end,
-                        style: TextStyle(color: AppColors.kError),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: ColorUtils.pureWhite,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(4),
+                                bottomLeft: Radius.circular(4),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.5),
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundImage:
+                                    AssetImage("assets/images/admin_icon.png"),
+                                backgroundColor: ColorUtils.pureWhite,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: ColorUtils.pureWhite,
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(4),
+                                bottomRight: Radius.circular(4),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                "Admin Login",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                  color: ColorUtils.buttonRed,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
