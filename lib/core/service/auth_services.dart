@@ -18,15 +18,18 @@ class AuthServices {
 
   //For Register
 
-  Future<void> signUp(String email, String password, String name) async {
+  Future<void> signUp(
+      String email, String password, String name, String phone) async {
     await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
 
     await DatabaseServices().addUser(AppUser(
-      name: name,
-      email: email,
-      uid: FirebaseAuth.instance.currentUser!.uid,
-    ));
+        name: name,
+        email: email,
+        uid: FirebaseAuth.instance.currentUser!.uid,
+        phoneNumber: phone,
+        displayImage:
+            "https://www.shareicon.net/data/128x128/2016/07/26/802016_man_512x512.png"));
   }
 
   ///                   For SignOut
@@ -47,10 +50,11 @@ class AuthServices {
         await FirebaseAuth.instance.signInWithCredential(myCredential);
 
     await DatabaseServices().addUser(AppUser(
-      name: user.user!.displayName,
-      email: user.user!.email,
-      uid: user.user!.uid,
-    ));
+        name: user.user!.displayName,
+        email: user.user!.email,
+        uid: user.user!.uid,
+        phoneNumber: user.user!.phoneNumber ?? "",
+        displayImage: user.user!.photoURL));
 
     debugPrint(user.user?.displayName);
   }

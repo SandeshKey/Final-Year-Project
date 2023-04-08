@@ -59,7 +59,7 @@ class SearchResultProperty extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Icon(Icons.location_on),
+                        const   Icon(Icons.location_on),
                           Text(
                             myProperty!.address ?? "Lainchaur, Kathmandu",
                             style: const TextStyle(

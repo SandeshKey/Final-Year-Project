@@ -13,7 +13,14 @@ class DatabaseServices {
   CollectionReference properties =
       FirebaseFirestore.instance.collection('properties');
 
-  
+  Future<AppUser> getUserData(String userId) async {
+    var data = await users.doc(userId).get() ;
+
+   final appuser =  AppUser.fromMap(
+      data.data() as Map<String, dynamic>);
+
+    return appuser;
+  }
 
   Future<void> addProperty(PropertyModel property) async {
     print("Attermpting to add property");
@@ -54,21 +61,13 @@ class DatabaseServices {
         .then((_) => print("User Updated"));
   }
 
-  getUserData(String userId) async {
-    var data = await users.doc(userId).get();
-    return data.data() as Map;
-  }
-
   Future<List<PropertyModel>> getProperties() async {
     List<PropertyModel> propertiesList = [];
-      // QuerySnapshot propertyQuerySnap =
-      //   await properties.get();
-
+    // QuerySnapshot propertyQuerySnap =
+    //   await properties.get();
 
     await properties.get().then((value) {
       print(value.docs.length);
-
-    
 
       for (int i = 0; i < value.docs.length; i++) {
         PropertyModel property =
@@ -78,8 +77,7 @@ class DatabaseServices {
         try {
           propertiesList.add(property);
           print("Property added successfully");
-        } catch (e) {
-        }
+        } catch (e) {}
       }
     });
 

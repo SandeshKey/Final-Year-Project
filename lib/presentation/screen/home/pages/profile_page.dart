@@ -14,7 +14,7 @@ class ProfilePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: ColorUtils.buttonRed,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(8),
@@ -39,7 +39,7 @@ class ProfilePage extends StatelessWidget {
                           ),
                         ),
                         const Padding(
-                          padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
+                          padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
                           child: Text(
                             "Profile",
                             style: TextStyle(
@@ -66,7 +66,7 @@ class ProfilePage extends StatelessWidget {
                       color: ColorUtils.buttonRed,
                     ),
                   ),
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     radius: 72,
                     backgroundImage: AssetImage("assets/images/App Icon.png"),
                   ),
@@ -85,7 +85,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.fromLTRB(112, 112, 0, 0),
                       child: Icon(
                         Icons.edit,
@@ -97,8 +97,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ]),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+            const Padding(
+              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
               child: Divider(
                 color: ColorUtils.grey,
               ),
@@ -112,21 +112,21 @@ class ProfilePage extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "User's Name Here",
-                        hintStyle: TextStyle(color: ColorUtils.pureWhite),
+                        hintStyle: const TextStyle(color: ColorUtils.pureWhite),
                         filled: true,
-                        fillColor: Color.fromARGB(255, 67, 68, 73),
+                        fillColor: const Color.fromARGB(255, 67, 68, 73),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
                           // borderSide: BorderSide(color: Colors.grey),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: ColorUtils.buttonRed,
                           ),
                         ),
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
                           child: Icon(
                             Icons.person_pin,
                             color: ColorUtils.grey,
@@ -141,21 +141,21 @@ class ProfilePage extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "User's Email Here",
-                        hintStyle: TextStyle(color: ColorUtils.pureWhite),
+                        hintStyle: const TextStyle(color: ColorUtils.pureWhite),
                         filled: true,
-                        fillColor: Color.fromARGB(255, 67, 68, 73),
+                        fillColor: const Color.fromARGB(255, 67, 68, 73),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
                           // borderSide: BorderSide(color: Colors.grey),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: ColorUtils.buttonRed,
                           ),
                         ),
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
                           child: Icon(
                             Icons.email,
                             color: ColorUtils.grey,
@@ -172,21 +172,21 @@ class ProfilePage extends StatelessWidget {
                       obscuringCharacter: '*',
                       decoration: InputDecoration(
                         hintText: "User's Password Here",
-                        hintStyle: TextStyle(color: ColorUtils.pureWhite),
+                        hintStyle: const TextStyle(color: ColorUtils.pureWhite),
                         filled: true,
-                        fillColor: Color.fromARGB(255, 67, 68, 73),
+                        fillColor: const Color.fromARGB(255, 67, 68, 73),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
                           // borderSide: BorderSide(color: Colors.grey),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: ColorUtils.buttonRed,
                           ),
                         ),
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
                           child: Icon(
                             Icons.lock_person,
                             color: ColorUtils.grey,
@@ -201,21 +201,21 @@ class ProfilePage extends StatelessWidget {
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: "User's Phone Number Here",
-                        hintStyle: TextStyle(color: ColorUtils.pureWhite),
+                        hintStyle: const TextStyle(color: ColorUtils.pureWhite),
                         filled: true,
-                        fillColor: Color.fromARGB(255, 67, 68, 73),
+                        fillColor: const Color.fromARGB(255, 67, 68, 73),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
                           // borderSide: BorderSide(color: Colors.grey),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(32),
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: ColorUtils.buttonRed,
                           ),
                         ),
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                        prefixIcon: const Padding(
+                          padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
                           child: Icon(
                             Icons.phone_in_talk,
                             color: ColorUtils.grey,
@@ -228,7 +228,13 @@ class ProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            WideButton("Submit Changes"),
+            WideButton(
+              "Submit Changes",
+              onClick: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text("User Updated Successfully")));
+              },
+            ),
           ]),
         ),
       ),
