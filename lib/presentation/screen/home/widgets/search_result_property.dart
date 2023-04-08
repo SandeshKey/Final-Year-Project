@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../../../../core/model/property_model.dart';
+import '../../../../core/util/colors.dart';
 
 class SearchResultProperty extends StatelessWidget {
   final PropertyModel? myProperty;
@@ -58,11 +59,15 @@ class SearchResultProperty extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Icon(Icons.location_on),
+                        const   Icon(Icons.location_on),
                           Text(
-                            "Pokhara 16, Haripau , 25",
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                            myProperty!.address ?? "Lainchaur, Kathmandu",
+                            style: const TextStyle(
+                              color: ColorUtils.themeBlack,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 13,
+                              overflow: TextOverflow.fade,
+                            ),
                           ),
                         ],
                       ),
@@ -72,10 +77,12 @@ class SearchResultProperty extends StatelessWidget {
                       ),
 
                       Text(
-                        " Rs 170000",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        "Rs. ${myProperty!.price} ${myProperty!.priceUnit}",
+                        style: const TextStyle(
+                          color: ColorUtils.themeBlack,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
+                          decoration: TextDecoration.none,
                         ),
                       ),
 

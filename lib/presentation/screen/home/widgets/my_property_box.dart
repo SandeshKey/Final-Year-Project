@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/model/property_model.dart';
+import '../../../../core/util/colors.dart';
 
 class MyPropertyBox extends StatelessWidget {
   final PropertyModel? myProperty;
@@ -53,7 +54,7 @@ class MyPropertyBox extends StatelessWidget {
                         myProperty!.propertyTitle ?? "Title",
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -62,7 +63,7 @@ class MyPropertyBox extends StatelessWidget {
                         children: [
                           Icon(Icons.location_on),
                           Text(
-                            "Pokhara 16, Haripau , 25",
+                            myProperty!.address ?? "Lainchaur, Kathmandu",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -74,10 +75,12 @@ class MyPropertyBox extends StatelessWidget {
                       ),
 
                       Text(
-                        " Rs 170000",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                        "Rs. ${myProperty!.price} ${myProperty!.priceUnit}",
+                        style: const TextStyle(
+                          color: ColorUtils.themeBlack,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15,
+                          decoration: TextDecoration.none,
                         ),
                       ),
 
@@ -94,11 +97,10 @@ class MyPropertyBox extends StatelessWidget {
                               // color: Colors.red,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: Text(
                                 "Contact",
                                 style: TextStyle(
-                                  // color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -115,7 +117,7 @@ class MyPropertyBox extends StatelessWidget {
                                     isLand: true,
                                   ));
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.edit,
                                   color: Colors.blue,
                                 )),
@@ -123,7 +125,7 @@ class MyPropertyBox extends StatelessWidget {
                                 onPressed: () {
                                   oliveProvider.deleteProperty(myProperty!);
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.delete,
                                   color: Colors.red,
                                 )),

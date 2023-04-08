@@ -1,17 +1,16 @@
+import 'package:flutter/foundation.dart';
 import 'package:olivehomes/core/util/colors.dart';
 import 'package:olivehomes/core/util/extension.dart';
 import 'package:olivehomes/presentation/screen/admin/admin_home.dart';
 import 'package:olivehomes/presentation/screen/auth/login_screen.dart';
 import 'package:olivehomes/presentation/screen/home/pages/contact_us.dart';
-import 'package:olivehomes/presentation/screen/auth/forget_password.dart';
 import 'package:olivehomes/presentation/screen/home/pages/my_properties_screen.dart';
 import 'package:olivehomes/presentation/screen/home/pages/profile_page.dart';
-import 'package:olivehomes/presentation/screen/home/pages/search_page.dart';
-import 'package:olivehomes/presentation/screen/property/property_details.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:olivehomes/core/service/db _services.dart' as db;
+
+import '../../../../core/model/user.dart';
 
 class MorePage extends StatelessWidget {
   const MorePage({super.key});
@@ -28,7 +27,7 @@ class MorePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.08,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       'More Actions',
                       style: TextStyle(
@@ -42,130 +41,150 @@ class MorePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(width: 2.0, color: Colors.grey),
-                      bottom: BorderSide(width: 2.0, color: Colors.grey),
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        top: BorderSide(width: 2.0, color: Colors.grey),
+                        bottom: BorderSide(width: 2.0, color: Colors.grey),
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: ColorUtils.themeBlack,
-                        child: Image.network(FirebaseAuth
-                                .instance.currentUser!.photoURL ??
-                            "https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651_1280.png"),
-                      ),
-                      // child: FirebaseAuth.instance.currentUser.photoURL==??("MR"),
+                    child: FutureBuilder(
+                        future: db.DatabaseServices().getUserData(
+                            FirebaseAuth.instance.currentUser!.uid),
+                        builder: (context, snapshot) {
+                          print(snapshot.data);
+                          if (snapshot.hasData) {
+                            final data = snapshot.data as AppUser;
 
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            FirebaseAuth.instance.currentUser!.displayName ??
-                                "Sandesh Subedi",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: ColorUtils.pureWhite),
-                          ),
-                          Text(
-                            FirebaseAuth.instance.currentUser!.email ??
-                                "sandeshyes77@gmail.com",
-                            style: TextStyle(color: ColorUtils.pureWhite),
-                          )
-                        ],
-                      ),
+                            if (kDebugMode) {
+                              print(
+                                  "User Data: ${data.name} ${data.email} ${data.phoneNumber} ${data.displayImage}");
+                            }
 
-                      // Logout Button
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.centerRight,
-                          child: Container(
-                            height: 40,
-                            width: 100,
-                            decoration: BoxDecoration(
-                              color: ColorUtils.buttonRed,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: TextButton(
-                              onPressed: () {
-                                FirebaseAuth.instance.signOut().then(
-                                    (value) => context.push(LoginScreen()));
-                              },
-                              child: Text(
-                                "Log Out",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                            return Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: ColorUtils.themeBlack,
+                                  child: Image.network(data.displayImage ??
+                                      "https://cdn.pixabay.com/photo/2015/03/04/22/35/avatar-659651_1280.png"),
+                                ),
+                                // child: FirebaseAuth.instance.currentUser.photoURL==??("MR"),
+
+                                const SizedBox(
+                                  width: 20,
+                                ),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data.name ?? "Sandesh Subedi",
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: ColorUtils.pureWhite),
+                                    ),
+                                    Text(
+                                      data.email ?? "sandeshyes77@gmail.com",
+                                      style: const TextStyle(
+                                          color: ColorUtils.pureWhite),
+                                    ),
+                                    Text(
+                                      data.phoneNumber ?? "",
+                                      style: const TextStyle(
+                                          color: ColorUtils.pureWhite),
+                                    ),
+                                  ],
+                                ),
+
+                                // Logout Button
+                                Expanded(
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: Container(
+                                      height: 40,
+                                      width: 100,
+                                      decoration: BoxDecoration(
+                                        color: ColorUtils.buttonRed,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          FirebaseAuth.instance.signOut().then(
+                                              (value) => context
+                                                  .push(const LoginScreen()));
+                                        },
+                                        child: const Text(
+                                          "Log Out",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          }
+
+                          return const CircularProgressIndicator();
+                        })),
               ),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.admin_panel_settings_rounded,
                   color: ColorUtils.buttonRed,
                 ),
-                title: Text(
+                title: const Text(
                   'Admin',
                   style: TextStyle(
                       fontWeight: FontWeight.w500, color: ColorUtils.pureWhite),
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.arrow_forward_ios,
                   color: ColorUtils.buttonRed,
                   size: 18,
                 ),
                 onTap: () {
-                  context.push(AdminHome());
+                  context.push(const AdminHome());
                 },
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.holiday_village_rounded,
                   color: ColorUtils.buttonRed,
                 ),
-                title: Text(
+                title: const Text(
                   'My Properties',
                   style: TextStyle(
                       fontWeight: FontWeight.w500, color: ColorUtils.pureWhite),
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.arrow_forward_ios,
                   color: ColorUtils.buttonRed,
                   size: 18,
                 ),
                 onTap: () {
-                  context.push(MyProperties());
+                  context.push(const MyProperties());
                 },
               ),
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.face_sharp,
                   color: ColorUtils.buttonRed,
                 ),
-                title: Text(
+                title: const Text(
                   'Profile Page',
                   style: TextStyle(
                       fontWeight: FontWeight.w500, color: ColorUtils.pureWhite),
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.arrow_forward_ios,
                   color: ColorUtils.buttonRed,
                   size: 18,
                 ),
                 onTap: () {
-                  context.push(ProfilePage());
+                  context.push(const ProfilePage());
                 },
               ),
               // ListTile(
@@ -178,42 +197,42 @@ class MorePage extends StatelessWidget {
               // ),
 
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.remove_red_eye,
                   color: ColorUtils.buttonRed,
                 ),
-                title: Text(
+                title: const Text(
                   'Property View',
                   style: TextStyle(
                       fontWeight: FontWeight.w500, color: ColorUtils.pureWhite),
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.arrow_forward_ios,
                   color: ColorUtils.buttonRed,
                   size: 18,
                 ),
                 onTap: () {
-                  context.push(AdminHome());
+                  context.push(const AdminHome());
                 },
               ),
 
               ListTile(
-                leading: Icon(
+                leading: const Icon(
                   Icons.contact_page,
                   color: ColorUtils.buttonRed,
                 ),
-                title: Text(
+                title: const Text(
                   'Contact Us',
                   style: TextStyle(
                       fontWeight: FontWeight.w500, color: ColorUtils.pureWhite),
                 ),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.arrow_forward_ios,
                   color: ColorUtils.buttonRed,
                   size: 18,
                 ),
                 onTap: () {
-                  context.push(ContactUS());
+                  context.push(const ContactUS());
                 },
               ),
               // Expanded(

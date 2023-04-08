@@ -23,13 +23,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   String? errorMessage;
 
   Future<void> Register() async {
     try {
-      await AuthServices().signUp(emailController.text, passwordController.text,
-          fullNameController.text);
+      await AuthServices().signUp(
+        emailController.text,
+        passwordController.text,
+        fullNameController.text,
+        phoneController.text,
+      );
     } on FirebaseException catch (e) {
       setState(() {
         errorMessage = e.message;
@@ -92,6 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 12,
                 ),
                 InputTextField(
+                    controller: phoneController,
                     onSaved: (hi) {},
                     labelText: "Phone Number",
                     hintText: "Enter your name"),
@@ -99,6 +105,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 12,
                 ),
                 InputTextField(
+                    isPassword: true,
                     controller: passwordController,
                     onSaved: (hi) {},
                     labelText: "Password",
@@ -107,6 +114,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   height: 12,
                 ),
                 InputTextField(
+                    isPassword: true,
                     onSaved: (hi) {},
                     labelText: "Confirm Password",
                     hintText: "Confirm your password"),
@@ -117,8 +125,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   "Sign Up",
                   onClick: () async {
                     try {
-                      await AuthServices().signUp(emailController.text,
-                          passwordController.text, fullNameController.text);
+                      await AuthServices()
+                          .signUp(emailController.text, passwordController.text,
+                              fullNameController.text, phoneController.text)
+                          .then((value) {});
 
                       if (!mounted) {
                         return;

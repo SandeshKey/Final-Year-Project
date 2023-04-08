@@ -16,6 +16,9 @@ class ImageViewModel with ChangeNotifier {
   List<ImageModel> _images = [];
   List<ImageModel> get images => _images;
   List<String> _imageUrls = [];
+  String? _profileImage = "https://www.shareicon.net/data/128x128/2016/07/26/802016_man_512x512.png";
+  String get profileImage => _profileImage!;
+
   bool _isUploading = false;
   //getters
   bool get isUploading => _isUploading;
@@ -25,24 +28,13 @@ class ImageViewModel with ChangeNotifier {
     final bytes = await image.file.readAsBytes();
     final fileExt = image.path.split('.').last;
     final fileName = image.path.split('/').last;
-
-    // final fileName = '${DateTime.now().toIso8601String()}.$fileExt';
-
     final filePath = fileName;
-
-    print("fileName is $filePath");
-
     await supabase.storage.from('image').uploadBinary(
           filePath,
           bytes,
           fileOptions: FileOptions(),
         );
-    // final imageUrlResponse = await supabase.storage
-    //     .from('image')
-    //     .createSignedUrl(filePath, 60 * 60 * 24 * 365 * 10);
     return "";
-
-    // return imageUrlResponse;
   }
 
   Future<List<String>> uploadImages(BuildContext context) async {
@@ -128,6 +120,23 @@ class ImageViewModel with ChangeNotifier {
 
   void clear() {
     _images.clear();
+    notifyListeners();
+  }
+
+  Future<void> pickProfileImage() async {
+    final ppicker = ImagePicker();
+    final ppickedFile = await ppicker.pickImage(source: ImageSource.gallery);
+
+    final File file = File(ppickedFile!.path);
+    final appDir = await getApplicationDocumentsDirectory();
+    final fileName = file.path.split('/').last;
+    final newPath = '${appDir.path}/$fileName';
+    await file.copy(newPath);
+
+    await upload1Image(ImageModel(path: newPath, file: file));
+
+    _profileImage =   "https://rqugcsiajclmckhemfzk.supabase.co/storage/v1/object/public/image/${newPath.split('/').last}";
+
     notifyListeners();
   }
 
