@@ -99,13 +99,14 @@ class _LoginScreenState extends State<AdminLogin> {
                       controller: emailController,
                       onSaved: (hi) {},
                       labelText: "Email",
-                      hintText: "Enter your name"),
+                      hintText: "Enter your email"),
                   const SizedBox(
                     width: double.maxFinite,
                     height: 20,
                   ),
 
                   InputTextField(
+                      isPassword: true,
                       controller: passwordController,
                       onSaved: (hi) {},
                       labelText: "Password",
