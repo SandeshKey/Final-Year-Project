@@ -4,12 +4,15 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/model/image_model.dart';
 
 import 'package:path_provider/path_provider.dart';
 
 class ImageViewModel with ChangeNotifier {
+  final supabase = Supabase.instance.client;
+
   List<ImageModel> _images = [];
   List<ImageModel> get images => _images;
   List<String> _imageUrls = [];
@@ -25,13 +28,56 @@ class ImageViewModel with ChangeNotifier {
       notifyListeners();
       List<String> downloadUrls = [];
       final storage = FirebaseStorage.instance;
+      // final sstorage = SupabaseClient();
       for (var image in _images) {
-        final ref = storage.ref().child('images/${image.path.split('/').last}');
-        final uploadTask = ref.putFile(image.file);
-        final snapshot = await uploadTask.whenComplete(() => null);
-        final url = await snapshot.ref.getDownloadURL();
-        _imageUrls.add(url);
-        downloadUrls.add(url);
+        try {
+          final bytes = await image.file.readAsBytes();
+          final fileExt = image.path.split('.').last;
+          final fileName = '${DateTime.now().toIso8601String()}.$fileExt';
+
+          final filePath = fileName;
+
+          await supabase.storage.from('avatars').uploadBinary(
+                filePath,
+                bytes,
+                fileOptions: FileOptions(),
+              );
+          final imageUrlResponse = await supabase.storage
+              .from('avatars')
+              .createSignedUrl(filePath, 60 * 60 * 24 * 365 * 10);
+
+          print(imageUrlResponse);
+          // final fileName = '${DateTime.now().toIso8601String()}.$fileExt';
+          // final String path = await supabase.storage
+          //     .from('avatars')
+          //     .upload(
+          //       image.path,
+          //       image.file,
+          //       fileOptions:
+          //           const FileOptions(cacheControl: '3600', upsert: false),
+          //     )
+          //     .then((value) {
+          //   print(value);
+          //   return value;
+          // });
+          downloadUrls.add(imageUrlResponse);
+        } catch (e) {
+          print(e);
+        }
+
+        //    final String path = await _supabase.storage.from('avatars').upload(
+        //   image.path,
+        //   image.file,
+        //   fileOptions: const FileOptions(cacheControl: '3600', upsert: false),
+        // );
+
+        // final ref = storage.ref().child('images/${image.path.split('/').last}');
+        // print('images/${image.path.split('/').last}');
+        // final uploadTask = ref.putFile(image.file);
+        // final snapshot = await uploadTask.whenComplete(() => null);
+        // final url = await snapshot.ref.getDownloadURL();
+        // _imageUrls.add(url);
+        // downloadUrls.add(url);
         return downloadUrls;
       }
       ScaffoldMessenger.of(context).showSnackBar(
@@ -44,7 +90,7 @@ class ImageViewModel with ChangeNotifier {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('zEroor uploading successfully'),
+          content: Text('zEroor uploading uploading images'),
         ),
       );
     } finally {

@@ -687,8 +687,13 @@ class _DetailFormState extends State<DetailForm> {
                             content: Text("Please select 4 images"),
                           ));
                           return;
-                        } else {
-                          // imageViewModel.uploadImages(context);
+                        } 
+                        else {
+                          imageViewModel.uploadImages(context).then((value) {
+                            print("$value");
+                          }).onError((error, stackTrace) {
+                            print("error is $error");
+                          });
                         }
                       }
 

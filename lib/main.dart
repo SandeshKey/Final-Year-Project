@@ -12,9 +12,10 @@ import 'package:dufuna/view_model/fav_property_view_model.dart';
 import 'package:dufuna/view_model/mini_filter_view_model.dart';
 import 'package:dufuna/view_model/property_view_model.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'config/constants.dart';
 import 'firebase_options.dart';
 
@@ -37,6 +38,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate();
+  await Supabase.initialize(
+    url: 'https://rqugcsiajclmckhemfzk.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxdWdjc2lhamNsbWNraGVtZnprIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODA4Mzk1OTIsImV4cCI6MTk5NjQxNTU5Mn0.J_k38ZKOsFCNgeNiVxTeEIYQkjK3HekSLjcUhH3coD8',
+  );
 
   runApp(const App());
 }
@@ -78,7 +84,7 @@ class AuthWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
+    final firebaseUser = context.watch<auth.User?>();
     if (firebaseUser != null) {
       return const OliveHome();
     }
