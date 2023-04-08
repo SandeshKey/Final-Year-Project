@@ -1,4 +1,3 @@
-
 import 'package:olivehomes/presentation/provider/favorite_provider.dart';
 
 import 'package:olivehomes/presentation/screen/home/logo_splash.dart';
@@ -24,7 +23,7 @@ import 'presentation/screen/home/olive_home.dart';
 import 'view_model/image_view_model.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // Set status bar color transparent
     statusBarBrightness: Brightness.light, // Set status bar brightness
   ));
@@ -66,8 +65,8 @@ class App extends StatelessWidget {
         // home: HomePageNew(),
 
         // home: GetStarted(),
-        // home: LogoSplash(), This is the genuine one
-        home: ContactSeller(),
+        home: LogoSplash(),
+        // home: ContactSeller(),
         // home: AdminHome(),
 
         debugShowCheckedModeBanner: false,
