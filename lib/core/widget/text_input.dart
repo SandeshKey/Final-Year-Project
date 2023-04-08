@@ -4,6 +4,8 @@ import 'package:olivehomes/core/util/extension.dart';
 import 'package:olivehomes/core/util/input_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:olivehomes/presentation/screen/provider/olive_provider.dart';
+import 'package:provider/provider.dart';
 
 class InputTextField extends StatelessWidget {
   final String labelText;
@@ -14,6 +16,7 @@ class InputTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? initialValue;
   final TextInputType? keyboardType;
+  final bool? isPassword;
 
   InputTextField({
     Key? key,
@@ -25,6 +28,7 @@ class InputTextField extends StatelessWidget {
     this.controller,
     this.initialValue,
     this.keyboardType,
+    this.isPassword,
   }) : super(key: key);
 
   final _border = OutlineInputBorder(
@@ -37,7 +41,10 @@ class InputTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OliveProvider oliveProvider = Provider.of<OliveProvider>(context);
     return TextFormField(
+      
+      obscureText: isPassword == true? oliveProvider.isVisible : false,
       controller: controller,
       inputFormatters: inputFormatters,
       onSaved: onSaved,
@@ -47,6 +54,16 @@ class InputTextField extends StatelessWidget {
       style: context.textTheme.bodyMedium!
           .copyWith(color: Colors.white, fontSize: FontSizes.s16),
       decoration: InputDecoration(
+        suffixIcon: isPassword==true? IconButton(
+          icon: Icon(
+            oliveProvider.isVisible ? Icons.visibility : Icons.visibility_off,
+            color: AppColors.kGrey,
+          ),
+          onPressed: () {
+            oliveProvider.toggleVisibility();
+            
+          },
+        ):null,
         labelText: labelText,
         hintText: hintText,
         errorStyle:

@@ -9,12 +9,20 @@ class OliveProvider extends ChangeNotifier {
   OliveProvider() {
     refreshProperties();
   }
+
+  bool _isVisible = false;
+  bool get isVisible => _isVisible;
   List<PropertyModel> _properties = [];
 
   List<PropertyModel> get properties => _properties;
   List<PropertyModel> _myProperties = [];
 
   List<PropertyModel> get myProperties => _myProperties;
+
+  void toggleVisibility() {
+    _isVisible = !_isVisible;
+    notifyListeners();
+  }
 
   void deleteProperty(PropertyModel property) async {
     await _properties.remove(property);

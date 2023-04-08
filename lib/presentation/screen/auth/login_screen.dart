@@ -86,15 +86,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: ColorUtils.pureWhite,
                               borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(4),
                                 bottomLeft: Radius.circular(4),
                               ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(3.5),
+                            child: const Padding(
+                              padding: EdgeInsets.all(3.5),
                               child: CircleAvatar(
                                 radius: 14,
                                 backgroundImage:
@@ -104,15 +104,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                           Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: ColorUtils.pureWhite,
                               borderRadius: BorderRadius.only(
                                 topRight: Radius.circular(4),
                                 bottomRight: Radius.circular(4),
                               ),
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(7.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(7.0),
                               child: Text(
                                 "Admin Login",
                                 textAlign: TextAlign.end,
@@ -130,8 +130,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SvgPicture.asset("assets/images/login.svg"),
 
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 16, 0, 0),
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
                     child: Text(
                       "Sign In",
                       style: TextStyle(
@@ -157,6 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
 
                   InputTextField(
+                      isPassword: true,
                       controller: passwordController,
                       onSaved: (hi) {},
                       labelText: "Password",
