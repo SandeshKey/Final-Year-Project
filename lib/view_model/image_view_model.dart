@@ -21,6 +21,30 @@ class ImageViewModel with ChangeNotifier {
   bool get isUploading => _isUploading;
   List<String> get imageUrls => _imageUrls;
 
+  Future<String> upload1Image(ImageModel image) async {
+    final bytes = await image.file.readAsBytes();
+    final fileExt = image.path.split('.').last;
+    final fileName = image.path.split('/').last;
+
+    // final fileName = '${DateTime.now().toIso8601String()}.$fileExt';
+
+    final filePath = fileName;
+
+    print("fileName is $filePath");
+
+    await supabase.storage.from('image').uploadBinary(
+          filePath,
+          bytes,
+          fileOptions: FileOptions(),
+        );
+    // final imageUrlResponse = await supabase.storage
+    //     .from('image')
+    //     .createSignedUrl(filePath, 60 * 60 * 24 * 365 * 10);
+    return "";
+
+    // return imageUrlResponse;
+  }
+
   Future<List<String>> uploadImages(BuildContext context) async {
     try {
       _isUploading = true;
@@ -30,20 +54,21 @@ class ImageViewModel with ChangeNotifier {
       final storage = FirebaseStorage.instance;
       // final sstorage = SupabaseClient();
       for (var image in _images) {
+        print("for loop is runnign");
         try {
           final bytes = await image.file.readAsBytes();
           final fileExt = image.path.split('.').last;
           final fileName = '${DateTime.now().toIso8601String()}.$fileExt';
 
-          final filePath = fileName;
+          final filePath = image.path;
 
-          await supabase.storage.from('avatars').uploadBinary(
+          await supabase.storage.from('image').uploadBinary(
                 filePath,
                 bytes,
                 fileOptions: FileOptions(),
               );
           final imageUrlResponse = await supabase.storage
-              .from('avatars')
+              .from('image')
               .createSignedUrl(filePath, 60 * 60 * 24 * 365 * 10);
 
           print(imageUrlResponse);
@@ -61,6 +86,7 @@ class ImageViewModel with ChangeNotifier {
           //   return value;
           // });
           downloadUrls.add(imageUrlResponse);
+          print(downloadUrls);
         } catch (e) {
           print(e);
         }
@@ -115,11 +141,19 @@ class ImageViewModel with ChangeNotifier {
       final appDir = await getApplicationDocumentsDirectory();
       final fileName = file.path.split('/').last;
       final newPath = '${appDir.path}/$fileName';
-
       await file.copy(newPath);
-
       _images.add(ImageModel(path: newPath, file: file));
+      _isUploading = true;
+      notifyListeners();
+
+      await upload1Image(ImageModel(path: newPath, file: file));
+      _imageUrls.add(
+          "https://rqugcsiajclmckhemfzk.supabase.co/storage/v1/object/public/image/${newPath.split('/').last}");
+      _isUploading = false;
+      notifyListeners();
     }
+
+    print(_imageUrls.toString());
 
     notifyListeners();
   }

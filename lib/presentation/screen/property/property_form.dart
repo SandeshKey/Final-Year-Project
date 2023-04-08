@@ -687,8 +687,7 @@ class _DetailFormState extends State<DetailForm> {
                             content: Text("Please select 4 images"),
                           ));
                           return;
-                        } 
-                        else {
+                        } else {
                           imageViewModel.uploadImages(context).then((value) {
                             print("$value");
                           }).onError((error, stackTrace) {
@@ -749,19 +748,17 @@ class _DetailFormState extends State<DetailForm> {
                           bikeCount: int.parse(json['bikeCount'] ?? "0"),
 
                           propertyTitle: json['propertyFeature'],
-                          livingRoom: json['livingRoom'],
-                          kitchen: json['kitchen'],
-                          bathRoom: json['bathroom'],
-                          commonBedroom: json['commonBedroom'],
-                          attachedBedroom: json['attachedBedroom'],
-                          imgPath1:
-                              "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
-                          imgPath2:
-                              "https://images.pexels.com/photos/1571470/pexels-photo-1571470.jpeg",
-                          imgPath3:
-                              "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
-                          imgPath4:
-                              "https://images.pexels.com/photos/918643/pexels-photo-918643.jpeg",
+                          livingRoom: int.tryParse(json['livingRoom']) ?? 0,
+                          kitchen: int.tryParse(json['kitchen']) ?? 0,
+                          bathRoom: int.tryParse(json['bathroom']) ?? 0,
+                          commonBedroom:
+                              int.tryParse(json['commonBedroom']) ?? 0,
+                          attachedBedroom:
+                              int.tryParse(json['attachedBedroom']) ?? 0,
+                          imgPath1: imageViewModel.imageUrls[0],
+                          imgPath2: imageViewModel.imageUrls[1],
+                          imgPath3: imageViewModel.imageUrls[2],
+                          imgPath4: imageViewModel.imageUrls[3],
                           isFavourite: false,
                           isUrgent: false,
                           isVerified: false,
