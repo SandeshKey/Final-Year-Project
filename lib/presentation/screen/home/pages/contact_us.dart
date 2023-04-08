@@ -141,7 +141,8 @@ class ContactUS extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(12, 24, 12, 24),
           child: GestureDetector(
             onTap: () {
-              sendEmail();
+              launchUrl(Uri.parse("mailto:sandeshyes77@gmail.com"),
+                  mode: LaunchMode.externalApplication);
             },
             child: Container(
               height: 80,
