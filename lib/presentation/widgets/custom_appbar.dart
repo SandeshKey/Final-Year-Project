@@ -25,16 +25,19 @@ class CustomAppBar extends StatelessWidget {
             width: 10,
           ),
           CircleAvatar(
+            backgroundColor: ColorUtils.buttonRed,
             child: Image.asset(
               "assets/images/applogo.png",
+              height: 32,
+              width: 32,
             ),
           ),
           Text(
             "Olive Homes",
             style: TextStyle(
                 color: ColorUtils.pureWhite,
-                fontSize: 22,
-                fontWeight: FontWeight.bold),
+                fontSize: 20,
+                fontWeight: FontWeight.w500),
           ),
           SizedBox(
             width: 200,

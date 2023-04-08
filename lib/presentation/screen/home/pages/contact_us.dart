@@ -35,7 +35,7 @@ class ContactUS extends StatelessWidget {
                       child: const Icon(
                         Icons.arrow_back_ios,
                         color: ColorUtils.pureWhite,
-                        size: 24,
+                        size: 20,
                       ),
                     ),
                     const Padding(
@@ -44,8 +44,8 @@ class ContactUS extends StatelessWidget {
                         "Contact Us",
                         style: TextStyle(
                           color: ColorUtils.pureWhite,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -94,7 +94,7 @@ class ContactUS extends StatelessWidget {
                           "Reach us via Phone Call",
                           style: TextStyle(
                             color: ColorUtils.pureWhite,
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -105,7 +105,7 @@ class ContactUS extends StatelessWidget {
                           style: TextStyle(
                               color: ColorUtils.pureWhite,
                               fontWeight: FontWeight.w500,
-                              fontSize: 18),
+                              fontSize: 16),
                         ),
                       ),
                     ],
@@ -143,7 +143,7 @@ class ContactUS extends StatelessWidget {
                           "Reach us via Email",
                           style: TextStyle(
                             color: ColorUtils.pureWhite,
-                            fontSize: 16,
+                            fontSize: 14,
                           ),
                         ),
                       ),
@@ -154,7 +154,7 @@ class ContactUS extends StatelessWidget {
                           style: TextStyle(
                               color: ColorUtils.pureWhite,
                               fontWeight: FontWeight.w500,
-                              fontSize: 18),
+                              fontSize: 16),
                         ),
                       ),
                     ],

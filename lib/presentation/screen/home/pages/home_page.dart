@@ -26,7 +26,7 @@ class HomePageNew extends StatelessWidget {
                   "Explore Olive Homes",
                   style: TextStyle(
                     color: ColorUtils.pureWhite,
-                    fontSize: 22,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -37,10 +37,12 @@ class HomePageNew extends StatelessWidget {
                 text1: "Urgent",
                 text2: "Properties",
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage(
-                        currentType: "Urgent",
-                      )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewAllPage(
+                                currentType: "Urgent",
+                              )));
                 },
               ),
               FakeRow(
@@ -51,11 +53,12 @@ class HomePageNew extends StatelessWidget {
                 text1: "Premium",
                 text2: "Properties",
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage(
-                        currentType: "Premium",
-                    
-                      )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewAllPage(
+                                currentType: "Premium",
+                              )));
                 },
               ),
 
@@ -68,10 +71,12 @@ class HomePageNew extends StatelessWidget {
                 text1: "Featured",
                 text2: "Properties",
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage(
-                        currentType: "Featured",
-                      )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewAllPage(
+                                currentType: "Featured",
+                              )));
                 },
               ),
 
@@ -84,10 +89,12 @@ class HomePageNew extends StatelessWidget {
                 text1: "House &",
                 text2: "Apartments",
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage(
-                        currentType: "House & Apartments",
-                      )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewAllPage(
+                                currentType: "House & Apartments",
+                              )));
                 },
               ),
 
@@ -100,10 +107,12 @@ class HomePageNew extends StatelessWidget {
                 text1: "Lands",
                 text2: "",
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ViewAllPage(
-                        currentType: "Land",
-                      )));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ViewAllPage(
+                                currentType: "Land",
+                              )));
                 },
               ),
 

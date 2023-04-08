@@ -1,6 +1,7 @@
 import 'package:dufuna/core/model/property.dart';
 import 'package:dufuna/core/model/property_model.dart';
 import 'package:dufuna/core/service/db%20_services.dart';
+import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/extension.dart';
 import 'package:dufuna/core/widget/property_box.dart';
 import 'package:dufuna/presentation/screen/auth/login_screen.dart';
@@ -37,54 +38,59 @@ class _AdminHomeState extends State<AdminHome> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
-        child: TabBar(
-          controller: _tabController,
-          labelColor: Colors.black,
-          tabs: const [
-            Tab(
-              icon: Icon(Icons.home),
-              text: "Unverified",
-            ),
-            Tab(
-              icon: Icon(Icons.search),
-              text: "Verified",
-            ),
-            Tab(
-              icon: Icon(Icons.person),
-              text: "Rejected",
-            ),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: ColorUtils.themeBlack,
+        bottomNavigationBar: PreferredSize(
+          preferredSize: const Size.fromHeight(kToolbarHeight),
+          child: TabBar(
+            indicatorColor: ColorUtils.pureWhite,
+            controller: _tabController,
+            labelColor: Colors.white,
+            tabs: const [
+              Tab(
+                icon: Icon(Icons.watch_later_outlined),
+                text: "Unverified",
+              ),
+              Tab(
+                icon: Icon(Icons.done_all),
+                text: "Verified",
+              ),
+              Tab(
+                icon: Icon(Icons.no_accounts),
+                text: "Rejected",
+              ),
+            ],
+          ),
+        ),
+        appBar: AppBar(
+          backgroundColor: ColorUtils.buttonRed,
+          title: Text("Admin Panel"),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  context.push(LoginScreen());
+                },
+                icon: Icon(Icons.logout)),
           ],
         ),
+        body: Consumer<AdminViewModel>(builder: (_, value, __) {
+          return TabBarView(controller: _tabController, children: [
+            AdminPropertyList(
+              propertyList: value.unVerifiedProperties,
+              showButtons: true,
+            ),
+            AdminPropertyList(
+              propertyList: value.verifiedProperties,
+              showButtons: false,
+            ),
+            AdminPropertyList(
+              propertyList: value.rejectedProperties,
+              showButtons: false,
+            ),
+          ]);
+        }),
       ),
-      appBar: AppBar(
-        title: Text("Admin Panel"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                context.push(LoginScreen());
-              },
-              icon: Icon(Icons.logout)),
-        ],
-      ),
-      body: Consumer<AdminViewModel>(builder: (_, value, __) {
-        return TabBarView(controller: _tabController, children: [
-          AdminPropertyList(
-            propertyList: value.unVerifiedProperties,
-            showButtons: true,
-          ),
-          AdminPropertyList(
-            propertyList: value.verifiedProperties,
-            showButtons: false,
-          ),
-          AdminPropertyList(
-            propertyList: value.rejectedProperties,
-            showButtons: false,
-          ),
-        ]);
-      }),
     );
   }
 }

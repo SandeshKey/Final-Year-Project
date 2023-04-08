@@ -52,7 +52,7 @@ class _PropertyBoxState extends State<PropertyBox> {
                       ),
                       child: widget.property?.imgPath1 == null
                           ? Image.asset(
-                              "./assets/images/housetry.png",
+                              "./assets/images/gs1.png",
                               height: 180,
                               width: MediaQuery.of(context).size.width,
                               fit: BoxFit.fill,
@@ -89,14 +89,16 @@ class _PropertyBoxState extends State<PropertyBox> {
                 ],
               ),
               const Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 0, 8),
+                padding: const EdgeInsets.fromLTRB(16, 8, 0, 6),
                 child: Text(
                   "Kritipur - Flat or Room for Rent",
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.left, //yo text start ma gayena
                   style: TextStyle(
                       color: ColorUtils.themeBlack,
                       fontWeight: FontWeight.w600,
-                      fontSize: 20,
+                      fontSize: 18,
                       overflow: TextOverflow.fade,
                       decoration: TextDecoration.none),
                 ),
@@ -106,7 +108,7 @@ class _PropertyBoxState extends State<PropertyBox> {
                   Row(
                     children: const [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(16, 8, 0, 8),
+                        padding: EdgeInsets.fromLTRB(16, 8, 0, 6),
                         child: Icon(
                           Icons.place,
                           size: 15,
@@ -129,7 +131,7 @@ class _PropertyBoxState extends State<PropertyBox> {
               Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -138,7 +140,7 @@ class _PropertyBoxState extends State<PropertyBox> {
                           style: TextStyle(
                             color: ColorUtils.themeBlack,
                             fontWeight: FontWeight.w600,
-                            fontSize: 20,
+                            fontSize: 18,
                             decoration: TextDecoration.none,
                           ),
                         ),
@@ -322,7 +324,7 @@ class _PropertyBoxState extends State<PropertyBox> {
                                   children: const [
                                     Icon(
                                       Icons.call,
-                                      size: 19,
+                                      size: 16,
                                     ),
                                     Text(
                                       "Contact",
@@ -330,7 +332,7 @@ class _PropertyBoxState extends State<PropertyBox> {
                                       style: TextStyle(
                                           color: ColorUtils.themeBlack,
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 16,
+                                          fontSize: 12,
                                           decoration: TextDecoration.none),
                                     )
                                   ]),
