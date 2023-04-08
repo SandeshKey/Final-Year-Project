@@ -43,12 +43,82 @@ class AdminPropertyList extends StatelessWidget {
                         ),
 
                         onPressed: () {
-                          PropertyModel currentPrperty = propertyList![index];
-                          currentPrperty.status = "verified";
-                          DatabaseServices().updateProperty(currentPrperty);
-                          adminViewModel.refresh();
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                              content: Text("Property Approved successfully")));
+                          //dialoguing to show a checkbox for checking property is premium and urgent
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: Text("Select Property Type"),
+                                  content: StatefulBuilder(
+                                    builder: (context, setState) {
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          CheckboxListTile(
+                                            title: Text("Premium"),
+                                            value:
+                                                propertyList![index].isPremium,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                propertyList![index].isPremium =
+                                                    value;
+                                              });
+                                            },
+                                          ),
+                                          CheckboxListTile(
+                                            title: Text("Featured"),
+                                            value: propertyList![index]
+                                                .isFavourite,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                propertyList![index]
+                                                    .isFavourite = value;
+                                              });
+                                            },
+                                          ),
+                                          CheckboxListTile(
+                                            title: Text("Urgent"),
+                                            value:
+                                                propertyList![index].isUrgent,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                propertyList![index].isUrgent =
+                                                    value;
+                                              });
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("Cancel"),
+                                    ),
+                                    TextButton(
+                                      onPressed: () async {
+                                        Navigator.pop(context);
+                                        propertyList![index].status =
+                                            "verified";
+                                        await DatabaseServices().updateProperty(
+                                            propertyList![index]);
+                                        adminViewModel.refresh();
+                                        
+                                      },
+                                      child: Text("Approve"),
+                                    ),
+                                  ],
+                                );
+                                
+                              });
+                              ScaffoldMessenger.of(context)
+                                            .showSnackBar( const SnackBar(
+                                                content: Text(
+                                                    "Property Approved successfully")));
+
                         },
                         child: Text("Approve"),
                       ),
