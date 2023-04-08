@@ -16,13 +16,16 @@ class ImageViewModel with ChangeNotifier {
   List<ImageModel> _images = [];
   List<ImageModel> get images => _images;
   List<String> _imageUrls = [];
-  String? _profileImage = "https://www.shareicon.net/data/128x128/2016/07/26/802016_man_512x512.png";
+  String? _profileImage =
+      "https://www.shareicon.net/data/128x128/2016/07/26/802016_man_512x512.png";
   String get profileImage => _profileImage!;
-
   bool _isUploading = false;
-  //getters
+
   bool get isUploading => _isUploading;
   List<String> get imageUrls => _imageUrls;
+
+  bool _isUpdatingImage = false;
+  bool get isUpdatingImage => _isUpdatingImage;
 
   Future<String> upload1Image(ImageModel image) async {
     final bytes = await image.file.readAsBytes();
@@ -124,6 +127,7 @@ class ImageViewModel with ChangeNotifier {
   }
 
   Future<void> pickProfileImage() async {
+    _isUpdatingImage = true;
     final ppicker = ImagePicker();
     final ppickedFile = await ppicker.pickImage(source: ImageSource.gallery);
 
@@ -135,7 +139,8 @@ class ImageViewModel with ChangeNotifier {
 
     await upload1Image(ImageModel(path: newPath, file: file));
 
-    _profileImage =   "https://rqugcsiajclmckhemfzk.supabase.co/storage/v1/object/public/image/${newPath.split('/').last}";
+    _profileImage =
+        "https://rqugcsiajclmckhemfzk.supabase.co/storage/v1/object/public/image/${newPath.split('/').last}";
 
     notifyListeners();
   }

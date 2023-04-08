@@ -14,10 +14,9 @@ class DatabaseServices {
       FirebaseFirestore.instance.collection('properties');
 
   Future<AppUser> getUserData(String userId) async {
-    var data = await users.doc(userId).get() ;
+    var data = await users.doc(userId).get();
 
-   final appuser =  AppUser.fromMap(
-      data.data() as Map<String, dynamic>);
+    final appuser = AppUser.fromMap(data.data() as Map<String, dynamic>);
 
     return appuser;
   }
@@ -53,6 +52,7 @@ class DatabaseServices {
   Future<void> updateUser(
     AppUser haUser,
   ) async {
+    print("hauser id is ${haUser.uid}");
     await users
         .doc(haUser.uid)
         .update(

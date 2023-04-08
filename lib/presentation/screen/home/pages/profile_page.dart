@@ -21,6 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     ImageViewModel _imageViewModel = Provider.of<ImageViewModel>(context);
@@ -96,19 +97,42 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                           child: CircleAvatar(
-                            radius: 72,
-                            child: FadeInImage(
-                                placeholder:
-                                    AssetImage("assets/images/App Icon.png"),
-                                image: _imageViewModel.profileImage == null
-                                    ? NetworkImage(data.displayImage!)
-                                    : NetworkImage(
-                                        _imageViewModel.profileImage!)),
-                            // backgroundImage: FadeInImage(placeholder: placeholder, image: image),
-                            // backgroundImage:
-                            // AssetImage("assets/images/App Icon.png"),
+                            radius: 50,
+                            backgroundColor: ColorUtils.buttonRed,
+                            child: _imageViewModel.isUpdatingImage == false
+                                ? CircleAvatar(
+                                    radius: 48,
+                                    backgroundImage:
+                                        NetworkImage(data.displayImage!),
+                                  )
+                                : CircleAvatar(
+                                    radius: 48,
+                                    backgroundImage: NetworkImage(
+                                        _imageViewModel.profileImage),
+                                  ),
                           ),
                         ),
+                        // child: Container(
+                        //   height: 100,
+                        //   width: 100,
+                        //   decoration: BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(50),
+                        //     border: Border.all(
+                        //       width: 2,
+                        //       color: ColorUtils.buttonRed,
+                        //     ),
+                        //   ),
+                        //   child: FadeInImage(
+                        //     placeholder: AssetImage(
+                        //       "assets/images/App Icon.png",
+                        //     ),
+                        //     image: _imageViewModel.isUpdatingImage == false
+                        //         ? NetworkImage(data.displayImage!)
+                        //         : NetworkImage(_imageViewModel.profileImage),
+                        //     fit: BoxFit.fill,
+                        //   ),
+                        // ),
+
                         InkWell(
                           onTap: () {},
                           child: Stack(children: [
@@ -154,6 +178,11 @@ class _ProfilePageState extends State<ProfilePage> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                             child: TextField(
+                              onChanged: (value){
+                                _nameController.text = value;
+                              
+
+                              },
                               controller: _nameController,
                               decoration: InputDecoration(
                                 hintText: "User's Name Here",
@@ -186,6 +215,12 @@ class _ProfilePageState extends State<ProfilePage> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                             child: TextField(
+                              onChanged: (value){
+                               
+                                  _emailController.text = value;
+                                
+                              
+                              },
                               controller: _emailController,
                               decoration: InputDecoration(
                                 hintText: "User's Email Here",
@@ -218,7 +253,10 @@ class _ProfilePageState extends State<ProfilePage> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                             child: TextField(
-                              controller: _emailController,
+                              onChanged: (value){
+                                _passwordController.text = value;
+                              },
+                              controller: _passwordController,
                               obscureText: true,
                               obscuringCharacter: '*',
                               decoration: InputDecoration(
@@ -252,6 +290,9 @@ class _ProfilePageState extends State<ProfilePage> {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                             child: TextField(
+                              onChanged: (value){
+                                _phoneController.text = _phoneController.text;
+                              },
                               controller: _phoneController,
                               decoration: InputDecoration(
                                 hintText: "User's Phone Number Here",
@@ -288,12 +329,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       "Submit Changes",
                       onClick: () async {
                         AppUser updatedUser = AppUser(
-                          name: _nameController.text,
-                          email: _emailController.text,
-                          phoneNumber: _phoneController.text,
-                          displayImage: data.displayImage,
-                          
-                        );
+                            name: _nameController.text,
+                            email: _emailController.text,
+                            phoneNumber: _phoneController.text,
+                            displayImage:
+                                _imageViewModel.isUpdatingImage == true
+                                    ? _imageViewModel.profileImage
+                                    : data.displayImage,
+                            uid: data.uid);
 
                         await DatabaseServices().updateUser(updatedUser);
 
