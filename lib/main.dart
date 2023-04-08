@@ -13,6 +13,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'config/constants.dart';
+import 'core/widget/contact_seller.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
@@ -65,7 +66,8 @@ class App extends StatelessWidget {
         // home: HomePageNew(),
 
         // home: GetStarted(),
-        home: LogoSplash(),
+        // home: LogoSplash(), This is the genuine one
+        home: ContactSeller(),
         // home: AdminHome(),
 
         debugShowCheckedModeBanner: false,

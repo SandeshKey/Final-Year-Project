@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
@@ -184,7 +183,7 @@ class _PropertyBoxState extends State<PropertyBox> {
                                                   .width *
                                               1,
                                           // width: 300,
-                                          color: Colors.indigo,
+                                          color: Colors.red,
                                           child: Column(
                                             children: [],
                                           ),

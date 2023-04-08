@@ -28,6 +28,7 @@ dependencies:
   get_it: ^7.2.0
   google_sign_in: ^6.0.2
   image_picker: ^0.8.4+8
+  indexed: ^0.0.8
   intl: null
   lottie: ^2.3.0
   mailer: ^6.0.0
