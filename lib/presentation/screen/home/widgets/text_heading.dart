@@ -8,7 +8,11 @@ class TextHeading extends StatelessWidget {
   final String text2;
   final VoidCallback onTap;
 
-  const TextHeading({super.key, required this.text1, required this.text2, required this.onTap});
+  const TextHeading(
+      {super.key,
+      required this.text1,
+      required this.text2,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +50,7 @@ class TextHeading extends StatelessWidget {
                 "View All",
                 style: TextStyle(
                   color: ColorUtils.pureWhite,
-                  fontSize: 20,
+                  fontSize: 12,
                   fontWeight: FontWeight.w600,
                 ),
               ),

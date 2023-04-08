@@ -1,5 +1,6 @@
 import 'package:dufuna/core/util/colors.dart';
 import 'package:dufuna/core/util/extension.dart';
+import 'package:dufuna/core/util/texts.dart';
 import 'package:dufuna/core/widget/positioned_bubble.dart';
 import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:dufuna/presentation/screen/auth/register_screen.dart';
@@ -14,85 +15,132 @@ class GetStarted extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorUtils.themeBlack,
+        backgroundColor: Color(0xAA171717),
         body: Column(
           children: [
             Expanded(
               flex: 6,
               child: Stack(
-                children: const [
-                  PositionedBubble(
-                      top: 160,
-                      left: -10,
-                      image: "assets/images/ggs2.svg",
-                      length: 60),
-                  // PositionedBubble(
-                  //     top: 121,
-                  //     left: 104,
-                  //     image: "assets/images/gs2.png",
-                  //     length: 70),
-                  // PositionedBubble(
-                  //     top: 343,
-                  //     left: -10,
-                  //     image: "assets/images/gs3.png",
-                  //     length: 62),
-                  PositionedBubble(
-                      top: 252,
-                      left: 82,
-                      image: "assets/images/gs4.svg",
-                      length: 92),
-                  // PositionedBubble(
-                  //     top: 146,
-                  //     left: 268,
-                  //     image: "assets/images/gs5.png",
-                  //     length: 90),
-                  // PositionedBubble(
-                  //     top: 290,
-                  //     left: 241,
-                  //     image: "assets/images/gs6.png",
-                  //     length: 58),
-                  // PositionedBubble(
-                  //     top: 394,
-                  //     left: 164,
-                  //     image: "assets/images/gs7.png",
-                  //     length: 42),
-                  // PositionedBubble(
-                  //     top: 343,
-                  //     left: 361,
-                  //     image: "assets/images/gs8.png",
-                  //     length: 92),
+                children: [
+                  Positioned(
+                    left: MediaQuery.of(context).size.width / 3,
+                    top: 104,
+                    child: CircleAvatar(
+                      radius: 32,
+                      backgroundImage: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2015/05/02/09/31/dresden-749683_1280.jpg",
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: MediaQuery.of(context).size.width / 1.3,
+                    top: 146,
+                    child: CircleAvatar(
+                      radius: 40,
+                      backgroundImage: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2020/09/18/21/12/buildings-5582974_1280.jpg",
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: -16,
+                    top: 180,
+                    child: CircleAvatar(
+                      radius: 30,
+                      backgroundImage: NetworkImage(
+                        "https://cdn.pixabay.com/photo/2016/11/29/03/53/house-1867187_1280.jpg",
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 82,
+                    top: 240,
+                    child: CircleAvatar(
+                      radius: 48,
+                      backgroundImage: NetworkImage(
+                        "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 241,
+                    top: 291,
+                    child: CircleAvatar(
+                      radius: 28,
+                      backgroundImage: NetworkImage(
+                        "https://images.unsplash.com/photo-1494526585095-c41746248156?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: -8,
+                    top: 350,
+                    child: CircleAvatar(
+                      radius: 26,
+                      backgroundImage: NetworkImage(
+                        "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    left: 164,
+                    top: 394,
+                    child: CircleAvatar(
+                      radius: 20,
+                      backgroundImage: NetworkImage(
+                        "https://images.pexels.com/photos/1396132/pexels-photo-1396132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    right: -24,
+                    top: 394,
+                    child: CircleAvatar(
+                      radius: 48,
+                      backgroundImage: NetworkImage(
+                        "https://images.pexels.com/photos/7031408/pexels-photo-7031408.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
             Expanded(
-                flex: 4,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Text(
-                      "Welcome to",
-                      style: TextStyle(
-                          color: ColorUtils.pureWhite,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    const Text(
-                      "Olive Homes",
-                      style: TextStyle(
-                          color: ColorUtils.pureWhite,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    WideButton(
-                      "Get Started",
-                      onClick: () {
-                        context.push(const LottieLoading());
-                      },
-                    ),
-                    const SizedBox(
-                      height: 80,
-                    )
-                  ],
-                ))
+              flex: 4,
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
+                    "Welcome to",
+                    style: TextUtils.buttonText,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "OLIVE HOMES",
+                    style: TextStyle(
+                        color: ColorUtils.pureWhite,
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 56,
+                  ),
+                  WideButton(
+                    "Get Started",
+                    onClick: () {
+                      context.push(const LottieLoading());
+                    },
+                  ),
+                  const SizedBox(
+                    height: 80,
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),

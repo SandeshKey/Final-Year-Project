@@ -171,7 +171,10 @@ class _LoginScreenState extends State<AdminLogin> {
                     children: [
                       Text(
                         "Dont have an account yet?",
-                        style: TextUtils.buttonText,
+                        style: TextStyle(
+                          color: ColorUtils.pureWhite,
+                          fontSize: 12,
+                        ),
                       ),
                       TextButton(
                         onPressed: () async {
@@ -181,7 +184,7 @@ class _LoginScreenState extends State<AdminLogin> {
                           "Register",
                           style: TextStyle(
                               color: Color.fromARGB(255, 247, 73, 76),
-                              fontSize: 18),
+                              fontSize: 12),
                         ),
                       ),
                     ],

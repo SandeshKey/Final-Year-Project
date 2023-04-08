@@ -19,7 +19,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 8, 4, 12),
+      padding: const EdgeInsets.fromLTRB(12, 8, 12, 12),
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height * 0.364,
@@ -86,14 +86,14 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(16, 8, 0, 8),
+                padding: EdgeInsets.fromLTRB(16, 8, 0, 4),
                 child: Text(
                   "${widget.property!.propertyIs} for ${widget.property!.propertyFor} in ${widget.property!.address} ",
                   textAlign: TextAlign.left, //yo text start ma gayena
                   style: TextStyle(
                       color: Color.fromARGB(255, 1, 5, 11),
                       fontWeight: FontWeight.w600,
-                      fontSize: 20,
+                      fontSize: 18,
                       overflow: TextOverflow.fade,
                       decoration: TextDecoration.none),
                 ),
@@ -103,7 +103,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(16, 8, 0, 8),
+                        padding: EdgeInsets.fromLTRB(16, 8, 0, 4),
                         child: Icon(
                           Icons.place,
                           size: 15,
@@ -115,7 +115,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                         style: TextStyle(
                           color: ColorUtils.themeBlack,
                           fontWeight: FontWeight.w500,
-                          fontSize: 13,
+                          fontSize: 12,
                           overflow: TextOverflow.fade,
                         ),
                       ),
@@ -135,7 +135,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                           style: TextStyle(
                             color: ColorUtils.themeBlack,
                             fontWeight: FontWeight.w600,
-                            fontSize: 20,
+                            fontSize: 16,
                             decoration: TextDecoration.none,
                           ),
                         ),

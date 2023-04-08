@@ -22,7 +22,7 @@ class SearchPage extends StatelessWidget {
     OliveProvider _oliveProvider = Provider.of<OliveProvider>(context);
     return SafeArea(
       child: Scaffold(
-        // backgroundColor: ColorUtils.themeBlack,
+        backgroundColor: ColorUtils.grey,
         body: Column(
           children: [
             Container(

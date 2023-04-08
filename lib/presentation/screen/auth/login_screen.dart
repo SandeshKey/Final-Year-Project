@@ -5,7 +5,6 @@ import 'package:dufuna/core/widget/wide_button.dart';
 import 'package:dufuna/presentation/screen/admin/admin_home.dart';
 import 'package:dufuna/presentation/screen/admin/admin_login.dart';
 import 'package:dufuna/presentation/screen/auth/register_screen.dart';
-// import 'package:dufuna/presentation/screen/home/home.dart';
 import 'package:dufuna/presentation/screen/home/olive_home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -83,10 +82,49 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: () {
                         context.push(AdminLogin());
                       },
-                      child: Text(
-                        "Admin Login",
-                        textAlign: TextAlign.end,
-                        style: TextStyle(color: AppColors.kError),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: ColorUtils.pureWhite,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(4),
+                                bottomLeft: Radius.circular(4),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(3.5),
+                              child: CircleAvatar(
+                                radius: 14,
+                                backgroundImage:
+                                    AssetImage("assets/images/admin_icon.png"),
+                                backgroundColor: ColorUtils.pureWhite,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              color: ColorUtils.pureWhite,
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(4),
+                                bottomRight: Radius.circular(4),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(7.0),
+                              child: Text(
+                                "Admin Login",
+                                textAlign: TextAlign.end,
+                                style: TextStyle(
+                                  color: ColorUtils.buttonRed,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -131,10 +169,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () {
                           print(emailController.text);
                           if (emailController.text == '') {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
                                     content: Text(
-                                        "Error:  Email Address Cannot be Empty")));
+                              "Error:  Email Address Cannot be Empty",
+                              style: TextStyle(color: ColorUtils.buttonRed),
+                            )));
                           } else {
                             context.push(ForgetPassword(
                               email: emailController.text,
@@ -200,7 +240,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         "Dont have an account yet?",
-                        style: TextUtils.buttonText,
+                        // style: TextUtils.buttonText,
+                        style: TextStyle(
+                            color: ColorUtils.pureWhite, fontSize: 12),
                       ),
                       TextButton(
                         onPressed: () async {
@@ -209,8 +251,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: const Text(
                           "Register",
                           style: TextStyle(
-                              color: Color.fromARGB(255, 247, 73, 76),
-                              fontSize: 18),
+                            color: ColorUtils.buttonRed,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w800,
+                          ),
                         ),
                       ),
                     ],
