@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:dufuna/core/failure/failure.dart';
+import 'package:olivehomes/core/failure/failure.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

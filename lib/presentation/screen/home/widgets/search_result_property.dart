@@ -1,5 +1,5 @@
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/presentation/screen/property/property_details.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/presentation/screen/property/property_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -17,7 +17,7 @@ class SearchResultProperty extends StatelessWidget {
       child: InkWell(
         onTap: () {
           context.push(PropertyDetails(
-           propertyModel: myProperty,
+            propertyModel: myProperty,
           ));
         },
         child: Container(

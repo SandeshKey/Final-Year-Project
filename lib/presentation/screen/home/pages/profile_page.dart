@@ -1,6 +1,6 @@
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/core/util/texts.dart';
-import 'package:dufuna/core/widget/wide_button.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/core/util/texts.dart';
+import 'package:olivehomes/core/widget/wide_button.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {

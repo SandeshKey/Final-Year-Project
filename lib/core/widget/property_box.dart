@@ -1,10 +1,10 @@
-import 'package:dufuna/core/model/property.dart';
-import 'package:dufuna/core/model/property_model.dart';
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/presentation/forms/contact_form.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import '../model/property_model.dart';
+import '../util/colors.dart';
 
 class PropertyBox extends StatefulWidget {
   final PropertyModel? property;

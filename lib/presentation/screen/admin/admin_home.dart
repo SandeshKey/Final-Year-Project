@@ -1,13 +1,13 @@
-import 'package:dufuna/core/model/property.dart';
-import 'package:dufuna/core/model/property_model.dart';
-import 'package:dufuna/core/service/db%20_services.dart';
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/core/widget/property_box.dart';
-import 'package:dufuna/presentation/screen/auth/login_screen.dart';
-import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
-import 'package:dufuna/view_model/admin_view_model.dart';
-import 'package:dufuna/view_model/property_view_model.dart';
+import 'package:olivehomes/core/model/property.dart';
+import 'package:olivehomes/core/model/property_model.dart';
+import 'package:olivehomes/core/service/db%20_services.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/core/widget/property_box.dart';
+import 'package:olivehomes/presentation/screen/auth/login_screen.dart';
+import 'package:olivehomes/presentation/screen/provider/olive_provider.dart';
+import 'package:olivehomes/view_model/admin_view_model.dart';
+import 'package:olivehomes/view_model/property_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,5 +1,5 @@
-name: dufuna
-description: Dufuna flutter app.
+name: olivehomes
+description: Flutter app for real estate - OliveHomes.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 

@@ -1,7 +1,7 @@
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/presentation/screen/property/property_details.dart';
-import 'package:dufuna/presentation/screen/property/property_form.dart';
-import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/presentation/screen/property/property_details.dart';
+import 'package:olivehomes/presentation/screen/property/property_form.dart';
+import 'package:olivehomes/presentation/screen/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -113,7 +113,6 @@ class MyPropertyBox extends StatelessWidget {
                                     myproperty: myProperty,
                                     isfromEdit: true,
                                     isLand: true,
-                                    
                                   ));
                                 },
                                 icon: Icon(

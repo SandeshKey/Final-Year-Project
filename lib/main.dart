@@ -1,17 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dufuna/presentation/provider/favorite_provider.dart';
-import 'package:dufuna/presentation/screen/admin/admin_home.dart';
-import 'package:dufuna/presentation/screen/home/get_started.dart';
-import 'package:dufuna/presentation/screen/home/logo_splash.dart';
-import 'package:dufuna/presentation/screen/home/pages/home_page.dart';
-import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
-import 'package:dufuna/presentation/screen/home/splash_screen.dart';
-import 'package:dufuna/presentation/screen/property/property_details.dart';
-import 'package:dufuna/presentation/screen/provider/olive_provider.dart';
-import 'package:dufuna/view_model/admin_view_model.dart';
-import 'package:dufuna/view_model/fav_property_view_model.dart';
-import 'package:dufuna/view_model/mini_filter_view_model.dart';
-import 'package:dufuna/view_model/property_view_model.dart';
+
+import 'package:olivehomes/presentation/provider/favorite_provider.dart';
+
+import 'package:olivehomes/presentation/screen/home/logo_splash.dart';
+import 'package:olivehomes/presentation/screen/provider/olive_provider.dart';
+import 'package:olivehomes/view_model/admin_view_model.dart';
+import 'package:olivehomes/view_model/fav_property_view_model.dart';
+import 'package:olivehomes/view_model/mini_filter_view_model.dart';
+import 'package:olivehomes/view_model/property_view_model.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:firebase_core/firebase_core.dart';
@@ -22,15 +17,13 @@ import 'firebase_options.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'presentation/provider/property_provider.dart';
 import 'presentation/screen/auth/login_screen.dart';
 import 'presentation/screen/home/olive_home.dart';
 // import 'presentation/screen/home/pages/home_page.dart';
 import 'view_model/image_view_model.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle( const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // Set status bar color transparent
     statusBarBrightness: Brightness.light, // Set status bar brightness
   ));

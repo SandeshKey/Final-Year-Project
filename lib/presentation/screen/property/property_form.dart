@@ -1,9 +1,4 @@
 import 'dart:io';
-import 'package:dufuna/core/service/db%20_services.dart';
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/presentation/image_picker_view.dart';
-import 'package:dufuna/presentation/screen/home/form_widgets/radio_buttons.dart';
-import 'package:dufuna/presentation/screen/home/form_widgets/text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -14,10 +9,15 @@ import 'package:toast/toast.dart';
 import '../../../core/model/property_model.dart';
 import 'package:path/path.dart' as paths;
 
+import '../../../core/service/db _services.dart';
+import '../../../core/util/colors.dart';
 import '../../../data/datas/data.dart';
 import '../../../view_model/image_view_model.dart';
+import '../../image_picker_view.dart';
 import '../home/form_widgets/drop_down.dart';
+import '../home/form_widgets/radio_buttons.dart';
 import '../home/form_widgets/slider.dart';
+import '../home/form_widgets/text_field.dart';
 // import 'demo_home.dart';
 
 class DetailForm extends StatefulWidget {
@@ -254,9 +254,9 @@ class _DetailFormState extends State<DetailForm> {
       //   ),
       // );
     } else {
-      return Padding(
+      return const Padding(
         // padding: const EdgeInsets.all(8.0),
-        padding: const EdgeInsets.fromLTRB(10, 8, 8, 8.0),
+        padding: EdgeInsets.fromLTRB(10, 8, 8, 8.0),
 
         // child: FormBuilderFilePicker(
         //   // initialValue: [],
@@ -361,7 +361,7 @@ class _DetailFormState extends State<DetailForm> {
                     // validator: FormBuilderValidators.required(),
                     backgroundColor: Colors.black45,
                     selectedColor: ColorUtils.buttonRed,
-                    labelStyle: TextStyle(color: Colors.white),
+                    labelStyle: const TextStyle(color: Colors.white),
                     spacing: 44.0,
                     name: 'propertyIs',
                     decoration: const InputDecoration(
@@ -636,7 +636,7 @@ class _DetailFormState extends State<DetailForm> {
                     ),
                     labelText: 'Submit Date',
                   ),
-                  initialTime: TimeOfDay(hour: 8, minute: 0),
+                  initialTime: const TimeOfDay(hour: 8, minute: 0),
                   // initialValue: Date.now(),
                   // enabled: true,
                 ),
@@ -650,7 +650,7 @@ class _DetailFormState extends State<DetailForm> {
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: ColorUtils.pureWhite,
-                      side: BorderSide(
+                      side: const BorderSide(
                         width: 1,
                         color: ColorUtils.buttonRed,
                       ),
@@ -658,8 +658,8 @@ class _DetailFormState extends State<DetailForm> {
                     onPressed: () {
                       _formkey.currentState?.reset();
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(140, 16, 140, 16),
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(140, 16, 140, 16),
                       child: Text(
                         "Reset",
                         style: TextStyle(
@@ -675,7 +675,7 @@ class _DetailFormState extends State<DetailForm> {
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       primary: ColorUtils.buttonRed,
-                      side: BorderSide(
+                      side: const BorderSide(
                         width: 1,
                         color: ColorUtils.buttonRed,
                       ),
@@ -683,7 +683,7 @@ class _DetailFormState extends State<DetailForm> {
                     onPressed: () async {
                       if (widget.isfromEdit == false) {
                         if (imageViewModel.images.length != 4) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                             content: Text("Please select 4 images"),
                           ));
                           return;
@@ -897,8 +897,8 @@ class _DetailFormState extends State<DetailForm> {
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(140, 16, 140, 16),
                       child: imageViewModel.isUploading == true
-                          ? CircularProgressIndicator()
-                          : Text(
+                          ? const CircularProgressIndicator()
+                          : const Text(
                               "Save",
                               style: TextStyle(
                                 fontSize: 18,

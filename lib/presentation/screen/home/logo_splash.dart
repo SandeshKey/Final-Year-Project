@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:dufuna/presentation/screen/home/get_started.dart';
+import 'package:olivehomes/presentation/screen/home/get_started.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -14,7 +14,6 @@ class LogoSplash extends StatefulWidget {
 }
 
 class _LogoSplashState extends State<LogoSplash> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -29,8 +28,6 @@ class _LogoSplashState extends State<LogoSplash> {
       );
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {

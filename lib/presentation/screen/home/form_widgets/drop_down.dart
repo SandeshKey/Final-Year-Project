@@ -1,5 +1,5 @@
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/core/util/string_utils.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/core/util/string_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -39,7 +39,7 @@ class FormDropDown extends StatelessWidget {
           validator: FormBuilderValidators.required(
             errorText: "Please select a value",
           ),
-          initialValue: initialValue??dropdownItems![0],
+          initialValue: initialValue ?? dropdownItems![0],
           name: label!.capitalize().replaceAll(' ', ''),
           items: List.generate(
               dropdownItems!.length,

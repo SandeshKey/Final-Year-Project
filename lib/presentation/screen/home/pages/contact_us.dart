@@ -1,4 +1,4 @@
-import 'package:dufuna/core/util/colors.dart';
+import 'package:olivehomes/core/util/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

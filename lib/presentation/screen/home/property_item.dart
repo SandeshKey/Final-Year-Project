@@ -1,10 +1,10 @@
-import 'package:dufuna/config/constants.dart';
-import 'package:dufuna/config/theme.dart';
-import 'package:dufuna/core/model/property.dart';
-import 'package:dufuna/core/util/date_formatter.dart';
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/core/widget/gap.dart';
-import 'package:dufuna/core/widget/image.dart';
+import 'package:olivehomes/config/constants.dart';
+import 'package:olivehomes/config/theme.dart';
+import 'package:olivehomes/core/model/property.dart';
+import 'package:olivehomes/core/util/date_formatter.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/core/widget/gap.dart';
+import 'package:olivehomes/core/widget/image.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

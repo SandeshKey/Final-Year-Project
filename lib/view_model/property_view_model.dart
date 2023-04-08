@@ -1,5 +1,5 @@
-import 'package:dufuna/core/model/property.dart';
-import 'package:dufuna/core/model/property_model.dart';
+import 'package:olivehomes/core/model/property.dart';
+import 'package:olivehomes/core/model/property_model.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

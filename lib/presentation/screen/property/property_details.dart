@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dufuna/core/model/property_model.dart';
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/view_model/fav_property_view_model.dart';
+import 'package:olivehomes/core/model/property_model.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/view_model/fav_property_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,29 +44,26 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                   },
                   child: CarouselSlider(
                     items: [
-
                       Image.network(
                         widget.propertyModel!.imgPath1!,
                         fit: BoxFit.cover,
                         width: double.infinity,
-                      
-                      ), Image.network(
+                      ),
+                      Image.network(
                         widget.propertyModel!.imgPath2!,
                         fit: BoxFit.cover,
                         width: double.infinity,
-                      
-                      ), Image.network(
+                      ),
+                      Image.network(
                         widget.propertyModel!.imgPath3!,
                         fit: BoxFit.cover,
                         width: double.infinity,
-                      
-                      ), Image.network(
+                      ),
+                      Image.network(
                         widget.propertyModel!.imgPath4!,
                         fit: BoxFit.cover,
                         width: double.infinity,
-                      
                       ),
-
                     ],
                     // items: imageList
                     //     .map(
@@ -136,36 +133,26 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                             size: 24,
                           ),
                           onPressed: () {
-
-                            if(!added){
+                            if (!added) {
                               favoritePropertiesViewModel
-                                .addFavoriteProperty(widget.propertyModel!);
+                                  .addFavoriteProperty(widget.propertyModel!);
 
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("Added to favorites"),
-                              ),
-                            );
-                            
-                            setState(() {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Added to favorites"),
+                                ),
+                              );
 
-                              added = true;
-                            });
-
-                            }
-
-                            else{
+                              setState(() {
+                                added = true;
+                              });
+                            } else {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text("Already added to favorites"),
                                 ),
                               );
                             }
-
-                            
-
-
-                            
                           },
                         ),
                       ),

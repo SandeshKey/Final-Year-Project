@@ -1,4 +1,4 @@
-import 'package:dufuna/config/constants.dart';
+import 'package:olivehomes/config/constants.dart';
 import 'package:flutter/material.dart';
 
 extension StringX on String {

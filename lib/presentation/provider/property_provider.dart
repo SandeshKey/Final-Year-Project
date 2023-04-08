@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:dartz/dartz.dart';
-import 'package:dufuna/core/model/property.dart';
-import 'package:dufuna/core/model/property_filter.dart';
-import 'package:dufuna/core/util/async_value.dart';
-import 'package:dufuna/repository/property_repository.dart';
+import 'package:olivehomes/core/model/property.dart';
+import 'package:olivehomes/core/model/property_filter.dart';
+import 'package:olivehomes/core/util/async_value.dart';
+import 'package:olivehomes/repository/property_repository.dart';
 import 'package:flutter/foundation.dart';
 
 class PropertyProvider with ChangeNotifier {

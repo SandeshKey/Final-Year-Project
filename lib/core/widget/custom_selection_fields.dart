@@ -1,14 +1,16 @@
 import 'dart:io';
-import 'package:dufuna/config/constants.dart';
-import 'package:dufuna/config/theme.dart';
-import 'package:dufuna/core/util/date_formatter.dart';
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/core/widget/button.dart';
-import 'package:dufuna/core/widget/gap.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:olivehomes/core/util/extension.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import '../../config/constants.dart';
+import '../../config/theme.dart';
+import '../util/date_formatter.dart';
+import 'button.dart';
+import 'gap.dart';
 
 List<String> types = ['flat', 'duplex', 'bungalow', 'single-room'];
 List<int> numOfToilets = List.generate(5, (index) => ++index);

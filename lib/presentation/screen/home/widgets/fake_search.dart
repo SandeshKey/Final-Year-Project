@@ -1,5 +1,5 @@
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/presentation/screen/home/pages/search_page.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/presentation/screen/home/pages/search_page.dart';
 import 'package:flutter/material.dart';
 
 class FakeSearchBox extends StatelessWidget {

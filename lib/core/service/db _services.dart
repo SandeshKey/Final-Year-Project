@@ -1,10 +1,10 @@
 // needs improvement will be improved
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dufuna/core/model/user.dart';
 import 'package:flutter/foundation.dart';
 
 import '../model/property_model.dart';
+import '../model/user.dart';
 
 class DatabaseServices {
   FirebaseFirestore database = FirebaseFirestore.instance;
@@ -79,7 +79,6 @@ class DatabaseServices {
           propertiesList.add(property);
           print("Property added successfully");
         } catch (e) {
-          print(e);
         }
       }
     });

@@ -1,6 +1,6 @@
-import 'package:dufuna/presentation/screen/home/widgets/text_heading.dart';
-import 'package:dufuna/presentation/widgets/custom_appbar.dart';
-import 'package:dufuna/presentation/widgets/home_small_box.dart';
+import 'package:olivehomes/presentation/screen/home/widgets/text_heading.dart';
+import 'package:olivehomes/presentation/widgets/custom_appbar.dart';
+import 'package:olivehomes/presentation/widgets/home_small_box.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/util/colors.dart';
 import '../view_all_screen.dart';

@@ -1,5 +1,7 @@
-import 'package:dufuna/core/util/colors.dart';
+import 'package:olivehomes/core/util/colors.dart';
 import 'package:flutter/material.dart';
+
+import 'colors.dart';
 
 class TextUtils {
   static TextStyle boldHeading = const TextStyle(

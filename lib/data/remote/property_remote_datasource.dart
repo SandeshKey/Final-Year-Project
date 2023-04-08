@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'package:dufuna/core/failure/exception.dart';
-import 'package:dufuna/core/model/property.dart';
-import 'package:dufuna/core/service/api.dart';
+import 'package:olivehomes/core/failure/exception.dart';
+import 'package:olivehomes/core/model/property.dart';
+import 'package:olivehomes/core/service/api.dart';
 
 /// Props = Properties :)
 abstract class IPropertyRemoteDataSource {

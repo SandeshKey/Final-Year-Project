@@ -1,5 +1,5 @@
-import 'package:dufuna/core/model/property_model.dart';
-import 'package:dufuna/core/util/colors.dart';
+import 'package:olivehomes/core/model/property_model.dart';
+import 'package:olivehomes/core/util/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 

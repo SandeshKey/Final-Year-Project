@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/core/widget/wide_button.dart';
-import 'package:dufuna/main.dart';
-// import 'package:dufuna/presentation/screen/home/home.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/core/widget/wide_button.dart';
+import 'package:olivehomes/main.dart';
+// import 'package:olivehomes/presentation/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 

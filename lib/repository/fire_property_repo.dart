@@ -1,10 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dufuna/core/model/property_model.dart';
+import 'package:olivehomes/core/model/property_model.dart';
 
 class DatabaseServices {
   FirebaseFirestore database = FirebaseFirestore.instance;
 
-  CollectionReference properties = FirebaseFirestore.instance.collection('properties');
+  CollectionReference properties =
+      FirebaseFirestore.instance.collection('properties');
 
   Future<void> addProperty(PropertyModel property) async {
     await properties.doc(property.id!.toString()).set(property.toMap());
@@ -24,9 +25,6 @@ class DatabaseServices {
         .then((_) => print("Property Updated"));
   }
 
-
-
-
   getPropertyData(String propertyId) async {
     var data = await properties.doc(propertyId).get();
     return data.data() as Map;
@@ -39,7 +37,8 @@ class DatabaseServices {
         await properties.doc(propertyId).collection("Property property").get();
 
     for (var properties in propertyQuerySnap.docs) {
-      Map<String, dynamic> recordData = properties.data() as Map<String, dynamic>;
+      Map<String, dynamic> recordData =
+          properties.data() as Map<String, dynamic>;
       property.add(PropertyModel.fromMap(recordData));
     }
 

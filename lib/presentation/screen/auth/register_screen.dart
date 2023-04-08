@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/core/util/texts.dart';
-import 'package:dufuna/core/widget/text_input.dart';
-import 'package:dufuna/core/widget/wide_button.dart';
-import 'package:dufuna/presentation/screen/auth/login_screen.dart';
-// import 'package:dufuna/presentation/screen/home/home.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/core/util/texts.dart';
+import 'package:olivehomes/core/widget/text_input.dart';
+import 'package:olivehomes/core/widget/wide_button.dart';
+import 'package:olivehomes/presentation/screen/auth/login_screen.dart';
+// import 'package:olivehomes/presentation/screen/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

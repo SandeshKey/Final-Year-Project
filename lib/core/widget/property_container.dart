@@ -1,5 +1,7 @@
-import 'package:dufuna/core/util/colors.dart';
+import 'package:olivehomes/core/util/colors.dart';
 import 'package:flutter/material.dart';
+
+import '../util/colors.dart';
 
 class PropertyContainer extends StatelessWidget {
   const PropertyContainer({Key? key}) : super(key: key);
@@ -80,8 +82,7 @@ class PropertyContainer extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 const Padding(
-                                  padding:
-                                      EdgeInsets.fromLTRB(0, 0, 0, 8),
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 8),
                                   child: Text(
                                     "Heritage Apartment",
                                     maxLines: 1,
@@ -93,8 +94,7 @@ class PropertyContainer extends StatelessWidget {
                                   ),
                                 ),
                                 const Padding(
-                                  padding:
-                                      EdgeInsets.fromLTRB(0, 0, 0, 4),
+                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 4),
                                   child: Text(
                                     "Pokhara, Lakeside",
                                     maxLines: 1,

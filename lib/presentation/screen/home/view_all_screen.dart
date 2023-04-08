@@ -1,9 +1,9 @@
-import 'package:dufuna/core/model/property_model.dart';
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/core/widget/property_box.dart';
-import 'package:dufuna/presentation/screen/home/widgets/search_result_property.dart';
-import 'package:dufuna/view_model/mini_filter_view_model.dart';
-import 'package:dufuna/view_model/property_view_model.dart';
+import 'package:olivehomes/core/model/property_model.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/core/widget/property_box.dart';
+import 'package:olivehomes/presentation/screen/home/widgets/search_result_property.dart';
+import 'package:olivehomes/view_model/mini_filter_view_model.dart';
+import 'package:olivehomes/view_model/property_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

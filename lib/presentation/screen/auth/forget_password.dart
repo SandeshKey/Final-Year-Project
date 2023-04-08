@@ -1,8 +1,8 @@
-import 'package:dufuna/core/service/auth_services.dart';
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/core/util/texts.dart';
-import 'package:dufuna/core/widget/wide_button.dart';
+import 'package:olivehomes/core/service/auth_services.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/core/util/texts.dart';
+import 'package:olivehomes/core/widget/wide_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -203,7 +203,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             child: WideButton(
               "Continue",
               onClick: () async {
-                await AuthServices().forgotPassword(widget.email).then((value) => context.push(CheckScreen()));
+                await AuthServices()
+                    .forgotPassword(widget.email)
+                    .then((value) => context.push(CheckScreen()));
               },
             ),
           ),

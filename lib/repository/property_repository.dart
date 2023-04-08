@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
-import 'package:dufuna/core/failure/exception.dart';
-import 'package:dufuna/core/failure/failure.dart';
-import 'package:dufuna/core/model/property.dart';
-import 'package:dufuna/core/service/network_notifier.dart';
-import 'package:dufuna/data/remote/property_remote_datasource.dart';
+import 'package:olivehomes/core/failure/exception.dart';
+import 'package:olivehomes/core/failure/failure.dart';
+import 'package:olivehomes/core/model/property.dart';
+import 'package:olivehomes/core/service/network_notifier.dart';
+import 'package:olivehomes/data/remote/property_remote_datasource.dart';
 
 class PropertyRepository {
   final NetworkNotifier _networkNotifier;

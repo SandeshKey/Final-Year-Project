@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:dufuna/core/failure/exception.dart';
+
+import '../failure/exception.dart';
+
 
 class Http {
   final Dio _dio;

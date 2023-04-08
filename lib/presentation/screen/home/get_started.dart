@@ -1,10 +1,10 @@
-import 'package:dufuna/core/util/colors.dart';
-import 'package:dufuna/core/util/extension.dart';
-import 'package:dufuna/core/util/texts.dart';
-import 'package:dufuna/core/widget/positioned_bubble.dart';
-import 'package:dufuna/core/widget/wide_button.dart';
-import 'package:dufuna/presentation/screen/auth/register_screen.dart';
-import 'package:dufuna/presentation/screen/home/pages/lottie_animation.dart';
+import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/core/util/extension.dart';
+import 'package:olivehomes/core/util/texts.dart';
+import 'package:olivehomes/core/widget/positioned_bubble.dart';
+import 'package:olivehomes/core/widget/wide_button.dart';
+import 'package:olivehomes/presentation/screen/auth/register_screen.dart';
+import 'package:olivehomes/presentation/screen/home/pages/lottie_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
