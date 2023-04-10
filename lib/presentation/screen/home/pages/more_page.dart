@@ -4,6 +4,7 @@ import 'package:olivehomes/core/util/extension.dart';
 import 'package:olivehomes/presentation/screen/admin/admin_home.dart';
 import 'package:olivehomes/presentation/screen/auth/login_screen.dart';
 import 'package:olivehomes/presentation/screen/home/pages/contact_us.dart';
+import 'package:olivehomes/presentation/screen/home/pages/ecommerce_products.dart';
 import 'package:olivehomes/presentation/screen/home/pages/my_properties_screen.dart';
 import 'package:olivehomes/presentation/screen/home/pages/profile_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -171,6 +172,25 @@ class MorePage extends StatelessWidget {
               ),
               ListTile(
                 leading: const Icon(
+                  Icons.shopping_basket,
+                  color: ColorUtils.buttonRed,
+                ),
+                title: const Text(
+                  'Olive E-commerce',
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500, color: ColorUtils.pureWhite),
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios,
+                  color: ColorUtils.buttonRed,
+                  size: 18,
+                ),
+                onTap: () {
+                  context.push(const EcommerceProducts());
+                },
+              ),
+              ListTile(
+                leading: const Icon(
                   Icons.face_sharp,
                   color: ColorUtils.buttonRed,
                 ),
@@ -188,15 +208,6 @@ class MorePage extends StatelessWidget {
                   context.push(const ProfilePage());
                 },
               ),
-              // ListTile(
-              //   leading: Icon(PhosphorIcons.userLight),
-              //   title: Text('Forget Password'),
-              //   trailing: Icon(Icons.arrow_forward_ios),
-              //   onTap: () {
-              //     context.push(ForgetPassword());
-              //   },
-              // ),
-
               ListTile(
                 leading: const Icon(
                   Icons.remove_red_eye,

@@ -31,8 +31,8 @@ class _KhaltiPaymentState extends State<KhaltiPayment> {
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
                     children: [
-                      InkWell(
-                        onTap: () => PaymentScreen(),
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
                         child: const Icon(
                           Icons.arrow_back_ios,
                           size: 24,

@@ -2,6 +2,7 @@ import 'package:olivehomes/core/util/colors.dart';
 import 'package:olivehomes/presentation/screen/home/property/property_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:olivehomes/presentation/screen/khalti_payment.dart';
 
 class PaymentScreen extends StatelessWidget {
   const PaymentScreen({super.key});
@@ -16,8 +17,8 @@ class PaymentScreen extends StatelessWidget {
             padding: const EdgeInsets.all(24.0),
             child: Row(
               children: [
-                InkWell(
-                  onTap: () => PropertyDetails(),
+                GestureDetector(
+                  onTap: () => Navigator.pop(context),
                   child: const Icon(
                     Icons.arrow_back_ios,
                     size: 24,
@@ -78,9 +79,13 @@ class PaymentScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                 child: Column(
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
-                        PaymentScreen();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => KhaltiPayment()),
+                        );
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -119,22 +124,31 @@ class PaymentScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Pay via eSewa",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: ColorUtils.pureWhite,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => KhaltiPayment()),
+                        );
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Pay via eSewa",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: ColorUtils.pureWhite,
+                            ),
                           ),
-                        ),
-                        Image.asset(
-                          "assets/images/eSewa.png",
-                          height: 48,
-                        ),
-                      ],
+                          Image.asset(
+                            "assets/images/eSewa.png",
+                            height: 48,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
