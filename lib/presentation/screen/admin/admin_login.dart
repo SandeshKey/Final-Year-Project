@@ -150,7 +150,7 @@ class _LoginScreenState extends State<AdminLogin> {
                               return AlertDialog(
                                 title: Text("Authentication Failed"),
                                 content: Text(
-                                    "Please enter correct username and password or contact administaror"),
+                                    "Please enter correct username and password or contact administrator"),
                                 actions: [
                                   TextButton(
                                       onPressed: () {

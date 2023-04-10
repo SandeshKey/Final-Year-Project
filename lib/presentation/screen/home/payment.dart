@@ -78,22 +78,27 @@ class PaymentScreen extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Pay via Khalti",
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            color: ColorUtils.pureWhite,
+                    InkWell(
+                      onTap: () {
+                        PaymentScreen();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Pay via Khalti",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: ColorUtils.pureWhite,
+                            ),
                           ),
-                        ),
-                        Image.asset(
-                          "assets/images/Khalti.png",
-                          height: 48,
-                        ),
-                      ],
+                          Image.asset(
+                            "assets/images/Khalti.png",
+                            height: 48,
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

@@ -30,6 +30,7 @@ dependencies:
   image_picker: ^0.8.4+8
   indexed: ^0.0.8
   intl: null
+  khalti: ^1.1.0
   lottie: ^2.3.0
   mailer: ^6.0.0
   permission_handler_android: null

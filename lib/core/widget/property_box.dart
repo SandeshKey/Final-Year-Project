@@ -335,14 +335,14 @@ class _PropertyBoxState extends State<PropertyBox> {
                                     width: 100,
                                     child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
+                                            MainAxisAlignment.center,
                                         children: const [
                                           Icon(
                                             Icons.call,
                                             size: 16,
                                           ),
                                           Text(
-                                            "Contact",
+                                            " Contact",
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
                                                 color: ColorUtils.themeBlack,
