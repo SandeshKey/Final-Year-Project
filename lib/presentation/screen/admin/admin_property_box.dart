@@ -132,7 +132,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                       children: [
                         Text(
                           "Rs. ${widget.property!.price} ${widget.property!.priceUnit}",
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: ColorUtils.themeBlack,
                             fontWeight: FontWeight.w600,
                             fontSize: 15,

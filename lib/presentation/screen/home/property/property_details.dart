@@ -1,11 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:olivehomes/core/model/property_model.dart';
 import 'package:olivehomes/core/util/colors.dart';
 import 'package:olivehomes/presentation/screen/home/property/widgets/amenty_widget.dart';
 import 'package:olivehomes/presentation/screen/home/property/widgets/carousel.dart';
-import 'package:olivehomes/view_model/fav_property_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'widgets/info_text.dart';
 
@@ -18,22 +15,92 @@ class PropertyDetails extends StatefulWidget {
 }
 
 class _PropertyDetailsState extends State<PropertyDetails> {
-  final List imageList = [
-    {"id": 1, "image_path": "assets/images/villa_details.png"},
-    {"id": 2, "image_path": "assets/images/villa_details1.png"},
-    {"id": 3, "image_path": "assets/images/villa_details2.png"},
-    {"id": 3, "image_path": "assets/images/villa_detail4.png"},
-  ];
-
-  final CarouselController carouselController = CarouselController();
-
-  int currentIndex = 0;
-  bool added = false;
-
   @override
   Widget build(BuildContext context) {
-    FavoritePropertiesViewModel favoritePropertiesViewModel =
-        Provider.of<FavoritePropertiesViewModel>(context);
+    Widget landView() {
+      return Container(
+        child: Column(
+          children: [
+            Container(
+              child: Column(
+                children: [
+                  InfoText(
+                      title: "Address",
+                      data:
+                          widget.propertyModel!.address ?? "Pokhara 25 Hemja"),
+                  InfoText(
+                      title: "Area",
+                      data:
+                          "${widget.propertyModel!.propertyArea} ${widget.propertyModel!.areaUnit}"),
+                  InfoText(
+                      title: "Price",
+                      data:
+                          "${widget.propertyModel!.price} ${widget.propertyModel!.priceUnit}"),
+                  InfoText(
+                      title: "Entry Date",
+                      data: widget.propertyModel!.entryDate!
+                          .replaceRange(10, 23, '')),
+                ],
+              ),
+            ),
+            Wrap(
+              children: const [
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+              ],
+            )
+          ],
+        ),
+      );
+    }
+
+    Widget houseView() {
+      return Container(
+        child: Column(
+          children: [
+            Container(
+              child: Column(
+                children: [
+                  InfoText(title: "hi", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                  InfoText(
+                      title: "Property", data: "This is a property Detail"),
+                ],
+              ),
+            ),
+            Wrap(
+              children: const [
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+              ],
+            )
+          ],
+        ),
+      );
+    }
 
     return SafeArea(
       child: Scaffold(
@@ -62,7 +129,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                       Chip(
                         label: Text(
                           widget.propertyModel!.propertyType!,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: ColorUtils.pureWhite,
                               fontWeight: FontWeight.bold),
                         ),
@@ -91,101 +158,105 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                 ),
               ],
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  child: Column(
-                    children: [
-                      InfoText(
-                        title: "Address",
-                        data:
-                            widget.propertyModel!.addressLine1 ?? "No address",
-                      ),
-                      InfoText(
-                        title: "Safaley",
-                        data: "This Safaley 101",
-                      ),
-                      InfoText(
-                        title: "Safaley",
-                        data: "This Safaley 101",
-                      )
-                    ],
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
-                  child: Text(
-                    "Amenities",
-                    style: TextStyle(
-                        color: ColorUtils.pureWhite,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(12, 8, 8, 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      AmentyWidget(name: "hi", data: "2 bhk"),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: ColorUtils.buttonRed,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 36,
-                            width: 36,
-                            child: const Icon(
-                              Icons.bathtub,
-                              color: ColorUtils.pureWhite,
-                              size: 24,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-                            child: Text(
-                              "2 Bathrooms",
-                              style: TextStyle(
-                                  color: ColorUtils.pureWhite,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: ColorUtils.buttonRed,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 36,
-                            width: 36,
-                            child: const Icon(
-                              Icons.local_parking,
-                              color: ColorUtils.pureWhite,
-                              size: 24,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                            child: Text(
-                              "Cars",
-                              style: TextStyle(
-                                  color: ColorUtils.pureWhite,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+
+            widget.propertyModel!.propertyType! == "Land"
+                ? landView()
+                : houseView(),
+            // Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: [
+            //     Container(
+            //       child: Column(
+            //         children: [
+            //           InfoText(
+            //             title: "Address",
+            //             data:
+            //                 widget.propertyModel!.addressLine1 ?? "No address",
+            //           ),
+            //           InfoText(
+            //             title: "Safaley",
+            //             data: "This Safaley 101",
+            //           ),
+            //           InfoText(
+            //             title: "Safaley",
+            //             data: "This Safaley 101",
+            //           )
+            //         ],
+            //       ),
+            //     ),
+            //     const Padding(
+            //       padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
+            //       child: Text(
+            //         "Amenities",
+            //         style: TextStyle(
+            //             color: ColorUtils.pureWhite,
+            //             fontWeight: FontWeight.bold,
+            //             fontSize: 18),
+            //       ),
+            //     ),
+            //     Padding(
+            //       padding: const EdgeInsets.fromLTRB(12, 8, 8, 0),
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //         children: [
+            //           AmentyWidget(iconName: Icons.bluetooth, data: "2 bhk"),
+            //           Row(
+            //             children: [
+            //               Container(
+            //                 decoration: BoxDecoration(
+            //                   color: ColorUtils.buttonRed,
+            //                   borderRadius: BorderRadius.circular(20),
+            //                 ),
+            //                 height: 36,
+            //                 width: 36,
+            //                 child: const Icon(
+            //                   Icons.bathtub,
+            //                   color: ColorUtils.pureWhite,
+            //                   size: 24,
+            //                 ),
+            //               ),
+            //               const Padding(
+            //                 padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
+            //                 child: Text(
+            //                   "2 Bathrooms",
+            //                   style: TextStyle(
+            //                       color: ColorUtils.pureWhite,
+            //                       fontWeight: FontWeight.bold),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //           Row(
+            //             children: [
+            //               Container(
+            //                 decoration: BoxDecoration(
+            //                   color: ColorUtils.buttonRed,
+            //                   borderRadius: BorderRadius.circular(20),
+            //                 ),
+            //                 height: 36,
+            //                 width: 36,
+            //                 child: const Icon(
+            //                   Icons.local_parking,
+            //                   color: ColorUtils.pureWhite,
+            //                   size: 24,
+            //                 ),
+            //               ),
+            //               const Padding(
+            //                 padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+            //                 child: Text(
+            //                   "Cars",
+            //                   style: TextStyle(
+            //                       color: ColorUtils.pureWhite,
+            //                       fontWeight: FontWeight.bold),
+            //                 ),
+            //               ),
+            //             ],
+            //           ),
+            //         ],
+            //       ),
+            //     )
+            //   ],
+            // ),
             const Padding(
               padding: EdgeInsets.fromLTRB(12, 8, 12, 8),
               child: Divider(
@@ -277,18 +348,29 @@ class _PropertyDetailsState extends State<PropertyDetails> {
               ),
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                Padding(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Padding(
                   padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
-                  child: Text(
-                    "Overview",
-                    style: TextStyle(
-                        color: ColorUtils.pureWhite,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18),
+                  child: Align(
+                    child: Text(
+                      "Overview",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: ColorUtils.buttonRed,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18),
+                    ),
                   ),
                 ),
+                Text(
+                  widget.propertyModel!.landDetail ?? """ This is a 2 bhk """,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                  ),
+                  textAlign: TextAlign.justify,
+                )
               ],
             ),
           ]),

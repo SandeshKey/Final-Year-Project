@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../core/model/property_model.dart';
 import '../../../../core/util/colors.dart';
-import '../property/house_view.dart';
+
 
 class MyPropertyBox extends StatelessWidget {
   final PropertyModel? myProperty;
@@ -21,9 +21,9 @@ class MyPropertyBox extends StatelessWidget {
       child: InkWell(
         onTap: () {
           context.push(
-           HoueseView(
-            propertyModel: myProperty,
-          ));
+           PropertyDetails(
+              propertyModel: myProperty,
+           ));
         },
         child: Container(
           height: MediaQuery.of(context).size.height * 0.18,

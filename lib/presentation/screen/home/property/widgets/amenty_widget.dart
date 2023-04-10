@@ -3,37 +3,43 @@ import 'package:flutter/material.dart';
 import '../../../../../core/util/colors.dart';
 
 class AmentyWidget extends StatelessWidget {
-  final String name;
+  final IconData iconName;
   final String data;
 
-  const AmentyWidget({super.key, required this.name, required this.data});
+  const AmentyWidget({super.key, required this.iconName, required this.data});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: ColorUtils.buttonRed,
-            borderRadius: BorderRadius.circular(20),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width / 3,
+      child: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: ColorUtils.buttonRed,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              height: 30,
+              width: 30,
+              child: Icon(
+                iconName,
+                color: ColorUtils.pureWhite,
+                size: 24,
+              ),
+            ),
           ),
-          height: 36,
-          width: 36,
-          child: const Icon(
-            Icons.bed,
-            color: ColorUtils.pureWhite,
-            size: 24,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+            child: Text(
+              data,
+              style: const TextStyle(
+                  color: ColorUtils.pureWhite, fontWeight: FontWeight.bold),
+            ),
           ),
-        ),
-       Padding(
-          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-          child: Text(
-            data,
-            style: const TextStyle(
-                color: ColorUtils.pureWhite, fontWeight: FontWeight.bold),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

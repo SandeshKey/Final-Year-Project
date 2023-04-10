@@ -19,10 +19,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'presentation/screen/auth/login_screen.dart';
 import 'presentation/screen/home/olive_home.dart';
-// import 'presentation/screen/home/pages/home_page.dart';
 import 'view_model/image_view_model.dart';
-import 'presentation/screen/home/property/house_view.dart';
-
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // Set status bar color transparent

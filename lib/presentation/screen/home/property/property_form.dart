@@ -766,6 +766,8 @@ class _DetailFormState extends State<DetailForm> {
                           status: "unverified",
                           isPremium: false,
                           addedBy: FirebaseAuth.instance.currentUser!.uid,
+                          storey: json['storey'],
+                        
 
                           // attachments: json['attachments'],
                         );
