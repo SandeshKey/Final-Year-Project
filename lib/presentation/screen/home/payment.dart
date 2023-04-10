@@ -1,5 +1,5 @@
 import 'package:olivehomes/core/util/colors.dart';
-import 'package:olivehomes/presentation/screen/property/property_details.dart';
+import 'package:olivehomes/presentation/screen/home/property/property_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

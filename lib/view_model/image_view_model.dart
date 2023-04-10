@@ -148,11 +148,11 @@ class ImageViewModel with ChangeNotifier {
   Future<void> pickImages() async {
     final picker = ImagePicker();
     final pickedFiles = await picker.pickMultiImage();
+      final appDir = await getApplicationDocumentsDirectory();
 
     for (final pickedFile in pickedFiles) {
       final File file = File(pickedFile.path);
 
-      final appDir = await getApplicationDocumentsDirectory();
       final fileName = file.path.split('/').last;
       final newPath = '${appDir.path}/$fileName';
       await file.copy(newPath);

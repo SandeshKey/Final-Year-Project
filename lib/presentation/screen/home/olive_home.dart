@@ -10,7 +10,7 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../config/constants.dart';
-import '../property/property_form.dart';
+import 'property/property_form.dart';
 import 'filter.dart';
 
 class OliveHome extends StatefulWidget {

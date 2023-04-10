@@ -1,11 +1,12 @@
 import 'package:olivehomes/core/util/extension.dart';
-import 'package:olivehomes/presentation/screen/property/property_details.dart';
+import 'package:olivehomes/presentation/screen/home/property/property_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../../../../core/model/property_model.dart';
 import '../../../../core/util/colors.dart';
+import '../property/house_view.dart';
 
 class SearchResultProperty extends StatelessWidget {
   final PropertyModel? myProperty;
@@ -17,7 +18,7 @@ class SearchResultProperty extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          context.push(PropertyDetails(
+          context.push(HoueseView(
             propertyModel: myProperty,
           ));
         },
@@ -59,7 +60,7 @@ class SearchResultProperty extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                        const   Icon(Icons.location_on),
+                          const Icon(Icons.location_on),
                           Text(
                             myProperty!.address ?? "Lainchaur, Kathmandu",
                             style: const TextStyle(

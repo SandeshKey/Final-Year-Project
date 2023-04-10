@@ -1,13 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:olivehomes/core/model/property_model.dart';
 import 'package:olivehomes/core/util/colors.dart';
+import 'package:olivehomes/presentation/screen/home/property/widgets/amenty_widget.dart';
+import 'package:olivehomes/presentation/screen/home/property/widgets/carousel.dart';
 import 'package:olivehomes/view_model/fav_property_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'widgets/info_text.dart';
+
 class PropertyDetails extends StatefulWidget {
   final PropertyModel? propertyModel;
-  PropertyDetails({Key? key, this.propertyModel}) : super(key: key);
+  const PropertyDetails({Key? key, this.propertyModel}) : super(key: key);
 
   @override
   State<PropertyDetails> createState() => _PropertyDetailsState();
@@ -36,155 +40,15 @@ class _PropertyDetailsState extends State<PropertyDetails> {
         backgroundColor: ColorUtils.themeBlack,
         body: SingleChildScrollView(
           child: Column(children: [
-            Stack(
-              children: [
-                InkWell(
-                  onTap: () {
-                    print(currentIndex);
-                  },
-                  child: CarouselSlider(
-                    items: [
-                      Image.network(
-                        widget.propertyModel!.imgPath1!,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ),
-                      Image.network(
-                        widget.propertyModel!.imgPath2!,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ),
-                      Image.network(
-                        widget.propertyModel!.imgPath3!,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ),
-                      Image.network(
-                        widget.propertyModel!.imgPath4!,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ),
-                    ],
-                    // items: imageList
-                    //     .map(
-                    //       (item) => Image.asset(
-                    //         item['image_path'],
-                    //         fit: BoxFit.cover,
-                    //         width: double.infinity,
-                    //       ),
-                    //     )
-                    //     .toList(),
-                    carouselController: carouselController,
-                    options: CarouselOptions(
-                      scrollPhysics: const BouncingScrollPhysics(),
-                      autoPlay: true,
-                      aspectRatio: 1.5, //manages height ratio
-                      viewportFraction: 1, //manages zoom viewport
-                      onPageChanged: (index, reason) {
-                        setState(() {
-                          currentIndex = index;
-                        });
-                      },
-                    ),
-                  ),
-                ),
-                Positioned(
-                  bottom: 10,
-                  left: 0,
-                  right: 0,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: imageList.asMap().entries.map((entry) {
-                      return GestureDetector(
-                        onTap: () =>
-                            carouselController.animateToPage(entry.key),
-                        child: Container(
-                          width: currentIndex == entry.key ? 17 : 7,
-                          height: 7.0,
-                          margin: const EdgeInsets.symmetric(
-                            horizontal: 3.0,
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: currentIndex == entry.key
-                                  ? Colors.red
-                                  : Colors.white),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(12.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: ColorUtils.buttonRed,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 36,
-                        width: 36,
-                        child: IconButton(
-                          icon: Icon(
-                            Icons.favorite,
-                            color: ColorUtils.pureWhite,
-                            size: 24,
-                          ),
-                          onPressed: () {
-                            if (!added) {
-                              favoritePropertiesViewModel
-                                  .addFavoriteProperty(widget.propertyModel!);
-
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("Added to favorites"),
-                                ),
-                              );
-
-                              setState(() {
-                                added = true;
-                              });
-                            } else {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text("Already added to favorites"),
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 0, 0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: ColorUtils.buttonRed,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          height: 36,
-                          width: 36,
-                          child: const Icon(
-                            Icons.share,
-                            color: ColorUtils.pureWhite,
-                            size: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
+            PropertyCarousel(propertyModel: widget.propertyModel!),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
+                Padding(
                   padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
                   child: Text(
-                    "Pokhara Lakeside Apartment",
-                    style: TextStyle(
+                    widget.propertyModel!.propertyTitle!,
+                    style: const TextStyle(
                         color: ColorUtils.pureWhite,
                         fontSize: 24,
                         fontWeight: FontWeight.bold),
@@ -195,9 +59,9 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Chip(
+                      Chip(
                         label: Text(
-                          "Apartment",
+                          widget.propertyModel!.propertyType!,
                           style: TextStyle(
                               color: ColorUtils.pureWhite,
                               fontWeight: FontWeight.bold),
@@ -230,6 +94,25 @@ class _PropertyDetailsState extends State<PropertyDetails> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  child: Column(
+                    children: [
+                      InfoText(
+                        title: "Address",
+                        data:
+                            widget.propertyModel!.addressLine1 ?? "No address",
+                      ),
+                      InfoText(
+                        title: "Safaley",
+                        data: "This Safaley 101",
+                      ),
+                      InfoText(
+                        title: "Safaley",
+                        data: "This Safaley 101",
+                      )
+                    ],
+                  ),
+                ),
                 const Padding(
                   padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
                   child: Text(
@@ -245,32 +128,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              color: ColorUtils.buttonRed,
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            height: 36,
-                            width: 36,
-                            child: const Icon(
-                              Icons.bed,
-                              color: ColorUtils.pureWhite,
-                              size: 24,
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
-                            child: Text(
-                              "8 Beds",
-                              style: TextStyle(
-                                  color: ColorUtils.pureWhite,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ],
-                      ),
+                      AmentyWidget(name: "hi", data: "2 bhk"),
                       Row(
                         children: [
                           Container(
@@ -357,18 +215,18 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                             padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Padding(
                                   padding: EdgeInsets.fromLTRB(0, 0, 0, 4),
                                   child: Text(
-                                    "Shyam Bahadur Thapa",
+                                    widget.propertyModel!.ownerOrAgentName!,
                                     style: TextStyle(
                                         color: ColorUtils.pureWhite,
                                         fontSize: 16,
                                         fontWeight: FontWeight.w800),
                                   ),
                                 ),
-                                Text(
+                                const Text(
                                   "Owner",
                                   style: TextStyle(
                                       color: ColorUtils.pureWhite,

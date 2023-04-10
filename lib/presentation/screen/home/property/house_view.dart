@@ -5,15 +5,17 @@ import 'package:olivehomes/view_model/fav_property_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PropertyDetails extends StatefulWidget {
+import 'widgets/amenty_widget.dart';
+
+class HoueseView extends StatefulWidget {
   final PropertyModel? propertyModel;
-  PropertyDetails({Key? key, this.propertyModel}) : super(key: key);
+  HoueseView({Key? key, this.propertyModel}) : super(key: key);
 
   @override
-  State<PropertyDetails> createState() => _PropertyDetailsState();
+  State<HoueseView> createState() => _PropertyDetailsState();
 }
 
-class _PropertyDetailsState extends State<PropertyDetails> {
+class _PropertyDetailsState extends State<HoueseView> {
   final List imageList = [
     {"id": 1, "image_path": "assets/images/villa_details.png"},
     {"id": 2, "image_path": "assets/images/villa_details1.png"},
@@ -245,6 +247,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                    
                       Row(
                         children: [
                           Container(
@@ -412,7 +415,6 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                     ],
                   ),
                 ),
-                
               ],
             ),
             const Padding(

@@ -135,7 +135,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
                           style: TextStyle(
                             color: ColorUtils.themeBlack,
                             fontWeight: FontWeight.w600,
-                            fontSize: 16,
+                            fontSize: 15,
                             decoration: TextDecoration.none,
                           ),
                         ),

@@ -1,12 +1,13 @@
 import 'package:olivehomes/core/util/extension.dart';
-import 'package:olivehomes/presentation/screen/property/property_details.dart';
-import 'package:olivehomes/presentation/screen/property/property_form.dart';
+import 'package:olivehomes/presentation/screen/home/property/property_details.dart';
+import 'package:olivehomes/presentation/screen/home/property/property_form.dart';
 import 'package:olivehomes/presentation/screen/provider/olive_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/model/property_model.dart';
 import '../../../../core/util/colors.dart';
+import '../property/house_view.dart';
 
 class MyPropertyBox extends StatelessWidget {
   final PropertyModel? myProperty;
@@ -19,7 +20,8 @@ class MyPropertyBox extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () {
-          context.push(PropertyDetails(
+          context.push(
+           HoueseView(
             propertyModel: myProperty,
           ));
         },

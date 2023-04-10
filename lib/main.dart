@@ -21,6 +21,7 @@ import 'presentation/screen/auth/login_screen.dart';
 import 'presentation/screen/home/olive_home.dart';
 // import 'presentation/screen/home/pages/home_page.dart';
 import 'view_model/image_view_model.dart';
+import 'presentation/screen/home/property/house_view.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -60,12 +61,13 @@ class App extends StatelessWidget {
         ChangeNotifierProvider<FavoritePropertiesViewModel>(
             create: (context) => FavoritePropertiesViewModel()),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         title: AppStrings.kTitle,
         // home: HomePageNew(),
 
         // home: GetStarted(),
         home: LogoSplash(),
+        // home: HoueseView(),
         // home: ContactSeller(),
         // home: AdminHome(),
 

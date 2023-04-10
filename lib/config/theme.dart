@@ -47,10 +47,8 @@ class Insets {
 class Corners {
   static const Radius smRadius = Radius.circular(Insets.sm);
   static const BorderRadius smBorder = BorderRadius.all(smRadius);
-
   static const Radius mdRadius = Radius.circular(Insets.md);
   static const BorderRadius mdBorder = BorderRadius.all(mdRadius);
-
   static const Radius lgRadius = Radius.circular(Insets.lg);
   static const BorderRadius lgBorder = BorderRadius.all(lgRadius);
 

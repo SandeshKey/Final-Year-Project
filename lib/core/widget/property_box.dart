@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:olivehomes/core/util/extension.dart';
-import 'package:olivehomes/presentation/screen/property/property_details.dart';
+import 'package:olivehomes/presentation/screen/home/property/property_details.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 import '../model/property_model.dart';

@@ -6,18 +6,18 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
-import '../../../core/model/property_model.dart';
+import '../../../../core/model/property_model.dart';
 import 'package:path/path.dart' as paths;
 
-import '../../../core/service/db _services.dart';
-import '../../../core/util/colors.dart';
-import '../../../data/datas/data.dart';
-import '../../../view_model/image_view_model.dart';
-import '../../image_picker_view.dart';
-import '../home/form_widgets/drop_down.dart';
-import '../home/form_widgets/radio_buttons.dart';
-import '../home/form_widgets/slider.dart';
-import '../home/form_widgets/text_field.dart';
+import '../../../../core/service/db _services.dart';
+import '../../../../core/util/colors.dart';
+import '../../../../data/datas/data.dart';
+import '../../../../view_model/image_view_model.dart';
+import '../../../image_picker_view.dart';
+import '../form_widgets/drop_down.dart';
+import '../form_widgets/radio_buttons.dart';
+import '../form_widgets/slider.dart';
+import '../form_widgets/text_field.dart';
 // import 'demo_home.dart';
 
 class DetailForm extends StatefulWidget {
@@ -436,11 +436,11 @@ class _DetailFormState extends State<DetailForm> {
                   ],
                 ),
               ),
-              FormTextField(
-                label: "Property Id",
-                keyboardType: TextInputType.number,
-                initialValue: widget.myproperty?.propertyId,
-              ),
+              // FormTextField(
+              //   label: "Property Id",
+              //   keyboardType: TextInputType.number,
+              //   initialValue: widget.myproperty?.propertyId,
+              // ),
               FormDropDown(
                 initialValue: widget.myproperty?.propertyType,
                 dropdownItems: propertyType,
@@ -683,7 +683,8 @@ class _DetailFormState extends State<DetailForm> {
                     onPressed: () async {
                       if (widget.isfromEdit == false) {
                         if (imageViewModel.images.length != 4) {
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
                             content: Text("Please select 4 images"),
                           ));
                           return;
@@ -748,13 +749,13 @@ class _DetailFormState extends State<DetailForm> {
                           bikeCount: int.parse(json['bikeCount'] ?? "0"),
 
                           propertyTitle: json['propertyFeature'],
-                          livingRoom: int.tryParse(json['livingRoom']) ?? 0,
-                          kitchen: int.tryParse(json['kitchen']) ?? 0,
-                          bathRoom: int.tryParse(json['bathroom']) ?? 0,
+                          livingRoom: int.tryParse(json['livingRoom'] ?? "0"),
+                          kitchen: int.tryParse(json['kitchen'] ?? "0"),
+                          bathRoom: int.tryParse(json['bathroom'] ?? "0"),
                           commonBedroom:
-                              int.tryParse(json['commonBedroom']) ?? 0,
+                              int.tryParse(json['commonBedroom'] ?? "0"),
                           attachedBedroom:
-                              int.tryParse(json['attachedBedroom']) ?? 0,
+                              int.tryParse(json['attachedBedroom'] ?? "0"),
                           imgPath1: imageViewModel.imageUrls[0],
                           imgPath2: imageViewModel.imageUrls[1],
                           imgPath3: imageViewModel.imageUrls[2],
