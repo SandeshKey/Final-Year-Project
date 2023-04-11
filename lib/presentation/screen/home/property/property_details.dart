@@ -1,9 +1,12 @@
 import 'package:olivehomes/core/model/property_model.dart';
+import 'package:olivehomes/core/model/user.dart';
 import 'package:olivehomes/core/util/colors.dart';
 import 'package:olivehomes/presentation/screen/home/property/widgets/amenty_widget.dart';
 import 'package:olivehomes/presentation/screen/home/property/widgets/carousel.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../../../core/service/db _services.dart';
 import 'widgets/info_text.dart';
 
 class PropertyDetails extends StatefulWidget {
@@ -18,87 +21,143 @@ class _PropertyDetailsState extends State<PropertyDetails> {
   @override
   Widget build(BuildContext context) {
     Widget landView() {
-      return Container(
-        child: Column(
-          children: [
-            Container(
-              child: Column(
-                children: [
-                  InfoText(
-                      title: "Address",
-                      data:
-                          widget.propertyModel!.address ?? "Pokhara 25 Hemja"),
-                  InfoText(
-                      title: "Area",
-                      data:
-                          "${widget.propertyModel!.propertyArea} ${widget.propertyModel!.areaUnit}"),
-                  InfoText(
-                      title: "Price",
-                      data:
-                          "${widget.propertyModel!.price} ${widget.propertyModel!.priceUnit}"),
-                  InfoText(
-                      title: "Entry Date",
-                      data: widget.propertyModel!.entryDate!
-                          .replaceRange(10, 23, '')),
-                ],
-              ),
+      return Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
+            child: Text(
+              "Property Details",
+              style: TextStyle(
+                  color: ColorUtils.pureWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
             ),
-            Wrap(
-              children: const [
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-              ],
-            )
-          ],
-        ),
+          ),
+          Column(
+            children: [
+              InfoText(
+                  title: "Address",
+                  data: widget.propertyModel!.address ?? "Pokhara 25 Hemja"),
+              InfoText(
+                  title: "Area",
+                  data:
+                      "${widget.propertyModel!.propertyArea} ${widget.propertyModel!.areaUnit}"),
+              InfoText(
+                  title: "Price",
+                  data:
+                      "${widget.propertyModel!.price} ${widget.propertyModel!.priceUnit}"),
+              InfoText(
+                  title: "Entry Date",
+                  data: widget.propertyModel!.entryDate!
+                      .replaceRange(10, 23, '')),
+              InfoText(
+                  title: "Nearest landmark",
+                  data: widget.propertyModel!.nearestLandmark!),
+              InfoText(
+                  title: "Road Type", data: widget.propertyModel!.roadType!),
+              InfoText(
+                  title: "Road Size",
+                  data: "${widget.propertyModel!.roadSize!.toString()} meter "),
+            ],
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
+            child: Text(
+              "Amenities",
+              style: TextStyle(
+                  color: ColorUtils.pureWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
+            ),
+          ),
+          Wrap(
+            children: const [
+              AmentyWidget(
+                  iconName: Icons.electric_bolt, data: "Electricity: Yes"),
+              AmentyWidget(
+                  iconName: Icons.water_drop_sharp, data: "Water: Yes"),
+              AmentyWidget(iconName: Icons.pattern_sharp, data: "Road: Yes"),
+            ],
+          )
+        ],
       );
     }
 
     Widget houseView() {
-      return Container(
-        child: Column(
-          children: [
-            Container(
-              child: Column(
-                children: [
-                  InfoText(title: "hi", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                  InfoText(
-                      title: "Property", data: "This is a property Detail"),
-                ],
-              ),
+      return Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
+            child: Text(
+              "Property Details",
+              style: TextStyle(
+                  color: ColorUtils.pureWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
             ),
-            Wrap(
-              children: const [
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
-                AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
+          ),
+          Container(
+            child: Column(
+              children: [
+                InfoText(
+                    title: "Price",
+                    data:
+                        "${widget.propertyModel!.price} ${widget.propertyModel!.priceUnit}"),
+                InfoText(
+                    title: "Entry Date",
+                    data: widget.propertyModel!.entryDate!
+                        .replaceRange(10, 23, '')),
+                InfoText(
+                    title: "Nearest landmark",
+                    data: widget.propertyModel!.nearestLandmark!),
+                InfoText(
+                    title: "Road Type", data: widget.propertyModel!.roadType!),
+                InfoText(
+                    title: "Road Size",
+                    data:
+                        "${widget.propertyModel!.roadSize!.toString()} meter "),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
+            child: Text(
+              "Amenities",
+              style: TextStyle(
+                  color: ColorUtils.pureWhite,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
+            ),
+          ),
+          Wrap(
+            children: [
+              AmentyWidget(
+                  iconName: Icons.bed,
+                  data:
+                      "${widget.propertyModel!.attachedBedroom!.toString()} Bedrooms"),
+              AmentyWidget(
+                  iconName: Icons.kitchen,
+                  data:
+                      "${widget.propertyModel!.kitchen!.toString()} Kitchens"),
+              AmentyWidget(
+                  iconName: Icons.bathroom,
+                  data:
+                      "${widget.propertyModel!.bathRoom!.toString()} Bathrooms"),
+              AmentyWidget(
+                  iconName: Icons.local_parking,
+                  data: "${widget.propertyModel!.bikeCount!.toString()} Bike"),
+              AmentyWidget(
+                  iconName: Icons.local_parking,
+                  data: "${widget.propertyModel!.carCount!.toString()} Car"),
+              const AmentyWidget(
+                  iconName: Icons.electric_bolt, data: "Electricity: Yes"),
+              const AmentyWidget(
+                  iconName: Icons.water_drop_sharp, data: "Water: Yes"),
+              const AmentyWidget(
+                  iconName: Icons.pattern_sharp, data: "Road: Yes"),
+            ],
+          )
+        ],
       );
     }
 
@@ -184,16 +243,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
             //         ],
             //       ),
             //     ),
-            //     const Padding(
-            //       padding: EdgeInsets.fromLTRB(8, 8, 0, 4),
-            //       child: Text(
-            //         "Amenities",
-            //         style: TextStyle(
-            //             color: ColorUtils.pureWhite,
-            //             fontWeight: FontWeight.bold,
-            //             fontSize: 18),
-            //       ),
-            //     ),
+
             //     Padding(
             //       padding: const EdgeInsets.fromLTRB(12, 8, 8, 0),
             //       child: Row(
@@ -264,89 +314,115 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                 color: ColorUtils.grey,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(12, 0, 0, 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: [
-                      Row(
+
+            FutureBuilder(
+                future: DatabaseServices()
+                    .getUserData(widget.propertyModel!.addedBy!),
+                builder: ((context, snapshot) {
+                  if (snapshot.hasData) {
+                    final data = snapshot.data as AppUser;
+                    return Padding(
+                      padding: const EdgeInsets.fromLTRB(12, 0, 0, 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
+                          Column(
                             children: [
-                              const CircleAvatar(
-                                radius: 24,
-                                backgroundImage: AssetImage(
-                                    "assets/images/villa_details2.png"),
+                              Row(
+                                children: [
+                                  Row(
+                                    children: [
+                                      CircleAvatar(
+                                        radius: 24,
+                                        backgroundImage:
+                                            NetworkImage(data.displayImage!),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(16, 0, 0, 0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(0, 0, 0, 4),
+                                          child: Text(
+                                            widget.propertyModel!
+                                                .ownerOrAgentName!,
+                                            style: TextStyle(
+                                                color: ColorUtils.pureWhite,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w800),
+                                          ),
+                                        ),
+                                        const Text(
+                                          "Owner/Agent",
+                                          style: TextStyle(
+                                              color: ColorUtils.pureWhite,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(16, 0, 0, 0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(0, 0, 0, 4),
-                                  child: Text(
-                                    widget.propertyModel!.ownerOrAgentName!,
-                                    style: TextStyle(
-                                        color: ColorUtils.pureWhite,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w800),
+                          Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: ColorUtils.buttonRed,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                height: 36,
+                                width: 36,
+                                child: IconButton(
+                                  icon: Icon(Icons.email_outlined),
+                                  color: ColorUtils.pureWhite,
+                                  onPressed: () {
+                                    launch("mailto:${data.email}");
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.fromLTRB(12, 0, 12, 0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: ColorUtils.buttonRed,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  height: 36,
+                                  width: 36,
+                                  child: IconButton(
+                                    icon: Icon(Icons.phone),
+                                    color: ColorUtils.pureWhite,
+                                    onPressed: () {
+                                      launch(
+                                          "tel:${int.tryParse(data.phoneNumber!) ?? 9827100678}");
+                                    },
                                   ),
                                 ),
-                                const Text(
-                                  "Owner",
-                                  style: TextStyle(
-                                      color: ColorUtils.pureWhite,
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: ColorUtils.buttonRed,
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        height: 36,
-                        width: 36,
-                        child: const Icon(
-                          Icons.messenger_outline_rounded,
-                          color: ColorUtils.pureWhite,
-                          size: 24,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: ColorUtils.buttonRed,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          height: 36,
-                          width: 36,
-                          child: const Icon(
-                            Icons.phone,
-                            color: ColorUtils.pureWhite,
-                            size: 24,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+                    );
+                  }
+
+                  if (snapshot.hasError) {
+                    return const Center(child: Text("Error"));
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                })),
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -363,13 +439,16 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                     ),
                   ),
                 ),
-                Text(
-                  widget.propertyModel!.landDetail ?? """ This is a 2 bhk """,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 17,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 58.0),
+                  child: Text(
+                    widget.propertyModel!.landDetail ?? """ This is a 2 bhk """,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                    ),
+                    textAlign: TextAlign.justify,
                   ),
-                  textAlign: TextAlign.justify,
                 )
               ],
             ),

@@ -708,9 +708,13 @@ class _DetailFormState extends State<DetailForm> {
                         var json = _formkey.currentState?.value;
                         print(json!);
 
-                        print("property id is ${json['propertyId']}");
+                        print(" address is ${json['addressLine1']}");
+                        print(" area is ${json['propertyArea']}");
+
+                        // print("property id is ${json['propertyId']}");
 
                         PropertyModel property = PropertyModel(
+                          area: json['addressLine1'],
                           propertyType: json['propertyType'],
                           propertyPurpose: json['propertyPurpose'],
                           propertyFeature: json['propertyFeature'],
@@ -720,7 +724,6 @@ class _DetailFormState extends State<DetailForm> {
                           nearestLandmark: json['nearestLandmark'],
                           listingType: json['type'],
                           landDetail: json['landDetail'],
-
                           propertyId: json['propertyId'],
                           propertyIs: json['propertyIs'],
                           propertyFor: json['choice_chip'],
@@ -767,7 +770,6 @@ class _DetailFormState extends State<DetailForm> {
                           isPremium: false,
                           addedBy: FirebaseAuth.instance.currentUser!.uid,
                           storey: json['storey'],
-                        
 
                           // attachments: json['attachments'],
                         );

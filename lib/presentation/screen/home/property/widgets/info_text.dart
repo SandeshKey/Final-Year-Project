@@ -7,18 +7,21 @@ class InfoText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          "$title : ",
-          style: TextStyle(
-              color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
-        ),
-        Text(
-          "$data",
-          style: TextStyle(color: Colors.white),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          Text(
+            "$title : ",
+            style: TextStyle(
+                color: Colors.white, fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+          Text(
+            "$data",
+            style: TextStyle(color: Colors.white),
+          )
+        ],
+      ),
     );
   }
 }

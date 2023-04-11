@@ -31,11 +31,13 @@ class AmentyWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(5, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Text(
               data,
               style: const TextStyle(
-                  color: ColorUtils.pureWhite, fontWeight: FontWeight.bold),
+                  color: ColorUtils.pureWhite,
+                  // fontWeight: FontWeight.bold,
+                  fontSize: 15),
             ),
           ),
         ],
