@@ -88,7 +88,7 @@ class _PropertyBoxState extends State<AdminPropertyBox> {
               Padding(
                 padding: EdgeInsets.fromLTRB(16, 8, 0, 4),
                 child: Text(
-                  "${widget.property!.propertyIs} for ${widget.property!.propertyFor} in ${widget.property!.address} ",
+                  widget.property!.propertyTitle!,
                   textAlign: TextAlign.left, //yo text start ma gayena
                   style: TextStyle(
                       color: Color.fromARGB(255, 1, 5, 11),
