@@ -1,15 +1,25 @@
 import 'package:olivehomes/core/model/property_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:olivehomes/view_model/fav_property_view_model.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/util/colors.dart';
 
-class FavouriteItem extends StatelessWidget {
+class FavouriteItem extends StatefulWidget {
   final PropertyModel? property;
   const FavouriteItem({super.key, this.property});
 
   @override
+  State<FavouriteItem> createState() => _FavouriteItemState();
+}
+
+class _FavouriteItemState extends State<FavouriteItem> {
+  bool removed = false;
+  @override
   Widget build(BuildContext context) {
+    FavoritePropertiesViewModel _favProperty =
+        Provider.of<FavoritePropertiesViewModel>(context);
     return Column(
       children: [
         Padding(
@@ -70,8 +80,20 @@ class FavouriteItem extends StatelessWidget {
                               maxLines: 1,
                               softWrap: false,
                             ),
-                            SvgPicture.asset(
-                                "assets/images/Favorited Icon.svg"),
+                            InkWell(
+                              onTap: removed == false
+                                  ? () async {
+                                      setState(() {
+                                        removed = true;
+                                      });
+                                     
+                                    }
+                                  : () {},
+                              child: SvgPicture.asset(
+                                "assets/images/Favorited Icon.svg",
+                                color: removed == false ? null : Colors.white,
+                              ),
+                            ),
                           ],
                         ),
                       ],

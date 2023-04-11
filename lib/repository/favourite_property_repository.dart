@@ -14,18 +14,6 @@ class FavoritePropertiesRepository {
     });
   }
 
-  // remove
-  Future<void> removeFavoriteProperty(
-      String userId, PropertyModel propertyRef) async {
-    await _favoritePropertiesCollection
-        .where('userId', isEqualTo: userId)
-        .where('propertyRef', isEqualTo: propertyRef.toMap())
-        .get()
-        .then((value) => value.docs.forEach((element) {
-              element.reference.delete();
-            }));
-  }
-
  Future<List<PropertyModel>> getFavoriteProperties(String userId)async {
     return await _favoritePropertiesCollection
         .where('userId', isEqualTo: userId).get()  .then((value) =>
