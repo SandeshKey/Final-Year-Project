@@ -1,12 +1,13 @@
 import 'dart:ui';
 
-import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+// import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:khalti/khalti.dart';
 import 'package:olivehomes/presentation/provider/favorite_provider.dart';
 
 import 'package:olivehomes/presentation/screen/home/logo_splash.dart';
 import 'package:olivehomes/presentation/screen/home/pages/ecommerce_products.dart';
 import 'package:olivehomes/presentation/screen/home/pages/face_id_auth.dart';
+import 'package:olivehomes/presentation/screen/home/pages/location_page.dart';
 import 'package:olivehomes/presentation/screen/khalti_payment.dart';
 import 'package:olivehomes/presentation/screen/provider/olive_provider.dart';
 import 'package:olivehomes/view_model/admin_view_model.dart';
@@ -21,6 +22,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'config/constants.dart';
 import 'core/widget/contact_seller.dart';
 import 'firebase_options.dart';
+import 'package:alan_voice/alan_voice.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -48,15 +50,16 @@ void main() async {
   );
 
   runApp(const App());
-  WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-    if (Platform.isAndroid) {
-      await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
-    }
-  }); //preventing screenshot for Android
+  // WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+  //   if (Platform.isAndroid) {
+  //     await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  //   }
+  // }); //preventing screenshot for Android
 }
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -88,12 +91,14 @@ class App extends StatelessWidget {
         // home: KhaltiPayment(),
         // home: EcommerceProducts(),
         // home: FaceIDAuth(),
+        // home: LocationPage(),
 
         debugShowCheckedModeBanner: false,
       ),
     );
   }
 }
+
 
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({Key? key}) : super(key: key);
@@ -107,3 +112,5 @@ class AuthWrapper extends StatelessWidget {
     return const LoginScreen();
   }
 }
+
+
