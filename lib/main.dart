@@ -2,6 +2,7 @@ import 'dart:ui';
 
 // import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:khalti/khalti.dart';
+import 'package:khalti_flutter/khalti_flutter.dart';
 import 'package:olivehomes/presentation/provider/favorite_provider.dart';
 
 import 'package:olivehomes/presentation/screen/home/logo_splash.dart';
@@ -77,28 +78,37 @@ class App extends StatelessWidget {
         ChangeNotifierProvider<FavoritePropertiesViewModel>(
             create: (context) => FavoritePropertiesViewModel()),
       ],
-      child: MaterialApp(
-        title: AppStrings.kTitle,
-        // home: HomePageNew(),
+      child: KhaltiScope(
+        publicKey: "test_public_key_f3fbbf17a2d34088ae4bee924a352964",
+        builder: (context, navigatorKey) {
+          return MaterialApp(
+            supportedLocales: const [
+              Locale('en', 'US'),
+              Locale('ne', 'NP'),
+            ],
+            localizationsDelegates: const [
+              KhaltiLocalizations.delegate,
+            ],
+            navigatorKey: navigatorKey,
+            title: AppStrings.kTitle,
 
-        // home: GetStarted(),
+            home: const LogoSplash(),
 
-        home: LogoSplash(),
+            // home: HoueseView(),
+            // home: ContactSeller(),
+            // home: AdminHome(),
+            // home: KhaltiPayment(),
+            // home: EcommerceProducts(),
+            // home: FaceIDAuth(),
+            // home: LocationPage(),
 
-        // home: HoueseView(),
-        // home: ContactSeller(),
-        // home: AdminHome(),
-        // home: KhaltiPayment(),
-        // home: EcommerceProducts(),
-        // home: FaceIDAuth(),
-        // home: LocationPage(),
-
-        debugShowCheckedModeBanner: false,
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }
 }
-
 
 class AuthWrapper extends StatelessWidget {
   const AuthWrapper({Key? key}) : super(key: key);
@@ -112,5 +122,3 @@ class AuthWrapper extends StatelessWidget {
     return const LoginScreen();
   }
 }
-
-
