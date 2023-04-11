@@ -27,7 +27,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                   InfoText(
                       title: "Address",
                       data:
-                          widget.propertyModel!.address ?? "Pokhara 25 Hemja"),
+                          widget.propertyModel!.address ?? "Lakeside Pokhara"),
                   InfoText(
                       title: "Area",
                       data:
@@ -39,7 +39,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                   InfoText(
                       title: "Entry Date",
                       data: widget.propertyModel!.entryDate!
-                          .replaceRange(10, 23, '')),
+                          .replaceRange(10, 23, ''),),
                 ],
               ),
             ),
@@ -53,7 +53,7 @@ class _PropertyDetailsState extends State<PropertyDetails> {
                 AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
                 AmentyWidget(iconName: Icons.bluetooth, data: "2 bathrooms"),
               ],
-            )
+            ),
           ],
         ),
       );
