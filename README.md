@@ -1,4 +1,4 @@
-# Mingo Real-estate Mobile Application
+# Olive Homes: a Real-estate Mobile Application
 
 ## Overview
 
